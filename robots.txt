@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gisangyu.github.io/portfolio_2026/sitemap.xml

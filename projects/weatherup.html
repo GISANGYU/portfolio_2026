@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>weatherUp | 날씨 기반 라이프스타일 추천 React 웹앱 | 유기상</title>
+    <meta
+      name="description"
+      content="유기상의 React 프로젝트 weatherUp. 날씨 7종을 고르면 테마가 바뀌고 OOTD·음식·활동·음악·일상 콘텐츠를 추천한다. GitHub Pages 하위 경로 라우팅, iTunes API CORS, 자동재생 차단 문제를 해결한 커밋 기록과 API 재연동 계획을 정리했다."
+    />
+    <link rel="canonical" href="https://gisangyu.github.io/portfolio_2026/projects/weatherup.html" />
+    <meta name="theme-color" content="#080808" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="유기상 포트폴리오" />
+    <meta property="og:title" content="weatherUp | React 웹앱 | 유기상" />
+    <meta property="og:description" content="날씨 7종 테마 전환 React 웹앱. 커밋으로 확인되는 문제 해결 사례와 API 재연동 계획." />
+    <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/projects/weatherup.html" />
+    <meta property="og:image" content="https://gisangyu.github.io/portfolio_2026/assets/img/weatherup-main.webp" />
+    <meta property="og:image:alt" content="weatherUp 날씨 선택 화면" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080808'/%3E%3Crect x='7' y='10' width='18' height='12' fill='none' stroke='%23ecebe6' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23ff3b1f'/%3E%3C/svg%3E" />
+    <script>
+      (function () {
+        var pref = null;
+        try { pref = localStorage.getItem("gy-motion"); } catch (e) {}
+        var on = pref ? pref === "on" : !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (on) document.documentElement.classList.add("fx");
+      })();
+    </script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    </noscript>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["CreativeWork", "WebApplication"],
+            "name": "weatherUp",
+            "headline": "weatherUp — 날씨 기반 라이프스타일 추천 웹앱",
+            "description": "날씨 7종 중 하나를 고르면 화면 테마가 바뀌고 OOTD·음식·활동·음악·일상 콘텐츠를 추천하는 React 웹앱.",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Web",
+            "dateCreated": "2026-04",
+            "dateModified": "2026-06",
+            "url": "https://gisangyu.github.io/weatherUp/",
+            "image": "https://gisangyu.github.io/portfolio_2026/assets/img/weatherup-main.webp",
+            "keywords": "React, Create React App, CSS Modules, Context API, GitHub Pages, iTunes API",
+            "creator": { "@type": "Person", "name": "유기상", "url": "https://gisangyu.github.io/portfolio_2026/" },
+            "mainEntityOfPage": "https://gisangyu.github.io/portfolio_2026/projects/weatherup.html"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "weatherUp source",
+            "codeRepository": "https://github.com/GISANGYU/weatherUp",
+            "programmingLanguage": ["JavaScript", "CSS", "HTML"],
+            "runtimePlatform": "React (Create React App)",
+            "author": { "@type": "Person", "name": "유기상" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gisangyu.github.io/portfolio_2026/" },
+              { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://gisangyu.github.io/portfolio_2026/#projects" },
+              { "@type": "ListItem", "position": 3, "name": "weatherUp", "item": "https://gisangyu.github.io/portfolio_2026/projects/weatherup.html" }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body class="page-project">
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="af" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+    <header class="site-header">
+      <a class="brand" href="../" data-af>YU GISANG</a>
+      <nav class="site-nav" aria-label="주요 메뉴">
+        <a href="../#about" data-af>ABOUT</a>
+        <a href="../#work" class="is-on" data-af>WORK</a>
+        <a href="../#contact" data-af>CONTACT</a>
+      </nav>
+      <div class="hdr-right">
+        <span class="tc mono" data-tc aria-hidden="true">00:00:00:00</span>
+        <button class="motion-toggle" type="button" data-motion-toggle data-af>MOTION — ON</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <article class="p-wrap" aria-labelledby="title">
+        <header class="p-hero">
+          <nav class="crumb" aria-label="현재 위치">
+            <ol>
+              <li><a href="../" data-af>HOME</a></li>
+              <li><a href="../#work" data-af>WORK</a></li>
+              <li aria-current="page">CUT 02 · WEATHERUP</li>
+            </ol>
+          </nav>
+          <h1 id="title" class="p-title" data-reveal>weatherUp</h1>
+          <p class="p-type mono" data-reveal>REACT WEB APP — 2026.04–06</p>
+
+          <figure class="p-shot" data-reveal>
+            <div class="scrub" data-dur="12">
+              <img src="../assets/img/weatherup-main.webp" width="1440" height="900" decoding="async" alt="weatherUp 첫 화면. &#39;완벽한 맑은 날&#39; 제목 아래 맑음·구름·눈·황사·흐림·비·번개 7개 날씨 선택 버튼이 있다." />
+              <span class="scrub-tc mono" aria-hidden="true">00:00:00:00</span>
+            </div>
+            <figcaption><span>home — select mood 7</span><span>captured 2026.09.17</span></figcaption>
+          </figure>
+
+          <dl class="p-meta" data-reveal>
+            <div><dt>YEAR</dt><dd>2026.04 – 06</dd></div>
+            <div><dt>TEAM</dt><dd>1인 · AI 코딩 도구 병행</dd></div>
+            <div><dt>ROLE</dt><dd>기획 · UI · 프론트엔드 · 배포</dd></div>
+            <div><dt>STACK</dt><dd>React(CRA) · CSS Modules · Context API</dd></div>
+            <div><dt>STATUS</dt><dd>코드 이해도 점검 중</dd></div>
+          </dl>
+          <div class="p-links" data-reveal>
+            <a href="https://gisangyu.github.io/weatherUp/" rel="noopener" data-af>LIVE DEMO ↗</a>
+            <a href="https://github.com/GISANGYU/weatherUp" rel="noopener" data-af>GITHUB ↗</a>
+          </div>
+        </header>
+
+        <section class="p-sec" aria-labelledby="s1">
+          <h2 id="s1"><b>01</b>OVERVIEW</h2>
+          <div>
+            <div class="p-body" data-reveal>
+              <p class="p-lead">날씨 7종 중 하나를 고르면 배경과 색 테마가 바뀌고, OOTD·음식·활동·음악·일상 콘텐츠를 추천하는 React 웹앱입니다.</p>
+              <p>하나뿐인 React 프로젝트라 화면을 보여 주는 데서 멈추지 않고, 설계 판단을 직접 설명할 수 있는 상태로 되돌리는 중입니다. 커밋 대부분은 AI 코딩 도구와 함께 작성했고 공동 작성자로 기록되어 있습니다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-sec" aria-labelledby="s2">
+          <h2 id="s2"><b>02</b>EDIT LOG</h2>
+          <div>
+            <ol class="beats">
+              <li class="beat" data-reveal>
+                <span class="no" aria-hidden="true">04.15</span>
+                <div>
+                  <span class="lbl">PHASE 1</span>
+                  <h3>날씨 4종 테마 + 정적 데이터 추천</h3>
+                  <p>같은 날 로딩 화면과 GitHub Pages 배포 설정을 추가했습니다.</p>
+                </div>
+              </li>
+              <li class="beat" data-reveal>
+                <span class="no" aria-hidden="true">04.21</span>
+                <div>
+                  <span class="lbl">MUSIC</span>
+                  <h3>음악 기능 · 이미지 96장 로컬 번들</h3>
+                  <p>외부 URL로 불러오던 OOTD·음식 이미지를 <code>public/images/</code>로 옮겼습니다.</p>
+                </div>
+              </li>
+              <li class="beat key" data-reveal>
+                <span class="no" aria-hidden="true">06.09</span>
+                <div>
+                  <span class="lbl">PHASE 2</span>
+                  <h3>날씨 7종 테마 · Context API 전환</h3>
+                  <p>props 전달 구조를 <code>WeatherContext</code>·<code>MusicContext</code>로 바꾸고, canvas 배경을 CSS로 교체했습니다.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="p-sec" aria-labelledby="s3">
+          <h2 id="s3"><b>03</b>TROUBLESHOOTING</h2>
+          <div>
+            <ol class="beats">
+              <li class="beat key" data-reveal>
+                <span class="no" aria-hidden="true">01</span>
+                <div>
+                  <span class="lbl">ROUTING</span>
+                  <h3>GitHub Pages 하위 경로에서 라우팅이 맞지 않음</h3>
+                  <p>배포 주소가 <code>/weatherUp/</code>라 라우트가 루트 기준으로 잡혔습니다. <code>BrowserRouter</code>에 <code>basename={process.env.PUBLIC_URL}</code>을 지정했습니다.</p>
+                </div>
+              </li>
+              <li class="beat key" data-reveal>
+                <span class="no" aria-hidden="true">02</span>
+                <div>
+                  <span class="lbl">CORS</span>
+                  <h3>일부 곡의 앨범 커버가 불러와지지 않음</h3>
+                  <p>iTunes API가 요청 제한에 걸리면 CORS 헤더가 빠져 fetch가 실패했습니다. JSONP로 바꾸고 실패 결과는 캐시하지 않아 다시 시도할 수 있게 했습니다.</p>
+                </div>
+              </li>
+              <li class="beat key" data-reveal>
+                <span class="no" aria-hidden="true">03</span>
+                <div>
+                  <span class="lbl">AUTOPLAY</span>
+                  <h3>재생에 광고가 붙고 일부 사용자는 소리가 나지 않음</h3>
+                  <p>YouTube iframe을 iTunes 30초 미리듣기 <code>&lt;audio&gt;</code>로 바꾸고, 자동재생 차단을 피하려고 클릭 이벤트 안에서 바로 재생합니다.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="p-sec" aria-labelledby="s4">
+          <h2 id="s4"><b>04</b>NEXT → 12.02</h2>
+          <div>
+            <ul class="delta">
+              <li data-reveal><span class="k">날씨 데이터</span><span class="a">정적 데이터</span><span class="arr" aria-hidden="true">→</span><span class="b">API 연동 · 로딩/오류 처리</span></li>
+              <li data-reveal><span class="k">무드 선택</span><span class="a">새로고침 시 초기화</span><span class="arr" aria-hidden="true">→</span><span class="b">저장 · 불러오기</span></li>
+              <li data-reveal><span class="k">첫 로드</span><span class="a">9.6MB</span><span class="arr" aria-hidden="true">→</span><span class="b">원인 진단 후 축소</span></li>
+              <li data-reveal><span class="k">README</span><span class="a">CRA 기본 템플릿</span><span class="arr" aria-hidden="true">→</span><span class="b">구조 · 트러블슈팅 문서</span></li>
+            </ul>
+            <p class="p-note">외부 날씨 API는 설계 문서(skill/api.md)만 있고 현재 배포본에는 연결되어 있지 않습니다. 오른쪽은 목표입니다.</p>
+          </div>
+        </section>
+
+      </article>
+
+      <a class="next-cut" href="inside-gisang.html" data-af>
+        <span class="mono">NEXT CUT · 03</span>
+        <strong>inside_gisang →</strong>
+      </a>
+    </main>
+
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
