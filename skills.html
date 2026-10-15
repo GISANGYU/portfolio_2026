@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>역량 | 유기상</title>
+    <meta name="description" content="채용 역량 매트릭스와 프로젝트 근거" />
+    <meta name="theme-color" content="#060607" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="역량 | 유기상" />
+    <meta property="og:description" content="채용 역량 매트릭스와 프로젝트 근거" />
+    <meta property="og:image" content="assets/thumbs/snooze-limen.jpg" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 29,9 29,23 16,30 3,23 3,9' fill='%23e5232b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="page-skills">
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <header class="hd">
+      <a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html" aria-current="page">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="about.html#resume">이력</a></nav>
+      <a class="hd-cta" href="#contact">연락하기 →</a>
+    </header>
+    <main id="main">
+      <section class="sub-hero">
+        <canvas class="circuit" aria-hidden="true"></canvas>
+        <div class="wrap">
+          <p class="eyebrow red"><span class="dot"></span>COMPETENCY × EVIDENCE</p>
+          <h1>Skills</h1>
+          <p>숙련도 퍼센트 대신 역량마다 근거가 되는 프로젝트를 연결했습니다. 2026.10.15 1차 판정이며, 코드를 다시 확인하면서 상태와 레벨을 고칩니다.</p>
+        </div>
+      </section>
+      <div class="wrap page">
+        <div style="overflow-x:auto"><table class="sk">
+          <thead><tr><th>ID</th><th>Area</th><th>Priority</th><th>Status</th><th>Level</th><th>Projects</th><th>Note</th></tr></thead>
+          <tbody data-skills></tbody>
+        </table></div>
+        <p class="legend">상태: 검증완료 · 일부확인 · 미확인 · 미구현 · 계획 &nbsp;/&nbsp; 레벨: L1 기초 · L2 구현 · L3 실무형 · L4 심화 (근거가 없으면 빈칸)</p>
+      </div>
+    </main>
+    <footer class="ft" id="contact">
+      <canvas aria-hidden="true"></canvas>
+      <div class="ft-in wrap">
+        <div class="ft-main">
+          <div>
+            <p class="eyebrow red"><span class="dot"></span>CONTACT</p>
+            <h2>함께 일할 곳을<br />찾고 있습니다<em>.</em></h2>
+            <p class="ft-sub">웹 인터랙션 개발 신입 포지션 관련 연락은 메일로 부탁드립니다.</p>
+            <dl class="ft-contact">
+              <dt>EMAIL</dt><dd><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></dd>
+              <dt>TEL</dt><dd data-phone><span class="blank"></span></dd>
+              <dt>GITHUB</dt><dd><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></dd>
+            </dl>
+          </div>
+          <a class="ft-cta" href="mailto:yu2647@gmail.com">메일 보내기<br />↗</a>
+        </div>
+        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="about.html#resume">이력</a></nav>
+        <div class="ft-bot"><div><span>유기상</span><span>계원예술대학교 디지털미디어디자인과</span></div><span>© 2026 YU GISANG</span></div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

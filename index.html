@@ -3,342 +3,131 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>유기상 | 인터랙션 프론트엔드 포트폴리오</title>
-    <meta
-      name="description"
-      content="영상의 문법으로 웹을 움직이는 인터랙션 프론트엔드 유기상의 포트폴리오. 스크롤 연출 웹 CHROMA, React 웹앱 weatherUp, 멀티페이지 자기소개 웹 inside_gisang의 제작 과정을 담았습니다."
-    />
-    <link rel="canonical" href="https://gisangyu.github.io/portfolio_2026/" />
-    <meta name="theme-color" content="#080808" />
-
+    <title>유기상 | 웹 인터랙션 개발 포트폴리오</title>
+    <meta name="description" content="유기상의 포트폴리오. 웹 퍼블리싱, 자바스크립트 인터랙션, Unity 센서 인터랙션 작업과 근거." />
+    <meta name="theme-color" content="#060607" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="유기상 포트폴리오" />
-    <meta property="og:title" content="유기상 | 인터랙션 프론트엔드" />
-    <meta property="og:description" content="영상의 문법으로 웹을 움직이는 인터랙션 프론트엔드. CHROMA · weatherUp · inside_gisang." />
-    <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/" />
-    <meta property="og:image" content="https://gisangyu.github.io/portfolio_2026/assets/img/og.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="유기상 인터랙션 프론트엔드 포트폴리오" />
-    <meta property="og:locale" content="ko_KR" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080808'/%3E%3Crect x='7' y='10' width='18' height='12' fill='none' stroke='%23ecebe6' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23ff3b1f'/%3E%3C/svg%3E" />
-
-    <!-- 모션 사용 여부를 첫 페인트 전에 결정: 사용자 설정(localStorage) > OS 모션 줄이기 -->
-    <script>
-      (function () {
-        var pref = null;
-        try { pref = localStorage.getItem("gy-motion"); } catch (e) {}
-        var on = pref ? pref === "on" : !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (on) document.documentElement.classList.add("fx");
-      })();
-    </script>
-
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <meta property="og:title" content="유기상 | 웹 인터랙션 개발 포트폴리오" />
+    <meta property="og:description" content="유기상의 포트폴리오. 웹 퍼블리싱, 자바스크립트 인터랙션, Unity 센서 인터랙션 작업과 근거." />
+    <meta property="og:image" content="assets/thumbs/snooze-limen.jpg" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 29,9 29,23 16,30 3,23 3,9' fill='%23e5232b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" />
-    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "@id": "https://gisangyu.github.io/portfolio_2026/#person",
-            "name": "유기상",
-            "alternateName": "Gisang Yu",
-            "jobTitle": "인터랙션 프론트엔드 (Interaction Frontend)",
-            "description": "영상의 문법으로 웹을 움직이는 인터랙션 프론트엔드",
-            "url": "https://gisangyu.github.io/portfolio_2026/",
-            "sameAs": ["https://github.com/GISANGYU"],
-            "affiliation": { "@type": "CollegeOrUniversity", "name": "계원예술대학교 디지털미디어디자인과" },
-            "knowsAbout": ["HTML", "CSS", "JavaScript", "jQuery", "GSAP", "React", "Scroll Interaction", "Web Accessibility"],
-            "hasCredential": [
-              { "@type": "EducationalOccupationalCredential", "name": "웹디자인기능사" },
-              { "@type": "EducationalOccupationalCredential", "name": "전자출판기능사" },
-              { "@type": "EducationalOccupationalCredential", "name": "컴퓨터그래픽스운용기능사" },
-              { "@type": "EducationalOccupationalCredential", "name": "GTQ" },
-              { "@type": "EducationalOccupationalCredential", "name": "GTQ-i" }
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://gisangyu.github.io/portfolio_2026/#website",
-            "name": "유기상 포트폴리오",
-            "url": "https://gisangyu.github.io/portfolio_2026/",
-            "inLanguage": "ko",
-            "author": { "@id": "https://gisangyu.github.io/portfolio_2026/#person" }
-          },
-          {
-            "@type": "ItemList",
-            "name": "프로젝트",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "CHROMA", "url": "https://gisangyu.github.io/portfolio_2026/projects/chroma.html" },
-              { "@type": "ListItem", "position": 2, "name": "weatherUp", "url": "https://gisangyu.github.io/portfolio_2026/projects/weatherup.html" },
-              { "@type": "ListItem", "position": 3, "name": "inside_gisang", "url": "https://gisangyu.github.io/portfolio_2026/projects/inside-gisang.html" }
-            ]
-          }
-        ]
-      }
-    </script>
   </head>
-
   <body class="page-home">
     <a class="skip" href="#main">본문으로 건너뛰기</a>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="af" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-    <!-- ============ INTRO: 점 → 선 → 프레임 → 컷 4개 → 카드 (모션 모드에서만 재생) ============ -->
-    <div class="intro" aria-hidden="true" hidden>
-      <div class="i-dot"></div>
-      <div class="i-line"></div>
-      <div class="i-frame"><i></i><i></i><i></i><i></i></div>
-      <p class="i-word w-frame">FRAME,</p>
-      <p class="i-word w-cut"><span>CUT,</span><span>CUT,</span><span>CUT,</span><span>CUT,</span><span>CUT,</span><span>CUT,</span></p>
-      <p class="i-word w-motion"><span>MOTION,</span><span>MOTION,</span><span>MOTION,</span><span>MOTION,</span><span>MOTION,</span></p>
-      <p class="i-word w-code">CODE.</p>
-      <p class="i-card">영상의 문법으로<br />웹을 움직입니다</p>
-      <button class="i-skip mono" type="button" tabindex="-1">SKIP →</button>
-    </div>
-
-    <header class="site-header">
-      <a class="brand" href="./" data-af>YU GISANG</a>
-      <nav class="site-nav" aria-label="주요 메뉴">
-        <a href="#about" data-af>ABOUT</a>
-        <a href="#work" data-af>WORK</a>
-        <a href="#contact" data-af>CONTACT</a>
-      </nav>
-      <div class="hdr-right">
-        <span class="tc mono" data-tc aria-hidden="true">00:00:00:00</span>
-        <button class="motion-toggle" type="button" data-motion-toggle data-af>MOTION — ON</button>
-      </div>
+    <header class="hd">
+      <a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="about.html#resume">이력</a></nav>
+      <a class="hd-cta" href="#contact">연락하기 →</a>
     </header>
-
     <main id="main">
-      <!-- ============ SC.01 MAIN : 슬릿스캔 이름 + 스킬 키프레임 ============ -->
-      <section class="scene scene-main" id="top" data-scene="MAIN" aria-labelledby="hero-title">
-        <div class="stage">
-          <div class="crt">
-            <div class="slit" aria-hidden="true"><canvas></canvas></div>
+      <section class="hero" aria-label="소개">
+        <canvas class="circuit" aria-hidden="true"></canvas>
+        <div class="hero-meta"><span class="eyebrow">YU GISANG PORTFOLIO</span><span class="eyebrow">SINCE 2023</span></div>
+        <h1 class="hero-title">
+          <span class="l1" data-split>INTERACTIVE</span>
+          <span class="l2"><span class="cube-wrap" aria-hidden="true"><span class="cube" data-cube="0"><i></i><i></i><i></i><i></i><i></i><i></i></span></span><span data-split>WEB</span></span>
+          <span class="sr">유기상 — 웹 인터랙션 개발 포트폴리오</span>
+        </h1>
+        <div class="hero-foot"><span>웹 인터랙션 개발 신입 · 유기상</span><span class="eyebrow">SCROLL</span></div>
+      </section>
 
-            <h1 id="hero-title" class="hero-copy">
-              <span class="hero-name">유기상 <span class="en">Gisang Yu</span></span>
-              <span class="hero-slogan">영상의 문법으로 웹을 움직이는 <b>인터랙션 프론트엔드</b></span>
-            </h1>
+      <section class="intro" aria-label="한 줄 소개">
+        <div class="intro-stick">
+          <canvas class="circuit" aria-hidden="true"></canvas>
+          <p class="say">
+            <span class="w">디자인</span> <span class="tag">DESIGN</span> <span class="w">의도를</span><br />
+            <span class="w">동작하는</span> <span class="hex" aria-hidden="true">
+            <svg viewBox="0 0 100 115.47"><polygon points="50,1 99,29.4 99,86.1 50,114.5 1,86.1 1,29.4" fill="rgba(6,6,7,0.85)" stroke="#e5232b" stroke-width="0.8"/>
+              <polyline points="40,50 50,56 60,50" fill="none" stroke="#e5232b" stroke-width="1.6"/><polyline points="40,57 50,63 60,57" fill="none" stroke="#e5232b" stroke-width="1.6"/><polyline points="40,64 50,70 60,64" fill="none" stroke="#7a1418" stroke-width="1.6"/></svg></span> <span class="w r">인터랙션</span><span class="w">으로</span><br />
+            <span class="w">구현합니다</span> <span class="tag">CODE</span>
+          </p>
 
-            <div class="keys" data-keys>
-              <h2 class="keys-label mono">STACK / KEYFRAMES</h2>
-              <ul class="keys-main">
-                <li data-x="7"><b>HTML · CSS</b><span>CHROMA 4p · inside_gisang 6p</span></li>
-                <li data-x="21"><b>JAVASCRIPT</b><span>inside_gisang data.js · arrange.js</span></li>
-                <li data-x="35"><b>JQUERY</b><span>CHROMA 페이지 전환 연출</span></li>
-                <li data-x="49"><b>TWEENMAX · GSAP</b><span>CHROMA 스크롤 연출</span></li>
-                <li data-x="63"><b>REACT</b><span>weatherUp · Context API</span></li>
-                <li data-x="77"><b>CSS MODULES</b><span>weatherUp 컴포넌트 스타일</span></li>
-                <li data-x="91"><b>GIT · PAGES</b><span>2023.09 ~ 정적 배포</span></li>
-              </ul>
-              <ul class="keys-sub" aria-hidden="true">
-                <li data-x="14">24FPS</li>
-                <li data-x="28">EASING</li>
-                <li data-x="42">KEYFRAME</li>
-                <li data-x="56">TIMECODE</li>
-                <li data-x="70">SCRUB</li>
-                <li data-x="84">CUT</li>
-              </ul>
-              <div class="keys-track" aria-hidden="true"></div>
-              <div class="keys-head" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="how" aria-label="일하는 방식">
+        <div class="how-stick">
+          <div class="how-stage"><div class="floor" aria-hidden="true"></div></div>
+          <div class="how-cube" aria-hidden="true"><span class="cube-wrap"><span class="cube" data-cube="0"><i></i><i></i><i></i><i></i><i></i><i></i></span></span></div>
+          <div class="how-shade"></div>
+          <div class="how-panel left">
+            <p class="eyebrow red"><span class="dot"></span>HOW I WORK</p>
+            <h2>설명할 수 있는 작업만<br />포트폴리오에 올립니다</h2>
+            <div class="bar"></div>
+            <p><b>웹 퍼블리싱 · 자바스크립트 인터랙션 · Unity 센서 인터랙션</b></p>
+            <p style="margin-top:8px">코드·커밋·배포 링크로 확인한 내용만 적고, 모르는 칸은 비워 둡니다.</p>
+            <div class="how-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
+          <div class="how-panel right">
+            <div class="how-step">
+              <p class="eyebrow red"><span class="dot"></span>01 EVIDENCE</p>
+              <h2>확인한 것만<br />적습니다</h2><div class="bar"></div>
+              <ul class="how-list"><li><b>근거 우선</b><span>소스 코드 · 커밋 · 배포 링크 순으로 확인</span></li><li><b>빈칸 유지</b><span>확인 못 한 정보는 추정하지 않고 비워 둠</span></li></ul>
             </div>
-
-            <p class="scroll-cue mono" aria-hidden="true">SCROLL TO PLAY ↓</p>
+            <div class="how-step">
+              <p class="eyebrow red"><span class="dot"></span>02 AI USAGE</p>
+              <h2>AI 사용 범위를<br />표시합니다</h2><div class="bar"></div>
+              <ul class="how-list"><li><b>프로젝트별 표기</b><span>AI 도구가 작성·보조한 작업에 AI 표시</span></li><li><b>결과 검증</b><span>미리보기 이미지 · 테스트 리포트로 결과 확인 후 수정</span></li></ul>
+            </div>
+            <div class="how-step">
+              <p class="eyebrow red"><span class="dot"></span>03 MEASURE</p>
+              <h2>다시 확인할 수 있는<br />값으로 기록합니다</h2><div class="bar"></div>
+              <ul class="how-list"><li><b>측정값</b><span>용량 · 개수 · 테스트 결과를 측정 날짜와 함께 기록</span></li><li><b>목표와 구분</b><span>달성 전 수치는 목표로 따로 표시</span></li></ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ SC.02 ABOUT : 필름 스트립 ============ -->
-      <section class="scene scene-about" id="about" data-scene="ABOUT" aria-labelledby="about-title">
-        <div class="stage">
-          <h2 id="about-title" class="scene-title mono">ABOUT <span>/ 5 FRAMES</span></h2>
-
-          <div class="strip" data-strip>
-            <article class="frame" aria-labelledby="f1">
-              <p class="edge mono" aria-hidden="true">GY 2026 ▸ F01</p>
-              <h3 id="f1">유기상</h3>
-              <p class="frame-lead">계원예술대학교 디지털미디어디자인과 2학년. 웹 퍼블리싱과 스크롤 인터랙션을 중심으로 작업합니다.</p>
-              <p>기획·디자인·영상 수업에서 다룬 컷 구성과 타이밍을 웹의 스크롤 연출로 옮기는 작업을 해 왔습니다.</p>
-            </article>
-
-            <article class="frame" aria-labelledby="f2">
-              <p class="edge mono" aria-hidden="true">GY 2026 ▸ F02</p>
-              <h3 id="f2">Skills</h3>
-              <dl class="frame-dl">
-                <div><dt>MAIN</dt><dd>HTML · CSS · JavaScript · jQuery · TweenMax</dd></div>
-                <div><dt>USED</dt><dd>React · CSS Modules · Git · GitHub Pages · Unity</dd></div>
-                <div><dt>NEXT</dt><dd>API 연동 · 비동기 처리 · 반응형 · 접근성 · 성능</dd></div>
-                <div><dt>TOOLS</dt><dd>Figma · Photoshop · Illustrator · VS Code</dd></div>
-              </dl>
-            </article>
-
-            <article class="frame" aria-labelledby="f3">
-              <p class="edge mono" aria-hidden="true">GY 2026 ▸ F03</p>
-              <h3 id="f3">How I work</h3>
-              <ol class="frame-rules">
-                <li><b>이해한 코드만 커밋합니다.</b> AI 도구로 초안을 받아도, 그 줄이 없으면 무엇이 깨지는지 말할 수 없으면 넘기지 않습니다.</li>
-                <li><b>완료 기준은 숫자로 정합니다.</b> 전송량, grep 카운트, 화면 폭별 캡처처럼 다시 확인할 수 있는 기준을 씁니다.</li>
-                <li><b>연출보다 정보가 먼저입니다.</b> MOTION을 끄면 같은 내용을 문서 형태로 보여 줍니다.</li>
-              </ol>
-            </article>
-
-            <article class="frame" aria-labelledby="f4">
-              <p class="edge mono" aria-hidden="true">GY 2026 ▸ F04</p>
-              <h3 id="f4">License</h3>
-              <ul class="frame-list">
-                <li><b>웹디자인기능사</b></li>
-                <li>전자출판기능사</li>
-                <li>컴퓨터그래픽스운용기능사</li>
-                <li>GTQ · GTQ-i</li>
-                <li class="dim">정보처리기능사 준비 중</li>
-              </ul>
-            </article>
-
-            <article class="frame" aria-labelledby="f5">
-              <p class="edge mono" aria-hidden="true">GY 2026 ▸ F05</p>
-              <h3 id="f5">Now → 12.02</h3>
-              <ul class="frame-list">
-                <li><b>CHROMA 2.0</b> 반응형 · 접근성 · 16.9MB → 2MB</li>
-                <li><b>weatherUp</b> 날씨 API 연동 · 저장/불러오기</li>
-                <li><b>inside_gisang</b> 인라인 스타일 268개 정리</li>
-              </ul>
-            </article>
+      <section class="svc" aria-labelledby="svc-t">
+        <div class="wrap">
+          <div class="svc-head">
+            <div><p class="eyebrow">MY SKILL</p><h2 id="svc-t">할 수 있는 것과<br />채워 갈 것</h2></div>
+            <p>역량별 상태와 근거 프로젝트는 역량 페이지에 정리했습니다.</p>
           </div>
-
-          <nav class="strip-nav" aria-label="ABOUT 프레임 이동">
-            <button type="button" data-go="0" data-af>PROFILE</button>
-            <button type="button" data-go="1" data-af>SKILLS</button>
-            <button type="button" data-go="2" data-af>HOW I WORK</button>
-            <button type="button" data-go="3" data-af>LICENSE</button>
-            <button type="button" data-go="4" data-af>NOW</button>
-          </nav>
-          <p class="drag-cue mono" aria-hidden="true">SCROLL OR DRAG TO SCRUB</p>
+          <div data-svc></div>
         </div>
       </section>
 
-      <!-- ============ SC.03 WORK : 프로그램 모니터 ============ -->
-      <section class="scene scene-work" id="work" data-scene="WORK" aria-labelledby="work-title">
-        <div class="stage">
-          <h2 id="work-title" class="scene-title mono">WORK <span>/ 3 CUTS</span></h2>
-          <div class="ruler" aria-hidden="true"><span class="ruler-head"></span></div>
-          <div class="monitor" aria-hidden="true">
-            <i></i><i></i><i></i><i></i>
-            <span class="safe action"></span><span class="safe title"></span>
-          </div>
-          <ol class="cut-list mono" aria-hidden="true">
-            <li>CHROMA</li>
-            <li>WEATHERUP</li>
-            <li>INSIDE_GISANG</li>
-          </ol>
-          <p class="cut-count mono" aria-hidden="true"><span data-cut-no>01</span> — 03</p>
-
-          <div class="cuts">
-            <article class="cut" aria-labelledby="c1">
-              <figure class="cut-shot">
-                <div class="scrub" data-dur="16">
-                  <img src="assets/img/chroma-main.webp" width="1440" height="900" loading="lazy" decoding="async" alt="CHROMA 메인 화면. 배경 영상 위에 원과 사각형 로고, 큰 CHROMA 타이포그래피와 TREND·RECOMMEND·BRAND 메뉴가 배치되어 있다." />
-                  <span class="scrub-tc mono" aria-hidden="true">00:00:00:00</span>
-                </div>
-              </figure>
-              <div class="cut-meta">
-                <p class="mono cut-tag">[ CUT 01 ]</p>
-                <h3 id="c1">CHROMA</h3>
-                <p class="cut-type mono">COLOR TREND WEB — 2023.10 — SOLO</p>
-                <p class="cut-desc">연도별 트렌드 컬러, 배색 추천, 브랜드 컬러를 소개하는 4페이지 웹입니다. jQuery와 TweenMax로 스크롤 연출을 만들었고, 지금은 반응형·접근성·용량을 고치는 2.0을 준비하고 있습니다.</p>
-              </div>
-              <div class="cut-links">
-                <a class="open" href="projects/chroma.html" data-af>OPEN CUT <span aria-hidden="true">→</span><span class="sr-only"> CHROMA 제작 과정</span></a>
-                <a href="https://gisangyu.github.io/CHROMA/" rel="noopener" data-af>LIVE ↗<span class="sr-only"> CHROMA 데모</span></a>
-                <a href="https://github.com/GISANGYU/CHROMA" rel="noopener" data-af>CODE ↗<span class="sr-only"> CHROMA 저장소</span></a>
-              </div>
-            </article>
-
-            <article class="cut" aria-labelledby="c2">
-              <figure class="cut-shot">
-                <div class="scrub" data-dur="12">
-                  <img src="assets/img/weatherup-main.webp" width="1440" height="900" loading="lazy" decoding="async" alt="weatherUp 첫 화면. '완벽한 맑은 날' 제목 아래 맑음·구름·눈·황사·흐림·비·번개 7개 날씨 선택 버튼이 있다." />
-                  <span class="scrub-tc mono" aria-hidden="true">00:00:00:00</span>
-                </div>
-              </figure>
-              <div class="cut-meta">
-                <p class="mono cut-tag">[ CUT 02 ]</p>
-                <h3 id="c2">weatherUp</h3>
-                <p class="cut-type mono">REACT WEB APP — 2026.04–06 — SOLO</p>
-                <p class="cut-desc">날씨를 고르면 테마와 추천 콘텐츠가 바뀌는 React 웹앱입니다. 라우팅·CORS·자동재생 문제를 커밋으로 해결했고, 날씨 API 연동을 직접 구현하고 있습니다.</p>
-              </div>
-              <div class="cut-links">
-                <a class="open" href="projects/weatherup.html" data-af>OPEN CUT <span aria-hidden="true">→</span><span class="sr-only"> weatherUp 제작 과정</span></a>
-                <a href="https://gisangyu.github.io/weatherUp/" rel="noopener" data-af>LIVE ↗<span class="sr-only"> weatherUp 데모</span></a>
-                <a href="https://github.com/GISANGYU/weatherUp" rel="noopener" data-af>CODE ↗<span class="sr-only"> weatherUp 저장소</span></a>
-              </div>
-            </article>
-
-            <article class="cut" aria-labelledby="c3">
-              <figure class="cut-shot">
-                <div class="scrub" data-dur="10">
-                  <img src="assets/img/inside-emotion.webp" width="1440" height="900" loading="lazy" decoding="async" alt="inside_gisang 감정 캐릭터 페이지. 안경을 쓴 같은 인물을 다섯 가지 색의 감정 캐릭터로 그린 일러스트." />
-                  <span class="scrub-tc mono" aria-hidden="true">00:00:00:00</span>
-                </div>
-              </figure>
-              <div class="cut-meta">
-                <p class="mono cut-tag">[ CUT 03 ]</p>
-                <h3 id="c3">inside_gisang</h3>
-                <p class="cut-type mono">MULTI-PAGE WEB — 2025.11–12 — SOLO</p>
-                <p class="cut-desc">다섯 감정 캐릭터로 구성한 6페이지 자기소개 웹입니다. 기록을 data.js로 분리했지만 인라인 스타일 254개가 데이터 안에 섞여 있어 정리하고 있습니다.</p>
-              </div>
-              <div class="cut-links">
-                <a class="open" href="projects/inside-gisang.html" data-af>OPEN CUT <span aria-hidden="true">→</span><span class="sr-only"> inside_gisang 정리 과정</span></a>
-                <a href="https://gisangyu.github.io/inside_gisang/" rel="noopener" data-af>LIVE ↗<span class="sr-only"> inside_gisang 데모</span></a>
-                <a href="https://github.com/GISANGYU/inside_gisang" rel="noopener" data-af>CODE ↗<span class="sr-only"> inside_gisang 저장소</span></a>
-              </div>
-            </article>
-          </div>
+      <section class="work" id="work" aria-labelledby="work-t">
+        <div class="wrap">
+          <div class="work-head"><p class="eyebrow">MY WORK</p><h2 id="work-t">코어 프로젝트</h2></div>
+          <div class="work-grid"><div class="work-col l"></div><div class="work-col r"></div></div>
         </div>
+      </section>
+
+      <section class="wall" aria-label="전체 작업">
+        <div class="wall-view" aria-hidden="true"><div class="wall-plane"></div><div class="wall-fade"></div></div>
+        <div class="wall-cta"><a class="btn-red" href="work.html">VIEW ALL PROJECTS <small data-all></small> →</a></div>
       </section>
     </main>
-
-    <!-- ============ SC.04 CONTACT : 카운트다운 리더 → 엔드 카드 ============ -->
-    <footer class="scene scene-contact" id="contact" data-scene="CONTACT" aria-labelledby="contact-title">
-      <div class="stage">
-        <div class="leader" aria-hidden="true">
-          <svg viewBox="0 0 400 400">
-            <circle class="ring" cx="200" cy="200" r="170" />
-            <circle class="ring" cx="200" cy="200" r="136" />
-            <circle class="sweep" cx="200" cy="200" r="68" />
-            <line x1="0" y1="200" x2="400" y2="200" />
-            <line x1="200" y1="0" x2="200" y2="400" />
-          </svg>
-          <span class="leader-no" data-leader>3</span>
+    <div class="vcur" aria-hidden="true">VIEW<br />PROJECT ↗</div>
+    <footer class="ft" id="contact">
+      <canvas aria-hidden="true"></canvas>
+      <div class="ft-in wrap">
+        <div class="ft-main">
+          <div>
+            <p class="eyebrow red"><span class="dot"></span>CONTACT</p>
+            <h2>함께 일할 곳을<br />찾고 있습니다<em>.</em></h2>
+            <p class="ft-sub">웹 인터랙션 개발 신입 포지션 관련 연락은 메일로 부탁드립니다.</p>
+            <dl class="ft-contact">
+              <dt>EMAIL</dt><dd><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></dd>
+              <dt>TEL</dt><dd data-phone><span class="blank"></span></dd>
+              <dt>GITHUB</dt><dd><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></dd>
+            </dl>
+          </div>
+          <a class="ft-cta" href="mailto:yu2647@gmail.com">메일 보내기<br />↗</a>
         </div>
-
-        <div class="endcard">
-          <h2 id="contact-title" class="end-title">CONTACT</h2>
-          <p class="end-lead">함께 일할 곳을 찾고 있습니다.</p>
-          <dl class="credits">
-            <div><dt>DIRECTED &amp; CODED BY</dt><dd>유기상 · Gisang Yu</dd></div>
-            <div><dt>GITHUB</dt><dd><a href="https://github.com/GISANGYU" rel="noopener" data-af>github.com/GISANGYU</a></dd></div>
-            <div><dt>EMAIL</dt><dd><a href="mailto:yu2647@gmail.com" data-af>yu2647@gmail.com</a></dd></div>
-            <div><dt>RESUME</dt><dd><a href="resume.html" data-af>이력서 · 자기소개서 →</a></dd></div>
-            <div><dt>BUILT WITH</dt><dd>HTML · CSS · Vanilla JavaScript</dd></div>
-          </dl>
-          <p class="fin mono" aria-hidden="true">— FIN —</p>
-        </div>
+        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="about.html#resume">이력</a></nav>
+        <div class="ft-bot"><div><span>유기상</span><span>계원예술대학교 디지털미디어디자인과</span></div><span>© 2026 YU GISANG</span></div>
       </div>
     </footer>
-
-    <script src="assets/js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
