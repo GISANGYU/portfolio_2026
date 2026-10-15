@@ -368,7 +368,7 @@
     });
     var prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
     document.querySelector("[data-project]").innerHTML =
-      '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h1>" + esc(p.title) + '</h1><p class="ko">' + esc(p.titleKo || "") + "</p>" +
+      '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" +
       (p.thumb ? '<div class="p-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면"></div>' : '<div class="p-img none">NO IMAGE YET</div>') + "</div>" +
       '<dl class="p-meta"><div><dt>Type</dt><dd>' + val(CATS[p.cat]) + "</dd></div><div><dt>Period</dt><dd>" + val(p.period) + "</dd></div><div><dt>Team</dt><dd>" + val(p.team) +
       "</dd></div><div><dt>Status</dt><dd>" + val(p.status) + "</dd></div><div><dt>Live</dt><dd>" + link(p.url, "열기") + "</dd></div><div><dt>GitHub</dt><dd>" + link(p.repo, "저장소") +
