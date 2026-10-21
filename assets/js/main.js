@@ -305,8 +305,9 @@
     build(); draw();
     var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(build, 200); });
 
-    var ph = document.querySelector("[data-phone]");
-    if (ph) ph.innerHTML = PF.phone ? '<a href="tel:' + esc(PF.phone) + '">' + esc(PF.phone) + "</a>" : val("");
+    document.querySelectorAll("[data-phone]").forEach(function (ph) {
+      ph.innerHTML = PF.phone ? '<a href="tel:' + esc(PF.phone) + '">' + esc(PF.phone) + "</a>" : val("");
+    });
   }
 
   /* ═══════════ INDEX ═══════════ */
@@ -320,11 +321,12 @@
         '</td><td class="hide-m">' + val(p.team) + '</td><td><span class="pill' + (p.status === "배포" || p.status === "운영" ? " ok" : "") + '">' + esc(p.status || "미확인") + "</span>" +
         (p.ai ? ' <span class="pill" title="' + esc(p.ai) + '">AI</span>' : "") + "</td></tr>";
     });
-    for (var k = 0; k < (window.EMPTY_SLOTS || 0); k++) {
-      rows += '<tr class="empty" data-cat="empty"><td class="no">' + pad(P.length + k + 1) + '</td><td class="nm"><b>Empty</b><small>추가 예정</small></td><td class="hide-m"></td><td class="hide-m"></td><td class="hide-m"></td><td class="hide-m"></td><td><span class="pill">비어 있음</span></td></tr>';
-    }
+    var ES = window.EMPTY_SLOTS || [];
+    ES.forEach(function (e, k) {
+      rows += '<tr class="empty" data-cat="empty"><td class="no">' + pad(P.length + k + 1) + '</td><td class="nm"><b>' + esc(e.area) + "</b><small>" + esc(e.plan) + '</small></td><td class="hide-m">' + val(CATS[e.cat]) + '</td><td class="hide-m">' + val(e.when) + '</td><td class="hide-m"></td><td class="hide-m"></td><td><span class="pill">예정</span></td></tr>';
+    });
     tb.innerHTML = rows;
-    document.querySelector("[data-total]").textContent = P.length + " / " + (P.length + (window.EMPTY_SLOTS || 0));
+    document.querySelector("[data-total]").textContent = P.length + " / " + (P.length + ES.length);
     tb.addEventListener("click", function (e) { var tr = e.target.closest("tr.row"); if (tr && !e.target.closest("a")) location.href = tr.getAttribute("data-href"); });
     tb.addEventListener("mousemove", function (e) {
       var tr = e.target.closest("tr.row"), src = tr && tr.getAttribute("data-thumb");

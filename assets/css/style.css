@@ -294,12 +294,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ABOUT */
 .ab { display: grid; grid-template-columns: 260px 1fr; gap: 32px; padding: 44px 0; border-top: 1px solid var(--line); }
 .ab h2 { font-family: var(--ui); font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; }
-.ab ul li { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 120px 1fr; gap: 16px; }
+.ab ul li { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 150px 1fr; gap: 16px; }
 .ab ul li > span:first-child { color: var(--dim); font-family: var(--ui); font-size: 13px; }
 .ab p { color: var(--mut); max-width: 760px; margin-bottom: 10px; }
 .ab p b { color: var(--fg); }
 .ab a { border-bottom: 1px solid var(--red); }
-@media (max-width: 860px) { .ab { grid-template-columns: 1fr; gap: 14px; } .ab ul li { grid-template-columns: 90px 1fr; } }
+@media (max-width: 860px) { .ab { grid-template-columns: 1fr; gap: 14px; } .ab ul li { grid-template-columns: 112px 1fr; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
