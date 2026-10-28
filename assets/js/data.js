@@ -4,7 +4,8 @@
    - 확인한 사실만 적는다. 모르는 칸은 "" 또는 [] 로 비워 둔다 (화면에 빈칸으로 표시)
    - status: 운영 | 배포 | 로컬 실행 | 보관 | 진행 중 | 미확인
    - ai: AI 도구가 작성·보조한 범위 (해당 시)
-   - CORE: 메인 "코어 프로젝트" 8개 순서. 나머지(thumb 있는 것)는 메인 하단 카드 벽에, 전체는 work.html
+   - CORE: "코어 프로젝트" 8개 순서. kv = 코어용 키 비주얼 썸네일, thumb = 화면 캡처
+   - hide: true 인 항목은 목록에 표시하지 않음
    ───────────────────────────────────────────────────────────── */
 
 const GH = "https://github.com/GISANGYU/";
@@ -13,13 +14,15 @@ const PG = "https://gisangyu.github.io/";
 window.PROFILE = {
   name: "유기상",
   nameEn: "YU GISANG",
-  role: "Interactive Content Developer (신입)",
-  school: "계원예술대학교 디지털미디어디자인과 2학년",
+  role: "Interactive Content Developer",
+  slogan: "아이디어를 반응하는 콘텐츠로 만듭니다",
+  school: "계원예술대학교 디지털미디어디자인과",
+  site: "https://gisangyu.github.io/portfolio_2026/",
   email: "yu2647@gmail.com",
   github: "https://github.com/GISANGYU",
   phone: "010-7355-2647",
   licenses: ["웹디자인기능사", "전자출판기능사", "컴퓨터그래픽스운용기능사", "GTQ", "GTQ-i"],
-  licensesNext: ["정보처리기능사 (준비 중)"],
+  docs: { resume: "assets/docs/YU_GISANG_resume.pdf", letter: "assets/docs/YU_GISANG_cover_letter.pdf" },
 };
 
 /* 카테고리 */
@@ -36,6 +39,7 @@ window.PROJECTS = [
   /* ── 01~04 대표작 ───────────────────────────────────────── */
   {
     id: "chroma",
+    kv: "assets/kv/chroma.jpg",
     title: "CHROMA",
     titleKo: "컬러 트렌드 브랜드 웹",
     cat: "web",
@@ -88,6 +92,7 @@ window.PROJECTS = [
   },
   {
     id: "weatherup",
+    kv: "assets/kv/weatherup.jpg",
     title: "WEATHERUP",
     titleKo: "날씨로 고르는 오늘의 추천",
     cat: "web",
@@ -105,12 +110,12 @@ window.PROJECTS = [
     video: "",
     status: "배포",
     thumb: "assets/thumbs/weatherup.jpg",
-    ai: "커밋 대부분을 AI 코딩 도구와 함께 작성 (공동 작성자로 기록). 설계 판단을 직접 설명할 수 있도록 점검 중",
+    ai: "AI 코딩 도구와 함께 작성 (커밋에 공동 작성자로 기록)",
     case: {
       flow: "날씨 선택 → 테마 적용 → OOTD · 음식 · 활동 · 음악 · 일상 탭",
       io: "날씨 선택(클릭) → WeatherContext 상태 변경 → 테마 클래스·추천 데이터 교체",
       structure: "WeatherContext · MusicContext (06.09 props 전달 구조에서 전환)",
-      data: "추천 데이터는 정적 데이터. 음악 커버는 iTunes API (JSONP). 외부 날씨 API는 설계 문서만 있고 배포본에는 미연결",
+      data: "추천 데이터는 정적 데이터, 음악 커버와 30초 미리듣기는 iTunes API (JSONP)",
       challenges: [
         {
           title: "GitHub Pages 하위 경로 라우팅",
@@ -158,11 +163,12 @@ window.PROJECTS = [
   },
   {
     id: "snooze-limen",
+    kv: "assets/kv/snooze-limen.jpg",
     title: "LIMEN",
     titleKo: "SNOOZE 졸업작품 · 프로젝션 맵핑 인터랙션 전시",
     cat: "install",
     featured: true,
-    period: "2026.07 – (전시 2026.11.20 – 22 예정)",
+    period: "2026.07 – 11 · 전시 2026.11.20 – 22",
     team: "7인 팀 (SNOOZE)",
     role: "개발 단독 담당 — 센서 연결, 인원 추적, 인터랙션 로직, 셰이더, 출력 빌드",
     stack: ["Unity", "C#", "Kinect v2", "Spout", "MadMapper"],
@@ -215,6 +221,7 @@ window.PROJECTS = [
   },
   {
     id: "inside-gisang",
+    kv: "assets/kv/inside-gisang.jpg",
     title: "INSIDE GISANG",
     titleKo: "감정 캐릭터 자기소개 웹",
     cat: "web",
@@ -278,6 +285,7 @@ window.PROJECTS = [
   /* ── 05~ 프로젝트 ──────────────────────────────────────── */
   {
     id: "smilepizza",
+    kv: "assets/kv/smilepizza.jpg",
     title: "SMILE PIZZA",
     titleKo: "Unity 미니게임 2종",
     cat: "game",
@@ -286,19 +294,20 @@ window.PROJECTS = [
     role: "기획 · 소스 제작 · 씬 조립 · C# · 빌드",
     stack: ["Unity", "C#"],
     tags: ["UNITY", "C#", "BUILD"],
-    summary: "피자 배달·피자 만들기 미니게임 2종 (실감미디어 기말)",
-    problem: "",
-    interaction: "",
+    summary: "피자 배달·피자 만들기 미니게임 2종. 기획부터 그래픽 소스, 씬 구성, 빌드까지 1인 제작",
+    problem: "짧은 플레이 안에서 점수와 결과가 바로 읽히는 캐주얼 게임 만들기",
+    interaction: "떨어지는 재료는 받고 양말·돌·생선 같은 방해물은 피하며 제한 시간 안에 점수를 모음, 점수에 따라 A+ ~ F 엔딩",
     url: "",
     repo: "",
     video: "",
     status: "로컬 실행",
     thumb: "assets/thumbs/smilepizza.jpg",
     ai: "",
-    case: { metricsNote: "C# 스크립트 14개 · 약 1,180줄, Windows 빌드(SmilePizza.exe), 제작 과정 영상 4편" },
+    case: { flow: "타이틀 → 게임 선택 → 플레이(점수 · 타이머) → 점수별 엔딩", structure: "게임별 씬 · 스포너 · 점수/타이머 UI · 엔딩 씬", why: "Photoshop으로 캐릭터·배경·UI 소스를 직접 만들고 Unity 2D로 조립" },
   },
   {
     id: "limen-site",
+    kv: "assets/kv/limen-site.jpg",
     title: "LIMEN SITE",
     titleKo: "SNOOZE 전시 웹사이트",
     cat: "web",
@@ -345,17 +354,18 @@ window.PROJECTS = [
     repo: "",
     status: "진행 중",
     thumb: "",
-    case: { metricsNote: "테이블 5개 + Storage, RLS 역할 3단계(admin / member / viewer), Realtime 구독, 스키마 파일 9개" },
+    case: { data: "Supabase DB · Storage · Realtime 구독, 역할별 권한(admin / member / viewer)" },
   },
   {
     id: "filtered",
+    kv: "assets/kv/filtered.jpg",
     title: "FILTERED",
     titleKo: "기자 시점",
     cat: "web",
     period: "2026.04",
     stack: ["JavaScript"],
     tags: ["JAVASCRIPT", "", ""],
-    summary: "FILTERED — 기자 시점",
+    summary: "기자의 시점으로 따라가는 인터랙티브 스토리 웹",
     url: PG + "Filtered/",
     repo: GH + "Filtered",
     status: "배포",
@@ -369,7 +379,7 @@ window.PROJECTS = [
     period: "2026.06",
     stack: ["HTML"],
     tags: ["", "", ""],
-    summary: "RISE — 자립의 여정",
+    summary: "자립의 여정을 단계별로 보여 주는 스토리 웹",
     url: PG + "RISE/",
     repo: GH + "RISE",
     status: "배포",
@@ -383,7 +393,7 @@ window.PROJECTS = [
     period: "2026.02",
     stack: ["HTML"],
     tags: ["", "", ""],
-    summary: "Build-Up : Quest & Resume",
+    summary: "퀘스트 형식으로 구성한 이력 소개 웹 (Build-Up : Quest & Resume)",
     url: PG + "WAKE/",
     repo: GH + "WAKE",
     status: "배포",
@@ -411,7 +421,7 @@ window.PROJECTS = [
     period: "2025.10",
     stack: ["HTML", "CSS"],
     tags: ["MULTI PAGE", "", ""],
-    summary: "기슐랭 가이드",
+    summary: "맛집 가이드 형식의 멀티 페이지 웹",
     url: PG,
     repo: GH + "gisangyu.github.io",
     status: "배포",
@@ -425,7 +435,7 @@ window.PROJECTS = [
     period: "2025.08",
     stack: ["HTML"],
     tags: ["HTML", "", ""],
-    summary: "웹퍼블리싱 중간평가",
+    summary: "웹퍼블리싱 수업 중간평가 레이아웃 구현",
     url: PG + "WebPublishingTest/",
     repo: GH + "WebPublishingTest",
     status: "배포",
@@ -448,12 +458,12 @@ window.PROJECTS = [
   {
     id: "gisang-stream",
     title: "GISANG STREAM",
-    titleKo: "총괄프로젝트",
+    titleKo: "부트캠프 총괄 프로젝트",
     cat: "web",
     period: "2023.11",
     stack: ["React (CRA)"],
     tags: ["REACT", "", ""],
-    summary: "총괄프로젝트",
+    summary: "스트리밍 서비스 UI를 React로 구현한 부트캠프 총괄 프로젝트",
     url: PG + "gisang/",
     repo: GH + "gisang",
     status: "배포",
@@ -467,7 +477,7 @@ window.PROJECTS = [
     period: "2023.11",
     stack: ["HTML", "jQuery"],
     tags: ["JQUERY", "", ""],
-    summary: "",
+    summary: "부트캠프 과정에서 만든 첫 포트폴리오 사이트",
     url: PG + "portfolio/",
     repo: GH + "portfolio",
     status: "보관",
@@ -475,6 +485,7 @@ window.PROJECTS = [
   },
   {
     id: "ludibrium",
+    kv: "assets/kv/ludibrium.jpg",
     title: "LUDIBRIUM",
     titleKo: "같은 프롬프트, 다른 구도",
     cat: "lab",
@@ -505,6 +516,7 @@ window.PROJECTS = [
   },
   {
     id: "unfold",
+    hide: true,
     title: "UNFOLD",
     titleKo: "개인 인터랙션 실험",
     cat: "lab",
@@ -520,6 +532,7 @@ window.PROJECTS = [
   },
   {
     id: "silmari",
+    hide: true,
     title: "SILMARI",
     titleKo: "실마리 — 인터랙션웹 수업 프로젝트",
     cat: "web",
@@ -534,6 +547,7 @@ window.PROJECTS = [
   },
   {
     id: "portfolio-2026",
+    hide: true,
     title: "PORTFOLIO 2026",
     titleKo: "이 사이트",
     cat: "web",
@@ -549,61 +563,25 @@ window.PROJECTS = [
   },
 ];
 
-/* 빈 슬롯 — 채울 분야와 목표 시점 (과제06 개선 계획, 2026-10-21)
-   작업을 만들면 PROJECTS에 추가하고 해당 슬롯을 지운다 */
-window.EMPTY_SLOTS = [
-  { area: "기기 연동", plan: "휴대폰 웹 → Unity 컨트롤러 (OSC · UDP · WebSocket)", cat: "realtime", when: "2026.10 – 11" },
-  { area: "Unity 웹 게임", plan: "WebGL 빌드 미니게임, 브라우저에서 바로 플레이", cat: "game", when: "2026.10 – 11" },
-  { area: "3D 웹", plan: "Three.js 장면 직접 작성 (카메라 · Raycast)", cat: "web", when: "2026.11" },
-  { area: "그래픽 · 브랜딩", plan: "LIMEN 전시 포스터 · 아이덴티티 1세트", cat: "visual", when: "2026.10 – 11" },
-  { area: "프로젝션 맵핑", plan: "오브젝트 맵핑 (MadMapper · Resolume)", cat: "install", when: "2026.11" },
-  { area: "실시간 비주얼", plan: "TouchDesigner 웹캠 · 사운드 반응 비주얼", cat: "realtime", when: "2026.11" },
-  { area: "3D 에셋 · 모션", plan: "Blender 모델링 → GLB → 웹 · Unity 적용", cat: "visual", when: "2026.11 – 12" },
-  { area: "모션그래픽", plan: "After Effects 타이틀 · 전시 기록 영상", cat: "visual", when: "2026.11 – 12" },
-  { area: "피지컬 컴퓨팅", plan: "Arduino 센서(거리 · 압력) → 화면 반응", cat: "realtime", when: "2026.12" },
-  { area: "사운드 인터랙션", plan: "마이크 · 센서 입력 → 소리 반응 (Tone.js · Arduino)", cat: "realtime", when: "2026.12" },
-  { area: "데이터 시각화", plan: "공공데이터 인터랙티브 차트", cat: "web", when: "2026.12" },
-  { area: "AR", plan: "Unity AR Foundation 또는 WebXR 소품", cat: "realtime", when: "2027.01" },
-  { area: "Unreal 기초", plan: "레벨 1개 + 인터랙션 1개", cat: "game", when: "2027.01" },
-  { area: "셰이더 스케치", plan: "GLSL · p5.js 제너러티브", cat: "lab", when: "2027.02" },
-];
-
-/* 채용 역량 매트릭스 (STANDARD §2) — 1차 판정 2026-10-15, 코드 재확인 전
-   status: 검증완료 | 일부확인 | 미확인 | 미구현 | 계획 */
-window.SKILLS = [
-  { id: "WEB-01", area: "웹 기본기", name: "시맨틱 HTML · CSS · Flex/Grid · 반응형", p: "P0", status: "일부확인", level: "L2", projects: ["chroma", "inside-gisang"], note: "CHROMA는 반응형 대응 없음" },
-  { id: "WEB-02", area: "JavaScript", name: "ES6+ · DOM · 이벤트 · 비동기", p: "P0", status: "일부확인", level: "L2", projects: ["inside-gisang", "chroma"], note: "" },
-  { id: "WEB-03", area: "TypeScript", name: "타입 · 인터페이스", p: "P0 목표", status: "미구현", level: "", projects: [], note: "" },
-  { id: "FE-01", area: "React", name: "컴포넌트 · Hooks · 상태", p: "P0 목표", status: "일부확인", level: "L1", projects: ["weatherup"], note: "AI 도구와 공동 작성, 이해도 점검 중" },
-  { id: "FE-02", area: "API", name: "REST API · 로딩/오류 처리", p: "P0", status: "일부확인", level: "L1", projects: ["weatherup"], note: "iTunes API만 연결, 날씨 API는 계획" },
-  { id: "DEV-01", area: "Git · 협업", name: "Git · 브랜치 · PR · 문서", p: "P0", status: "일부확인", level: "L1", projects: [], note: "개인 저장소 위주, PR·리뷰 기록 없음" },
-  { id: "DEV-02", area: "배포 · 디버깅", name: "배포 · 브라우저 디버깅", p: "P0", status: "일부확인", level: "L2", projects: ["weatherup", "inside-gisang"], note: "GitHub Pages 배포 다수, Vercel(SNOOZE ARCHIVE)" },
-  { id: "UX-01", area: "품질", name: "반응형 · 접근성 · 브라우저 호환", p: "P0", status: "미확인", level: "", projects: [], note: "" },
-  { id: "UX-02", area: "성능", name: "FPS · Web Vitals · 리소스 최적화", p: "P0", status: "계획", level: "", projects: ["chroma"], note: "CHROMA 16.9MB 측정, 개선 전" },
-  { id: "INT-01", area: "모션", name: "GSAP · Timeline · ScrollTrigger · SVG", p: "P1", status: "일부확인", level: "L2", projects: ["chroma"], note: "TweenMax 사용, GSAP 3 미사용" },
-  { id: "INT-02", area: "3D 웹", name: "Three.js · 카메라 · Raycasting", p: "P1", status: "미확인", level: "", projects: [], note: "LUDIBRIUM은 AI 작성이라 근거로 쓰지 않음" },
-  { id: "INT-03", area: "입력 연동", name: "마우스 · 터치 · 스크롤 · 센서 좌표", p: "P1", status: "일부확인", level: "L2", projects: ["snooze-limen", "inside-gisang"], note: "센서 연동은 Unity(C#) 기준" },
-  { id: "FE-03", area: "Next.js", name: "라우팅 · 렌더링 · 데이터 로딩", p: "P2", status: "미구현", level: "", projects: [], note: "" },
-  { id: "INT-04", area: "R3F / Drei", name: "React 기반 3D", p: "P2", status: "미구현", level: "", projects: [], note: "" },
-  { id: "DES-01", area: "디자인 협업", name: "Figma 핸드오프", p: "P2", status: "미확인", level: "", projects: [], note: "" },
-  { id: "DES-02", area: "3D 에셋", name: "Blender · GLB/glTF", p: "P2", status: "미확인", level: "", projects: [], note: "" },
-  { id: "DATA-01", area: "데이터", name: "DB/Supabase · 저장 · 시각화", p: "P2", status: "일부확인", level: "L2", projects: ["snooze-archive"], note: "" },
-  { id: "GFX-01", area: "셰이더", name: "GLSL · Vertex/Fragment", p: "P3", status: "일부확인", level: "L1", projects: ["snooze-limen"], note: "Unity 셰이더, AI 초안 후 수치 조정 · GLSL 아님" },
-  { id: "GFX-02", area: "고급 렌더링", name: "Post-processing · Particle", p: "P3", status: "미확인", level: "", projects: [], note: "" },
-  { id: "SIM-01", area: "시뮬레이션", name: "Rapier · Matter.js", p: "P3", status: "일부확인", level: "L1", projects: ["inside-gisang"], note: "Matter.js 드래그 구슬" },
-];
-
 /* 메인 "코어 프로젝트" 8개 — 순서대로 표시. 바꾸려면 id만 교체 */
 window.CORE = ["snooze-limen", "smilepizza", "chroma", "inside-gisang", "ludibrium", "weatherup", "limen-site", "filtered"];
 
-/* 메인 "역량" 목록 (흰 섹션) — 상태는 SKILLS 판정과 맞춘다 */
-window.SERVICES = [
-  { ko: "인터랙티브 전시", en: "INSTALLATION", desc: "LIMEN — 관객 손짓에 반응하는 4면 프로젝션 (Kinect v2 · Unity · MadMapper)", status: "작업 있음", ok: true },
-  { ko: "게임", en: "GAME", desc: "SMILE PIZZA 미니게임 2종 (Unity) · LIGHT OF MEMORY 카드게임 (p5.js)", status: "작업 있음", ok: true },
-  { ko: "인터랙티브 웹", en: "INTERACTIVE WEB", desc: "CHROMA · INSIDE GISANG · LIMEN SITE — 스크롤 연출 · 물리 드래그 · 전시 웹", status: "작업 있음", ok: true },
-  { ko: "서비스 웹 · 데이터", en: "SERVICE", desc: "SNOOZE ARCHIVE 팀 작업 공간 (Supabase 실시간) · weatherUp", status: "작업 있음", ok: true },
-  { ko: "실시간 비주얼 · 기기 연동", en: "REAL-TIME", desc: "휴대폰 → Unity 컨트롤러 (OSC · UDP), TouchDesigner 반응형 비주얼", status: "10 – 11월 예정", ok: false },
-  { ko: "프로젝션 맵핑", en: "MAPPING", desc: "오브젝트 맵핑 (MadMapper · Resolume)", status: "11월 예정", ok: false },
-  { ko: "3D · 모션 · 그래픽", en: "3D · MOTION", desc: "Blender 에셋, 전시 기록 모션그래픽, LIMEN 포스터 · 아이덴티티", status: "11 – 12월 예정", ok: false },
-  { ko: "피지컬 · AR · Unreal", en: "NEXT", desc: "Arduino 센서, AR Foundation · WebXR, Unreal 레벨", status: "12 – 1월 예정", ok: false },
+/* 역량 (메인 목록 + skills.html) — 매체별로 할 수 있는 일, 도구, 관련 작업 */
+window.CAPS = [
+  { id: "installation", ko: "인터랙티브 전시", en: "INSTALLATION", desc: "관객의 손짓에 공간 전체가 반응하는 전시를 만듭니다.", tools: ["Unity", "Kinect v2", "MadMapper", "C#", "Spout"], projects: ["snooze-limen"],
+    points: ["Kinect v2 바디 트래킹 → Unity 인터랙션 → 4면 프로젝션 출력까지 한 흐름으로 구성", "사용자 테스트로 관객이 알아채는 반응 방식을 찾아 판정 로직을 조정"] },
+  { id: "game", ko: "게임", en: "GAME", desc: "기획부터 그래픽, 빌드까지 게임을 직접 만듭니다.", tools: ["Unity", "C#", "p5.js", "Photoshop"], projects: ["smilepizza", "light-of-memory"],
+    points: ["기획 · 그래픽 소스 · 씬 구성 · 빌드까지 1인 제작", "같은 게임을 p5.js와 순수 JavaScript로 각각 구현해 비교"] },
+  { id: "web", ko: "인터랙티브 웹", en: "INTERACTIVE WEB", desc: "스크롤 · 드래그 · 물리 반응으로 웹을 연출합니다.", tools: ["JavaScript", "GSAP", "Matter.js", "HTML · CSS"], projects: ["chroma", "inside-gisang", "limen-site", "filtered"],
+    points: ["페이지별 스크롤 전환과 드래그 탐색 연출", "Matter.js 물리 구슬, 기록 데이터를 달력으로 렌더링"] },
+  { id: "service", ko: "웹 서비스 · 데이터", en: "SERVICE · DATA", desc: "상태와 데이터가 있는 웹앱을 만들고 배포합니다.", tools: ["React", "Context API", "Supabase", "Vercel"], projects: ["weatherup", "snooze-archive"],
+    points: ["Context API로 테마 · 추천 데이터 상태 관리, 외부 API 연동", "Supabase 권한 · 실시간 구독으로 팀 작업 공간 구축"] },
+  { id: "realtime", ko: "실시간 비주얼 · 기기 연동", en: "REAL-TIME · DEVICE", desc: "휴대폰 · 센서 입력을 실시간 비주얼로 연결합니다.", tools: ["TouchDesigner", "OSC · UDP", "WebSocket", "Arduino"], projects: ["snooze-limen"],
+    points: ["Unity 화면을 Spout으로 실시간 전송해 맵핑 소프트웨어와 연결", "휴대폰 · 센서 입력을 네트워크로 받아 화면에 반영"] },
+  { id: "mapping", ko: "프로젝션 맵핑", en: "PROJECTION MAPPING", desc: "벽 · 바닥 · 오브젝트에 맞춰 영상을 맵핑합니다.", tools: ["MadMapper", "Resolume", "Spout"], projects: ["snooze-limen"],
+    points: ["4면(벽 · 바닥) 출력 영역 분할과 정렬", "현장 프로젝터 위치에 맞춘 보정"] },
+  { id: "3d", ko: "3D · 3D 웹", en: "3D", desc: "Blender 모델을 웹과 Unity 장면에 올립니다.", tools: ["Blender", "Three.js", "WebGL", "GLB"], projects: ["ludibrium"],
+    points: ["Blender 모델링 → GLB → Three.js 장면 구성", "같은 모델로 연출이 다른 두 버전 비교"] },
+  { id: "design", ko: "그래픽 · 모션", en: "GRAPHIC · MOTION", desc: "UI · 게임 소스 · 영상 그래픽을 직접 만듭니다.", tools: ["Photoshop", "Illustrator", "Figma", "After Effects", "Premiere Pro"], projects: ["smilepizza", "chroma"],
+    points: ["시각디자인 전공 · 디자인 국가자격 3종", "게임 캐릭터 · 배경 · UI 소스 직접 제작"] },
 ];

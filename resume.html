@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>이력서 · 자기소개서 | 유기상</title>
-    <meta name="description" content="유기상 이력서와 자기소개서. 인터랙티브 콘텐츠 개발 신입 — 설치·센서 인터랙션, 게임, 웹" />
+    <meta name="description" content="유기상 이력서와 자기소개서. Interactive Content Developer — 설치·센서 인터랙션, 게임, 웹, 3D" />
     <meta name="theme-color" content="#060607" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="이력서 · 자기소개서 | 유기상" />
-    <meta property="og:description" content="유기상 이력서와 자기소개서. 인터랙티브 콘텐츠 개발 신입 — 설치·센서 인터랙션, 게임, 웹" />
+    <meta property="og:description" content="유기상 이력서와 자기소개서. Interactive Content Developer — 설치·센서 인터랙션, 게임, 웹, 3D" />
     <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/resume.html" />
     <meta property="og:site_name" content="유기상 포트폴리오" />
     <meta property="og:locale" content="ko_KR" />
@@ -28,14 +28,31 @@
       <style>
       .page-resume .ab .cv-l h3 { color: var(--fg); font-size: 18px; margin: 26px 0 8px; }
       .page-resume .ab .cv-l h3:first-child { margin-top: 0; }
+      .page-resume .ab .cv-l h3 em { font-style: normal; font-family: ui-monospace, monospace; font-size: 14px; color: var(--red2); margin-right: 10px; }
+      .page-resume .ab .cv-l .slogan { color: var(--fg); font-size: clamp(24px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 14px; }
+      .page-resume .ab .cv-l .ev { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-family: var(--ui); font-size: 11px; letter-spacing: 0.16em; color: var(--dim); }
+      .page-resume .ab .cv-l .ev a { font-family: var(--kr); font-size: 13px; letter-spacing: 0; color: var(--fg); border: 1px solid #34353b; border-radius: 999px; padding: 3px 12px; }
+      .page-resume .ab .cv-l .ev a:hover { border-color: var(--red); color: var(--red2); }
+      .page-resume .ab .cv-l .dir { margin-top: 28px; padding: 18px 22px; border-left: 3px solid var(--red); background: rgba(229, 35, 43, 0.06); color: var(--fg); font-weight: 700; }
       .page-resume .ab ul li small { display: block; color: var(--dim); font-size: 13px; }
+      .page-resume .ab ul li b a { border: 0; }
+      .page-resume .ab ul li b a:hover { color: var(--red2); }
+      .page-resume .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+      .page-resume .dl-card { border: 1px solid var(--line); border-radius: 8px; padding: 26px; background: var(--card); }
+      .page-resume .dl-card h3 { font-size: 20px; margin-bottom: 6px; }
+      .page-resume .dl-card p { font-size: 14px; margin-bottom: 18px; }
+      .page-resume .dl-card .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+      .page-resume .dl-card .btn-red, .page-resume .dl-card .btn-line { padding: 12px 20px; font-size: 14px; }
+      .page-resume .dl-card .btn-line { border-bottom-color: #3a3b42; }
+      .page-resume .dl-card .btn-line:hover { border-color: var(--red); }
+      .page-resume .dl-card .btn-red { border: 0; }
     </style>
   </head>
   <body class="page-about page-resume">
     <a class="skip" href="#main">본문으로 건너뛰기</a>
     <header class="hd">
       <h1 class="hd-h1"><a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a></h1>
-      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="resume.html" aria-current="page">이력</a></nav>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html">프로젝트</a><a href="resume.html" aria-current="page">이력</a></nav>
       <a class="hd-cta" href="#contact">연락하기 →</a>
     </header>
     <main id="main">
@@ -44,15 +61,31 @@
         <div class="wrap">
           <p class="eyebrow red"><span class="dot"></span>RESUME · 2026.10</p>
           <h2>Resume</h2>
-          <p>인터랙티브 콘텐츠 개발 신입. 설치·센서 인터랙션, 게임, 웹 작업을 해 왔고 실시간·기기 연동으로 범위를 넓히고 있습니다.</p>
+          <p>아이디어를 반응하는 콘텐츠로 만듭니다. 설치·센서 인터랙션, 게임, 웹, 3D를 오가며 기획부터 구현까지 직접 맡습니다.</p>
         </div>
       </section>
       <div class="wrap page">
+        <section class="ab" id="download">
+          <h2>Download</h2>
+          <div class="dl">
+            <div class="dl-card">
+              <h3>이력서</h3>
+              <p>사진과 이력을 한 페이지로 정리한 A4 문서</p>
+              <div class="btns"><a class="btn-red" href="resume/">이력서 보기 →</a><a class="btn-line" href="assets/docs/YU_GISANG_resume.pdf" download>PDF ↓</a></div>
+            </div>
+            <div class="dl-card">
+              <h3>자기소개서</h3>
+              <p>슬로건과 역량 5가지를 한 페이지로 정리한 A4 문서</p>
+              <div class="btns"><a class="btn-red" href="letter/">자기소개서 보기 →</a><a class="btn-line" href="assets/docs/YU_GISANG_cover_letter.pdf" download>PDF ↓</a></div>
+            </div>
+          </div>
+        </section>
+
         <section class="ab">
           <h2>Profile</h2>
           <ul>
             <li><span>Name</span><span>유기상 · YU GISANG</span></li>
-            <li><span>Position</span><span>인터랙티브 콘텐츠 개발 (신입)<small>인터랙티브 전시 / 게임 / 인터랙티브 웹 / 실시간 비주얼</small></span></li>
+            <li><span>Position</span><span>Interactive Content Developer<small>인터랙티브 전시 / 게임 / 인터랙티브 웹 / 실시간 비주얼</small></span></li>
             <li><span>Email</span><span><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></span></li>
             <li><span>GitHub</span><span><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></span></li>
             <li><span>Tel</span><span data-phone><span class="blank"></span></span></li>
@@ -62,8 +95,8 @@
         <section class="ab">
           <h2>Education · Career</h2>
           <ul>
-            <li><span>2025.03 —</span><span>계원예술대학교 디지털미디어디자인과 재학<small>웹퍼블리싱 · 자바스크립트 · 실감형 3D 모션 · 인터랙션웹 · 캡스톤디자인 수강</small></span></li>
-            <li><span>2023.06 – 2024.02</span><span>모바일 UI/UX &amp; Java 기반 웹 프레임워크 개발 과정 수료 (부트캠프)</span></li>
+            <li><span>2025.03 – 2027.02</span><span>계원예술대학교 디지털미디어디자인과 (졸업 예정)<small>웹퍼블리싱 · 자바스크립트 · 실감형 3D 모션 · 인터랙션웹 · 캡스톤디자인</small></span></li>
+            <li><span>2023.06 – 2024.02</span><span>모바일 UI/UX &amp; Java 기반 웹 프레임워크 개발 과정 수료</span></li>
             <li><span>2020.07 – 2022.01</span><span>육군 만기전역</span></li>
             <li><span>2016.03 – 2019.02</span><span>인천디자인고등학교 시각디자인과 졸업</span></li>
           </ul>
@@ -72,51 +105,69 @@
         <section class="ab">
           <h2>Skills</h2>
           <ul>
-            <li><span>설치 · 센서</span><span>Unity(C#) · Kinect v2 · Spout · MadMapper · Unity 셰이더</span></li>
+            <li><span>설치 · 센서</span><span>Unity(C#) · Kinect v2 · Spout · MadMapper · Resolume</span></li>
             <li><span>게임</span><span>Unity(C#) · p5.js</span></li>
-            <li><span>웹</span><span>HTML · CSS · JavaScript · jQuery · TweenMax · React · Matter.js · Supabase</span></li>
-            <li><span>3D · 디자인</span><span>Blender · Figma · Photoshop · Illustrator · Premiere Pro · After Effects</span></li>
-            <li><span>작업 예정</span><span>OSC · UDP · TouchDesigner · Three.js · Arduino · AR · Unreal Engine<small>2026.10 – 2027.02 작업 계획 기준 — 근거 작업이 생기면 위 칸으로 옮김</small></span></li>
+            <li><span>웹</span><span>HTML · CSS · JavaScript · jQuery · GSAP · React · Matter.js · Supabase</span></li>
+            <li><span>실시간 · 기기 연동</span><span>TouchDesigner · OSC · UDP · WebSocket · Arduino</span></li>
+            <li><span>3D · 디자인</span><span>Blender · Three.js · Figma · Photoshop · Illustrator · Premiere Pro · After Effects</span></li>
           </ul>
         </section>
 
         <section class="ab">
           <h2>Projects</h2>
           <ul>
-            <li><span>2026.07 —</span><span><b>LIMEN</b> · 설치 — 4면 프로젝션 맵핑 + Kinect v2 인터랙션 전시<small>캡스톤 7인 팀 SNOOZE, 개발 단독 담당 · Unity → Spout → MadMapper · 졸업전시 2026.11.20 – 22</small></span></li>
-            <li><span>2026.09 —</span><span><b>SNOOZE ARCHIVE</b> · 웹 · 데이터 — 팀 작업 공간 겸 전시 아카이브<small>Vanilla JS · Supabase(테이블 5개 · RLS 3단계 · Realtime) · Vercel</small></span></li>
-            <li><span>2026.09 —</span><span><b>UNFOLD</b> · 3D · 실험 — 개인 인터랙션 실험<small>Blender 모델링 담당 · 코드는 AI 도구 2종 결과 비교</small></span></li>
-            <li><span>2026.06</span><span><b>SMILE PIZZA</b> · 게임 — Unity 미니게임 2종 (1인)<small>C# 스크립트 14개 · 약 1,180줄 · Windows 빌드</small></span></li>
-            <li><span>2026.04</span><span><b>weatherUp</b> · 웹 — 날씨 기반 패션 추천 React 웹 (1인)<small>React · Context API · iTunes API</small></span></li>
-            <li><span>2025.11</span><span><b>INSIDE GISANG</b> · 웹 — 감정 캐릭터 자기소개 6페이지 (1인)<small>HTML · CSS · JavaScript · Matter.js 드래그</small></span></li>
-            <li><span>2025.05</span><span><b>LIGHT OF MEMORY</b> · 게임 — p5.js · JavaScript 카드게임 비교</span></li>
-            <li><span>2023.10</span><span><b>CHROMA</b> · 웹 — 컬러 트렌드 브랜드 웹 4페이지 (1인)<small>jQuery · TweenMax</small></span></li>
+            <li><span>2026.07 —</span><span><b><a href="project.html?id=snooze-limen">LIMEN</a></b> · 설치 — 4면 프로젝션 맵핑 + Kinect v2 인터랙션 전시<small>졸업작품 팀 SNOOZE 개발 총괄 · Unity → Spout → MadMapper · 졸업전시 2026.11.20 – 22</small></span></li>
+            <li><span>2026.09 —</span><span><b><a href="project.html?id=snooze-archive">SNOOZE ARCHIVE</a></b> · 웹 · 데이터 — 팀 작업 공간 겸 전시 아카이브<small>Vanilla JS · Supabase · Realtime · Vercel</small></span></li>
+            <li><span>2026.09</span><span><b><a href="project.html?id=ludibrium">LUDIBRIUM</a></b> · 3D 웹 — 장난감 도시 3D 인터랙티브 웹<small>Blender · Three.js · WebGL</small></span></li>
+            <li><span>2026.06</span><span><b><a href="project.html?id=smilepizza">SMILE PIZZA</a></b> · 게임 — Unity 미니게임 2종 (1인)<small>Unity · C# · Photoshop</small></span></li>
+            <li><span>2026.04</span><span><b><a href="project.html?id=weatherup">weatherUp</a></b> · 웹 — 날씨 기반 패션 추천 React 웹 (1인)<small>React · Context API · iTunes API</small></span></li>
+            <li><span>2025.11</span><span><b><a href="project.html?id=inside-gisang">INSIDE GISANG</a></b> · 웹 — 감정 캐릭터 자기소개 웹 (1인)<small>HTML · CSS · JavaScript · Matter.js</small></span></li>
+            <li><span>2025.05</span><span><b><a href="project.html?id=light-of-memory">LIGHT OF MEMORY</a></b> · 게임 — p5.js · JavaScript 카드게임<small>p5.js · JavaScript</small></span></li>
+            <li><span>2023.10</span><span><b><a href="project.html?id=chroma">CHROMA</a></b> · 웹 — 컬러 트렌드 브랜드 웹 (1인)<small>jQuery · TweenMax</small></span></li>
           </ul>
         </section>
 
         <section class="ab">
           <h2>Activity · License</h2>
           <ul>
-            <li><span>2026</span><span>디지털미디어디자인과 학회장 · 졸업준비위원회 운영<small>예산안 작성 · 팀장 회의 진행</small></span></li>
+            <li><span>2026</span><span>디지털미디어디자인과 학회장 · 졸업준비위원회 총괄<small>학회 운영과 졸업 준비 전반 총괄</small></span></li>
+            <li><span>2026</span><span>졸업작품 팀 SNOOZE 개발 총괄<small>LIMEN 전시 개발 전반 책임, 기획 · 디자인 파트와 구현 범위 조율</small></span></li>
             <li><span>2025.12</span><span>프로그래밍 윈터클래스 교안 제작</span></li>
-            <li><span>2026</span><span>학과 후배 멘토링 (웹 클론코딩 · 레이아웃 레퍼런스 정리)</span></li>
-            <li><span>License</span><span>웹디자인기능사 · 전자출판기능사 · 컴퓨터그래픽스운용기능사 · GTQ · GTQ-i<small>정보처리기능사 준비 중</small></span></li>
+            <li><span>2026</span><span>학과 후배 웹 멘토링</span></li>
+            <li><span>License</span><span>웹디자인기능사 · 전자출판기능사 · 컴퓨터그래픽스운용기능사 · GTQ · GTQ-i</span></li>
           </ul>
         </section>
 
         <section class="ab" id="letter">
           <h2>Cover Letter</h2>
           <div class="cv-l">
-            <h3>매체보다 반응을 먼저 정합니다</h3>
-            <p>고등학교에서 시각디자인을, 부트캠프에서 모바일 UI/UX와 Java 기반 웹 개발을 배웠고, 디지털미디어디자인과에서 Unity 게임과 프로젝션 전시까지 작업 범위를 넓혀 왔습니다. 매체는 달라도 작업마다 먼저 정하는 것은 같습니다. 사용자가 무엇을 입력하고, 화면이 언제 어떤 모양으로 반응하는지입니다. 웹에서는 스크롤과 드래그, 게임에서는 키 입력, 전시에서는 관객의 손짓이 그 입력이었습니다.</p>
-            <h3>센서 입력부터 4면 출력까지 맡은 경험</h3>
-            <p>졸업작품 LIMEN에서 7명 중 개발을 혼자 맡아 Kinect v2 입력, 인원 추적, 인터랙션 로직, 셰이더, Spout → MadMapper 출력까지 연결했습니다. 바닥 위치만 감지하던 첫 구조는 사용자 테스트에서 관객이 반응을 알아채지 못했고, 몸통 기준 손의 상대 속도로 손짓을 판정해 벽에서도 반응하도록 바꿨습니다. 녹화본으로 개발할 때 감지 인원이 0명으로 나온 문제는 로그에서 재생 프로세스 종료를 찾아 실행 순서를 바꿔 해결했습니다.</p>
-            <h3>짧게 만들고 확인하는 방식</h3>
-            <p>새 도구는 작은 결과물 하나를 끝까지 만들어 보는 것으로 익힙니다. SMILE PIZZA는 실감미디어 수업 기말에 Unity 미니게임 2종을 혼자 만들어 Windows 빌드까지 마쳤습니다. 코드 작성에 AI 도구를 함께 쓰는 작업도 결과는 미리보기 이미지, 테스트 리포트처럼 다시 확인할 수 있는 기준으로 검증하고, 설명할 수 없는 코드는 남기지 않습니다. AI가 작성하거나 보조한 범위는 작업마다 표시했습니다.</p>
-            <h3>앞으로의 계획</h3>
-            <p>지금 포트폴리오는 웹 작업 비중이 큽니다. 12월까지 기기 연동(OSC · UDP), TouchDesigner, 프로젝션 맵핑, Blender 에셋을 1~2주 단위 작업으로 추가하고, 2월까지 Arduino, AR, Unreal Engine으로 범위를 넓힐 계획입니다. 입사 후에는 현장 설치와 장비 연동 과정을 먼저 익히고, 기획 의도와 실제 반응 사이의 차이를 줄이는 구현을 맡고 싶습니다.</p>
+            <p class="slogan">아이디어를 반응하는 콘텐츠로 만듭니다.</p>
+            <p>관객의 손짓, 화면의 스크롤, 게임의 키 입력처럼 사람이 무언가를 했을 때 콘텐츠가 어떻게 반응할지를 먼저 정합니다. 시각디자인으로 시작해 웹 개발을 배웠고, Unity 게임과 프로젝션 맵핑 전시까지 작업 범위를 넓혀 왔습니다. 아이디어에 맞는 매체를 골라 직접 구현하는 것이 제 작업 방식입니다.</p>
+
+            <h3><em>01</em>센서 입력부터 공간 출력까지 연결합니다</h3>
+            <p>졸업작품 〈LIMEN〉에서 7인 팀의 개발을 맡아 Kinect v2 바디 트래킹, 인원 추적, 인터랙션 로직, 셰이더, Spout → MadMapper 4면 출력까지 하나의 흐름으로 구성했습니다. 사용자 테스트에서 관객이 바닥 반응을 알아채지 못하는 것을 확인하고, 몸통 기준 손의 상대 속도로 손짓을 판정해 벽에서도 반응하도록 구조를 바꿨습니다.</p>
+            <p class="ev">증명 <a href="project.html?id=snooze-limen">LIMEN ↗</a><a href="skills.html#installation">역량 · 인터랙티브 전시 ↗</a><a href="skills.html#mapping">역량 · 프로젝션 맵핑 ↗</a></p>
+
+            <h3><em>02</em>매체에 맞는 방식으로 구현합니다</h3>
+            <p>〈SMILE PIZZA〉는 Unity 2D 미니게임 2종을 기획, 그래픽 소스, 씬 구성, 빌드까지 혼자 완성한 작업입니다. 웹에서는 〈CHROMA〉의 스크롤 전환, 〈INSIDE GISANG〉의 Matter.js 물리 인터랙션, 〈weatherUp〉의 React 상태 관리처럼 같은 아이디어도 매체에 맞는 방식을 골라 만듭니다.</p>
+            <p class="ev">증명 <a href="project.html?id=smilepizza">SMILE PIZZA ↗</a><a href="project.html?id=chroma">CHROMA ↗</a><a href="project.html?id=inside-gisang">INSIDE GISANG ↗</a><a href="project.html?id=weatherup">weatherUp ↗</a></p>
+
+            <h3><em>03</em>디자인과 개발을 함께 다룹니다</h3>
+            <p>시각디자인을 전공하고 디자인 국가자격 3종을 취득했습니다. 게임의 캐릭터 · 배경 · UI 소스를 Photoshop으로 직접 만들었고, 3D 웹 〈LUDIBRIUM〉에서는 Blender로 모델링한 장난감 도시를 Three.js 장면으로 옮겼습니다. 그래픽을 직접 만들기 때문에 기획 단계의 화면을 구현 단계에서 바로 맞춰 볼 수 있습니다.</p>
+            <p class="ev">증명 <a href="project.html?id=ludibrium">LUDIBRIUM ↗</a><a href="skills.html#design">역량 · 그래픽 · 모션 ↗</a><a href="skills.html#3d">역량 · 3D ↗</a></p>
+
+            <h3><em>04</em>전체 흐름을 보고 이끕니다</h3>
+            <p>2026년 디지털미디어디자인과 학회장으로 학회 운영과 졸업준비위원회를 총괄했습니다. 졸업작품 팀에서는 개발 전반을 책임지며 기획 · 디자인 파트와 구현 범위를 조율했습니다. 프로그래밍 윈터클래스 교안을 만들고 후배 웹 멘토링을 하며, 아는 것을 설명할 수 있는 형태로 정리하는 습관을 들였습니다.</p>
+            <p class="ev">증명 <a href="#main">이력 · 활동 ↑</a><a href="project.html?id=winter-class">WINTER CLASS ↗</a></p>
+
+            <h3><em>05</em>빠르게 만들고 실제 환경에서 확인합니다</h3>
+            <p>작업 하나를 1~2주 단위로 끝까지 만들고, 전시 공간 · 센서 · 휴대폰에서 직접 실행해 확인합니다. 기준은 관객이 반응을 알아채는지입니다. 이 방식으로 실시간 비주얼, 기기 연동, 프로젝션 맵핑까지 다루는 매체를 넓혀 가고 있습니다.</p>
+            <p class="ev">증명 <a href="skills.html">역량 전체 ↗</a><a href="projects.html#all">전체 프로젝트 ↗</a></p>
+
+            <p class="dir">매체를 가리지 않고, 사람의 움직임에 반응하는 콘텐츠를 끝까지 구현하는 개발자가 되겠습니다.</p>
           </div>
         </section>
+
       </div>
     </main>
 
@@ -127,16 +178,17 @@
           <div>
             <p class="eyebrow red"><span class="dot"></span>CONTACT</p>
             <h2>함께 일할 곳을<br />찾고 있습니다<em>.</em></h2>
-            <p class="ft-sub">인터랙티브 콘텐츠 개발 신입 포지션 관련 연락은 메일로 부탁드립니다.</p>
+            <p class="ft-sub">프로젝트 · 채용 관련 연락은 메일로 부탁드립니다.</p>
             <dl class="ft-contact">
               <dt>EMAIL</dt><dd><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></dd>
               <dt>TEL</dt><dd data-phone><span class="blank"></span></dd>
               <dt>GITHUB</dt><dd><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></dd>
+              <dt>FILES</dt><dd class="ft-docs"><a href="assets/docs/YU_GISANG_resume.pdf" download>이력서 PDF ↓</a><a href="assets/docs/YU_GISANG_cover_letter.pdf" download>자기소개서 PDF ↓</a></dd>
             </dl>
           </div>
           <a class="ft-cta" href="mailto:yu2647@gmail.com">메일 보내기<br />↗</a>
         </div>
-        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="./#work">프로젝트</a><a href="work.html">전체 작업</a><a href="resume.html">이력</a></nav>
+        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html">프로젝트</a><a href="resume.html">이력</a></nav>
         <div class="ft-bot"><div><span>유기상</span><span>계원예술대학교 디지털미디어디자인과</span></div><span>© 2026 YU GISANG</span></div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 /* PORTFOLIO 2026 — CORE 테마 스크립트 (라이브러리: Lenis만 선택 사용) */
 (function () {
   "use strict";
-  var P = window.PROJECTS || [];
+  var P = (window.PROJECTS || []).filter(function (p) { return !p.hide; });
   var CATS = window.CATS || {};
   var PF = window.PROFILE || {};
   var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -16,6 +16,18 @@
     return s ? esc(s) : '<span class="blank" aria-label="비어 있음"></span>';
   }
   function byId(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return null; }
+  function year(p) { return String(p.period || "").slice(0, 4); }
+  function chipsOf(p) {
+    return [CATS[p.cat]].concat((p.stack || []).slice(0, 2)).filter(Boolean).map(function (c) { return '<span class="chip">' + esc(c) + "</span>"; }).join("") +
+      '<span class="chip go" aria-hidden="true">↗</span>';
+  }
+  function coreCard(p, i) { // 코어 프로젝트 카드 (키 비주얼)
+    var a = document.createElement("a");
+    a.className = "wcard"; a.href = href(p);
+    a.innerHTML = '<div class="wcard-img' + (p.kv ? " kv" : "") + '"><img src="' + esc(p.kv || p.thumb) + '" alt="' + esc(p.title) + ' 키 비주얼" loading="lazy" decoding="async"></div>' +
+      '<span class="no">' + pad(i + 1) + " · " + esc(year(p)) + "</span><h3>" + esc(p.title) + '</h3><p class="ko">' + esc(p.titleKo || "") + '</p><div class="chips">' + chipsOf(p) + "</div>";
+    return a;
+  }
   function href(p) { return "project.html?id=" + encodeURIComponent(p.id); }
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -137,66 +149,21 @@
     requestAnimationFrame(function () { document.documentElement.classList.add("ready"); });
     spinCubes();
 
-    /* INTRO: 스크롤로 단어 채우기 */
-    var intro = document.querySelector(".intro"), seq = intro ? intro.querySelectorAll(".w, .tag") : [], hex = document.querySelector(".hex");
-    /* HOW: 타일 + 단계 */
-    var how = document.querySelector(".how"), floor = document.querySelector(".floor"), tiles = [];
-    if (floor) {
-      var N = 14;
-      for (var i = 0; i < N * N; i++) {
-        var t = document.createElement("i"); t.className = "tile";
-        var cx = (i % N) - (N - 1) / 2, cy = Math.floor(i / N) - (N - 1) / 2;
-        t._d = Math.sqrt(cx * cx + cy * cy); t._r = Math.random();
-        floor.appendChild(t); tiles.push(t);
-      }
-    }
-    var steps = document.querySelectorAll(".how-step"), dots = document.querySelectorAll(".how-dots i"), curStep = -1;
-    var howCube = document.querySelector(".how-cube .cube");
+    /* 히어로 슬로건: 단어 순서대로 채우기 */
+    document.querySelectorAll(".hero-say .w, .hero-say .tag, .hero-say .hex").forEach(function (el, j) {
+      setTimeout(function () { el.classList.add("on"); }, RM ? 0 : 900 + j * 160);
+    });
 
-    function onScroll() {
-      if (intro) {
-        var p = progress(intro), k = Math.floor(p * 1.25 * seq.length);
-        seq.forEach(function (el, j) { el.classList.toggle("on", j < k); });
-        if (hex) hex.classList.toggle("on", p > 0.22);
-      }
-      if (how) {
-        var q = progress(how), s = Math.min(steps.length - 1, Math.floor(q * steps.length));
-        if (s !== curStep) {
-          curStep = s;
-          steps.forEach(function (el, j) { el.classList.toggle("on", j === s); });
-          dots.forEach(function (el, j) { el.classList.toggle("on", j <= s); });
-        }
-        var R = 1.2 + q * 6;
-        tiles.forEach(function (t) {
-          var on = t._d < R && t._d > R - 1.6;
-          t.classList.toggle("glow", on);
-          t.style.transform = RM ? "" : "translateZ(" + (on ? 10 + t._r * 18 : 0) + "px)";
-        });
-        if (howCube) howCube.setAttribute("data-cube", String(q * 180));
-      }
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    /* SKILL 목록 */
+    /* 역량 목록 */
     var svc = document.querySelector("[data-svc]");
-    if (svc) svc.innerHTML = (window.SERVICES || []).map(function (s, i) {
-      return '<a class="svc-row" href="skills.html"><span class="n">' + pad(i + 1) + "</span><h3>" + esc(s.ko) + "<small>" + esc(s.en) + "</small></h3><p>" + esc(s.desc) +
-        '</p><span class="st' + (s.ok ? " ok" : "") + '">' + esc(s.status) + '</span><span class="arr" aria-hidden="true">→</span></a>';
+    if (svc) svc.innerHTML = (window.CAPS || []).map(function (s, i) {
+      return '<a class="svc-row" href="skills.html#' + esc(s.id) + '"><span class="n">' + pad(i + 1) + "</span><h3>" + esc(s.ko) + "<small>" + esc(s.en) + "</small></h3><p>" + esc(s.desc) +
+        '</p><span class="tools">' + s.tools.slice(0, 4).map(function (t) { return "<i>" + esc(t) + "</i>"; }).join("") + '</span><span class="arr" aria-hidden="true">→</span></a>';
     }).join("");
 
     /* CORE PROJECTS */
-    var core = (window.CORE || []).map(byId).filter(Boolean);
     var colL = document.querySelector(".work-col.l"), colR = document.querySelector(".work-col.r");
-    core.forEach(function (p, i) {
-      var chips = [CATS[p.cat]].concat((p.stack || []).slice(0, 2)).filter(Boolean).map(function (c) { return '<span class="chip">' + esc(c) + "</span>"; }).join("") +
-        (p.ai ? '<span class="chip ai">AI</span>' : "") + '<span class="chip go" aria-hidden="true">↗</span>';
-      var a = document.createElement("a");
-      a.className = "wcard"; a.href = href(p);
-      a.innerHTML = '<div class="wcard-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면" loading="lazy" decoding="async"></div>' +
-        '<span class="no">' + pad(i + 1) + "</span><h3>" + esc(p.title) + '</h3><p class="ko">' + esc(p.titleKo || "") + '</p><div class="chips">' + chips + "</div>";
-      (i % 2 ? colR : colL).appendChild(a);
-    });
+    (window.CORE || []).map(byId).filter(Boolean).forEach(function (p, i) { (i % 2 ? colR : colL).appendChild(coreCard(p, i)); });
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -10% 0px" });
@@ -310,23 +277,21 @@
     });
   }
 
-  /* ═══════════ INDEX ═══════════ */
+  /* ═══════════ PROJECTS: 코어 / 전체 ═══════════ */
   function index() {
+    var grid = document.querySelector("[data-core]");
+    (window.CORE || []).map(byId).filter(Boolean).forEach(function (p, i) { var c = coreCard(p, i); c.classList.add("in"); grid.appendChild(c); });
+    document.querySelector("[data-n-core]").textContent = pad((window.CORE || []).length);
+    document.querySelector("[data-n-all]").textContent = pad(P.length);
+
     var tb = document.querySelector("[data-rows]"), pv = document.querySelector(".preview"), pvi = pv.querySelector("img"), rows = "";
     P.forEach(function (p, i) {
-      rows += '<tr class="row" data-cat="' + esc(p.cat) + '" data-href="' + href(p) + '" data-thumb="' + esc(p.thumb || "") + '">' +
-        '<td class="no">' + pad(i + 1) + '</td><td class="nm"><a href="' + href(p) + '"><b>' + esc(p.title) + "</b></a><small>" + val(p.titleKo) + "</small></td>" +
-        '<td class="hide-m">' + val(CATS[p.cat]) + '</td><td class="hide-m">' + val(p.period) + '</td><td class="hide-m">' +
-        ((p.stack || []).length ? p.stack.map(function (s) { return '<span class="chip">' + esc(s) + "</span>"; }).join(" ") : val("")) +
-        '</td><td class="hide-m">' + val(p.team) + '</td><td><span class="pill' + (p.status === "배포" || p.status === "운영" ? " ok" : "") + '">' + esc(p.status || "미확인") + "</span>" +
-        (p.ai ? ' <span class="pill" title="' + esc(p.ai) + '">AI</span>' : "") + "</td></tr>";
-    });
-    var ES = window.EMPTY_SLOTS || [];
-    ES.forEach(function (e, k) {
-      rows += '<tr class="empty" data-cat="empty"><td class="no">' + pad(P.length + k + 1) + '</td><td class="nm"><b>' + esc(e.area) + "</b><small>" + esc(e.plan) + '</small></td><td class="hide-m">' + val(CATS[e.cat]) + '</td><td class="hide-m">' + val(e.when) + '</td><td class="hide-m"></td><td class="hide-m"></td><td><span class="pill">예정</span></td></tr>';
+      rows += '<tr class="row" data-cat="' + esc(p.cat) + '" data-href="' + href(p) + '" data-thumb="' + esc(p.thumb || p.kv || "") + '">' +
+        '<td class="no">' + pad(i + 1) + '</td><td class="nm"><a href="' + href(p) + '"><b>' + esc(p.title) + "</b></a><small>" + esc(p.titleKo || p.summary || "") + "</small></td>" +
+        '<td class="hide-m">' + esc(CATS[p.cat] || "") + '</td><td class="hide-m">' + esc(year(p)) + '</td><td class="hide-m">' +
+        (p.stack || []).map(function (x) { return '<span class="chip">' + esc(x) + "</span>"; }).join(" ") + '</td><td class="go" aria-hidden="true">↗</td></tr>';
     });
     tb.innerHTML = rows;
-    document.querySelector("[data-total]").textContent = P.length + " / " + (P.length + ES.length);
     tb.addEventListener("click", function (e) { var tr = e.target.closest("tr.row"); if (tr && !e.target.closest("a")) location.href = tr.getAttribute("data-href"); });
     tb.addEventListener("mousemove", function (e) {
       var tr = e.target.closest("tr.row"), src = tr && tr.getAttribute("data-thumb");
@@ -346,53 +311,77 @@
         tb.querySelectorAll("tr").forEach(function (tr) { tr.hidden = !(c === "all" || tr.getAttribute("data-cat") === c); });
       });
     });
+
+    /* 탭: #core / #all */
+    var tabs = document.querySelectorAll(".ptab"), panes = document.querySelectorAll(".ppane");
+    function show(k) {
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", t.getAttribute("data-tab") === k ? "true" : "false"); });
+      panes.forEach(function (x) { x.hidden = x.id !== "pane-" + k; });
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () { var k = t.getAttribute("data-tab"); show(k); history.replaceState(null, "", "#" + k); });
+    });
+    show(location.hash === "#all" ? "all" : "core");
   }
 
   /* ═══════════ PROJECT (STANDARD §5) ═══════════ */
   function project() {
     var p = byId(new URLSearchParams(location.search).get("id")) || P[0], i = P.indexOf(p);
-    var c = p.case || {}, q = c.quality || {}, o = c.outcome || {}, ev = c.evidence || {};
+    var c = p.case || {}, o = c.outcome || {};
     document.title = p.title + " | 유기상 포트폴리오";
-    function link(u, l) { return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + l + " ↗</a>" : val(""); }
-    function sec(no, name, rows) {
+    function has(v) { return Array.isArray(v) ? v.filter(Boolean).length : !!v; }
+    function sec(no, name, rows) { // 값이 있는 칸만 표시, 모두 비면 섹션 생략
+      rows = rows.filter(function (r) { return r.ch || has(r[1]); });
+      if (!rows.length) return "";
       return '<section class="cs"><h2><em>' + no + "</em>" + name + "</h2><dl>" + rows.map(function (r) {
-        return r.ch ? '<div class="ch">' + esc(r.ch) + "</div>" : "<dt>" + r[0] + "</dt><dd>" + r[1] + "</dd>";
+        return r.ch ? '<div class="ch">' + esc(r.ch) + "</div>" : "<dt>" + r[0] + "</dt><dd>" + val(r[1]) + "</dd>";
       }).join("") + "</dl></section>";
     }
     var chRows = [];
-    (c.challenges && c.challenges.length ? c.challenges : [{}]).forEach(function (x, k) {
-      chRows.push({ ch: "Challenge " + (k + 1) + (x.title ? " — " + x.title : "") });
-      chRows.push(["발생 문제", val(x.problem)], ["원인 및 제약", val(x.cause)], ["검토한 대안", val(x.alternatives)], ["해결 방식", val(x.solution)], ["확인한 결과", val(x.result)], ["관련 파일/코드", val(x.files)]);
+    (c.challenges || []).filter(function (x) { return x.solution; }).forEach(function (x) {
+      chRows.push({ ch: x.title });
+      chRows.push(["상황", x.problem], ["원인", x.cause], ["해결", x.solution], ["결과", x.result]);
     });
-    var skills = (c.skills || []).map(function (sid) {
-      var s = (window.SKILLS || []).filter(function (k) { return k.id === sid; })[0];
-      return s ? sid + " " + s.area + " (" + s.status + (s.level ? " · " + s.level : "") + ")" : sid;
-    });
+    var caps = (window.CAPS || []).filter(function (k) { return k.projects.indexOf(p.id) > -1; });
+    var links = [p.url && '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">사이트 열기 ↗</a>', p.repo && '<a href="' + esc(p.repo) + '" target="_blank" rel="noopener">GitHub ↗</a>',
+      p.video && '<a href="' + esc(p.video) + '" target="_blank" rel="noopener">영상 ↗</a>'].filter(Boolean);
+    var meta = [["Type", CATS[p.cat]], ["Year", p.period], ["Team", p.team], ["Role", p.role]].filter(function (m) { return m[1]; });
     var prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
+    var img = p.thumb ? '<div class="p-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면"></div>'
+      : '<div class="p-img none"><span>' + esc(p.title) + "</span><small>" + esc(CATS[p.cat] || "") + "</small></div>";
+    var n = 0;
+    function no() { n++; return pad(n); }
+    var secs = [
+      ["Overview", [["한 줄 설명", p.summary], ["목표", p.problem], ["핵심 인터랙션", p.interaction]]],
+      ["My Role", [["팀 구성", p.team], ["담당", p.role], ["직접 구현", c.built], ["AI 도구 활용", p.ai]]],
+      ["Stack", [["사용 기술", p.stack], ["제작 방식", c.why]]],
+      ["Interaction", [["사용자 흐름", c.flow], ["입력 → 반응", c.io], ["구조", c.structure], ["데이터 · 출력", c.data]]],
+      ["Process", chRows],
+      ["Outcome", [["결과", o.result], ["배운 점", o.learned]]]
+    ].map(function (x) {
+      var rows = x[1].filter(function (r) { return r.ch || has(r[1]); });
+      return rows.length ? sec(no(), x[0], rows) : "";
+    }).join("");
     document.querySelector("[data-project]").innerHTML =
       '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" +
-      (p.thumb ? '<div class="p-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면"></div>' : '<div class="p-img none">NO IMAGE YET</div>') + "</div>" +
-      '<dl class="p-meta"><div><dt>Type</dt><dd>' + val(CATS[p.cat]) + "</dd></div><div><dt>Period</dt><dd>" + val(p.period) + "</dd></div><div><dt>Team</dt><dd>" + val(p.team) +
-      "</dd></div><div><dt>Status</dt><dd>" + val(p.status) + "</dd></div><div><dt>Live</dt><dd>" + link(p.url, "열기") + "</dd></div><div><dt>GitHub</dt><dd>" + link(p.repo, "저장소") +
-      "</dd></div><div><dt>Video</dt><dd>" + link(p.video, "영상") + "</dd></div></dl>" +
-      sec("01", "Overview", [["한 줄 설명", val(p.summary)], ["문제 / 경험 목표", val(p.problem)], ["가장 중요한 인터랙션", val(p.interaction)]]) +
-      sec("02", "My Role", [["팀 규모 및 구성", val(p.team)], ["나의 담당 범위", val(p.role)], ["직접 구현한 기능", val(c.built)], ["타인이 구현·제공한 부분", val(c.others)], ["AI 도구가 작성·보조한 부분", val(p.ai)], ["근거 코드 경로/커밋", val(ev.commits)]]) +
-      sec("03", "Stack", [["사용이 확인된 기술", val(p.stack)], ["기술 선택 이유", val(c.why)]]) +
-      sec("04", "Interaction", [["주요 사용자 플로우", val(c.flow)], ["입력 → 상태 → 반응", val(c.io)], ["구조", val(c.structure)], ["데이터 흐름 / API", val(c.data)]]) +
-      sec("05", "Challenges", chRows) +
-      sec("06", "Quality", [["반응형 / 접근성", val(q.responsive)], ["측정 도구 · 환경", val(q.tools)], ["지표", val(q.metrics || c.metricsNote)], ["테스트 범위", val(q.tested)], ["알려진 한계", val(q.limits)]]) +
-      sec("07", "Outcome", [["실제 결과", val(o.result)], ["배운 점", val(o.learned)], ["개선 예정", val(o.next)]]) +
-      sec("08", "Evidence", [["파일 경로", val(ev.files)], ["이미지 / 영상", val(ev.media)]]) +
-      sec("09", "Skills", [["확인된 역량", val(skills)]]) +
+      (links.length ? '<p class="p-links">' + links.join("") + "</p>" : "") + img + "</div>" +
+      '<dl class="p-meta">' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + esc(m[1]) + "</dd></div>"; }).join("") + "</dl>" + secs +
+      (caps.length ? '<section class="cs"><h2><em>' + no() + "</em>Capabilities</h2><div class=\"p-caps\">" + caps.map(function (k) {
+        return '<a href="skills.html#' + esc(k.id) + '">' + esc(k.ko) + "<small>" + esc(k.en) + "</small></a>";
+      }).join("") + "</div></section>" : "") +
       '<nav class="p-nav" aria-label="다른 프로젝트"><a href="' + href(prev) + '"><small>PREV</small>' + esc(prev.title) + '</a><a href="' + href(next) + '" style="text-align:right"><small>NEXT</small>' + esc(next.title) + "</a></nav>";
   }
 
-  /* ═══════════ SKILLS ═══════════ */
+  /* ═══════════ CAPABILITIES ═══════════ */
   function skills() {
-    document.querySelector("[data-skills]").innerHTML = (window.SKILLS || []).map(function (s) {
-      var pr = s.projects.map(function (id) { var p = byId(id); return p ? '<a href="' + href(p) + '">' + esc(p.title) + "</a>" : ""; }).join(", ");
-      return '<tr><td class="id">' + s.id + "</td><td>" + esc(s.area) + '<br><small style="color:var(--mut)">' + esc(s.name) + "</small></td><td>" + esc(s.p) +
-        '</td><td class="s-' + esc(s.status) + '">' + esc(s.status) + "</td><td>" + val(s.level) + "</td><td>" + (pr || val("")) + '</td><td style="color:var(--mut)">' + val(s.note) + "</td></tr>";
+    document.querySelector("[data-caps]").innerHTML = (window.CAPS || []).map(function (k, n) {
+      var ps = k.projects.map(byId).filter(Boolean);
+      return '<section class="cap" id="' + esc(k.id) + '"><div class="cap-h"><span class="n">' + pad(n + 1) + "</span><h2>" + esc(k.ko) + "<small>" + esc(k.en) + "</small></h2></div>" +
+        '<div class="cap-b"><p class="cap-d">' + esc(k.desc) + '</p><ul class="cap-p">' + k.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
+        '<p class="cap-t">' + k.tools.map(function (t) { return '<span class="chip">' + esc(t) + "</span>"; }).join(" ") + "</p>" +
+        '<div class="cap-w">' + ps.map(function (p) {
+          return '<a href="' + href(p) + '"><img src="' + esc(p.kv || p.thumb || "") + '" alt="" loading="lazy"><span>' + esc(p.title) + "<small>" + esc(p.titleKo || "") + "</small></span></a>";
+        }).join("") + "</div></div></section>";
     }).join("");
   }
 
