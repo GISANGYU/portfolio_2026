@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>유기상 | 인터랙티브 콘텐츠 포트폴리오</title>
+    <title>유기상 | 인터랙티브 콘텐츠 포트폴리오 (한 페이지)</title>
     <meta name="description" content="유기상의 포트폴리오. Unity 설치 인터랙션, 게임, 웹 인터랙션 작업과 근거." />
     <meta name="theme-color" content="#060607" />
     <meta property="og:type" content="website" />
@@ -26,15 +26,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body class="page-home">
+  <body class="page-home page-single">
     <a class="skip" href="#main">본문으로 건너뛰기</a>
     <header class="hd">
       <h1 class="hd-h1"><a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a></h1>
-      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html">프로젝트</a><a href="resume.html">이력</a></nav>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="#intro">소개</a><a href="skills.html">역량</a><a href="#work">프로젝트</a><a href="#about">이력</a></nav>
       <a class="hd-cta" href="#contact">연락하기 →</a>
     </header>
     <main id="main">
-      <section class="hero" aria-label="소개">
+      <section class="hero" id="intro" aria-label="소개">
         <canvas class="circuit" aria-hidden="true"></canvas>
         <div class="hero-meta"><span class="eyebrow">YU GISANG PORTFOLIO</span><span class="eyebrow">INTERACTIVE CONTENT DEVELOPER</span></div>
         <h2 class="hero-title">
@@ -52,13 +52,81 @@
         </div>
       </section>
 
-      <section class="svc" aria-labelledby="svc-t">
+      <section class="one" id="about" aria-labelledby="about-t">
         <div class="wrap">
-          <div class="svc-head">
-            <div><p class="eyebrow">CAPABILITIES</p><h2 id="svc-t">다루는 매체와 도구</h2></div>
-            <p>아이디어에 맞는 매체를 골라<br />기획부터 구현까지 직접 만듭니다.</p>
+          <div class="one-head"><p class="eyebrow red"><span class="dot"></span>ABOUT · RESUME</p><h2 id="about-t">이력</h2><p>이력서와 자기소개서는 A4 문서로 보거나 PDF로 받을 수 있습니다.</p></div>
+
+          <section class="ab" id="download">
+            <h2>Download</h2>
+            <div class="dl">
+              <div class="dl-card">
+                <h3>이력서</h3>
+                <p>사진과 이력을 한 페이지로 정리한 A4 문서</p>
+                <div class="btns"><a class="btn-red" href="resume/">이력서 보기 →</a><a class="btn-line" href="assets/docs/YU_GISANG_resume.pdf" download>PDF ↓</a></div>
+              </div>
+              <div class="dl-card">
+                <h3>자기소개서</h3>
+                <p>슬로건과 역량 5가지를 한 페이지로 정리한 A4 문서</p>
+                <div class="btns"><a class="btn-red" href="letter/">자기소개서 보기 →</a><a class="btn-line" href="assets/docs/YU_GISANG_cover_letter.pdf" download>PDF ↓</a></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="ab">
+            <h2>Profile</h2>
+            <div class="me-row">
+              <ul>
+                <li><span>Name</span><span>유기상 · YU GISANG</span></li>
+                <li><span>Position</span><span>Interactive Content Developer<small>인터랙티브 전시 / 게임 / 인터랙티브 웹 / 실시간 비주얼</small></span></li>
+                <li><span>Email</span><span><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></span></li>
+                <li><span>GitHub</span><span><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></span></li>
+                <li><span>Tel</span><span data-phone><span class="blank"></span></span></li>
+              </ul>
+              <div class="me-ph"><img src="assets/img/profile.jpg" alt="유기상 프로필 사진" loading="lazy" /></div>
+            </div>
+          </section>
+
+          <section class="ab">
+            <h2>Education · Career</h2>
+            <ul>
+              <li><span>2025.03 – 2027.02</span><span>계원예술대학교 디지털미디어디자인과 (졸업 예정)<small>웹퍼블리싱 · 자바스크립트 · 실감형 3D 모션 · 인터랙션웹 · 캡스톤디자인</small></span></li>
+              <li><span>2023.06 – 2024.02</span><span>모바일 UI/UX &amp; Java 기반 웹 프레임워크 개발 과정 수료</span></li>
+              <li><span>2022.01 – 2023.06</span><span>이랜드월드 SPA 패션 브랜드 MIXXO 근무<small>패션 리테일 현장에서 고객 응대 · 매장 운영 · 시즌 디스플레이</small></span></li>
+              <li><span>2020.07 – 2022.01</span><span>육군 병장 만기 전역</span></li>
+              <li><span>2016.03 – 2019.02</span><span>인천디자인고등학교 시각디자인과 졸업</span></li>
+            </ul>
+          </section>
+
+          <div class="fold" data-fold>
+          <div class="fold-in">
+          <section class="ab">
+            <h2>Activity · License</h2>
+            <ul>
+              <li><span>2026</span><span>디지털미디어디자인과 학회장 · 졸업준비위원회 총괄<small>학회 운영과 졸업 준비 전반 총괄</small></span></li>
+              <li><span>2026</span><span>졸업작품 팀 SNOOZE 개발 총괄<small>LIMEN 전시 개발 전반 책임, 기획 · 디자인 파트와 구현 범위 조율</small></span></li>
+              <li><span>2026</span><span>학과 후배 웹 멘토링</span></li>
+              <li><span>License</span><span>웹디자인기능사 · 전자출판기능사 · 컴퓨터그래픽스운용기능사 · GTQ · GTQ-i</span></li>
+            </ul>
+          </section>
+
+          <section class="ab" id="letter">
+            <h2>Cover Letter</h2>
+            <div class="cv-l">
+              <p class="slogan">아이디어를 반응하는 콘텐츠로 만듭니다.</p>
+              <p>관객의 손짓, 화면의 스크롤, 게임의 키 입력처럼 사람이 무언가를 했을 때 콘텐츠가 어떻게 반응할지를 먼저 정합니다. 아이디어에 맞는 매체를 골라 직접 구현하는 것이 제 작업 방식입니다.</p>
+              <ol class="cv-caps">
+                <li><em>01</em><b>센서 입력부터 공간 출력까지 연결합니다</b><span class="ev"><a href="project.html?id=snooze-limen">LIMEN</a><a href="skills.html#installation">인터랙티브 전시</a></span></li>
+                <li><em>02</em><b>매체에 맞는 방식으로 구현합니다</b><span class="ev"><a href="project.html?id=smilepizza">SMILE PIZZA</a><a href="project.html?id=chroma">CHROMA</a><a href="project.html?id=weatherup">weatherUp</a></span></li>
+                <li><em>03</em><b>디자인과 개발을 함께 다룹니다</b><span class="ev"><a href="project.html?id=ludibrium">LUDIBRIUM</a><a href="skills.html#design">그래픽 · 모션</a></span></li>
+                <li><em>04</em><b>전체 흐름을 보고 이끕니다</b><span class="ev"><a href="project.html?id=winter-class">WINTER CLASS</a></span></li>
+                <li><em>05</em><b>빠르게 만들고 실제 환경에서 확인합니다</b><span class="ev"><a href="skills.html">역량 전체</a></span></li>
+              </ol>
+              <p class="more"><a class="btn-line" href="letter/">자기소개서 전문 보기 →</a></p>
+            </div>
+          </section>
           </div>
-          <div data-svc></div>
+          <div class="fold-cta"><button type="button" class="btn-red" aria-expanded="false">SHOW MORE ↓</button></div>
+          </div>
         </div>
       </section>
 
@@ -73,8 +141,20 @@
         <div class="wall-view" aria-hidden="true"><div class="wall-plane"></div><div class="wall-fade"></div></div>
         <div class="wall-cta"><a class="btn-red" href="projects.html#all">VIEW ALL PROJECTS <small data-all></small> →</a></div>
       </section>
+
     </main>
+
     <div class="vcur" aria-hidden="true">VIEW<br />PROJECT ↗</div>
+
+    <!-- 상세 모달: 프로젝트 · 역량 · 이력서 · 자기소개서 -->
+    <div class="md" role="dialog" aria-modal="true" aria-labelledby="md-t" hidden data-lenis-prevent>
+      <div class="md-bg" data-close></div>
+      <div class="md-panel">
+        <div class="md-bar"><button type="button" class="md-back" hidden>← 이전</button><span class="md-t" id="md-t"></span><button type="button" class="md-x" data-close aria-label="닫기">닫기 ✕</button></div>
+        <div class="md-body"></div>
+      </div>
+    </div>
+
     <footer class="ft" id="contact">
       <canvas aria-hidden="true"></canvas>
       <div class="ft-in wrap">
@@ -92,12 +172,13 @@
           </div>
           <a class="ft-cta" href="mailto:yu2647@gmail.com">메일 보내기<br />↗</a>
         </div>
-        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html">프로젝트</a><a href="resume.html">이력</a></nav>
+        <nav class="ft-nav" aria-label="하단 메뉴"><a href="#intro">소개</a><a href="skills.html">역량</a><a href="#work">프로젝트</a><a href="#about">이력</a></nav>
         <div class="ft-bot"><div><span>유기상</span><span>계원예술대학교 디지털미디어디자인과</span></div><span>© 2026 YU GISANG</span></div>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/single.js"></script>
   </body>
 </html>

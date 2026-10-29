@@ -321,6 +321,48 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ab a { border-bottom: 1px solid var(--red); }
 @media (max-width: 860px) { .ab { grid-template-columns: 1fr; gap: 14px; } .ab ul li { grid-template-columns: 112px 1fr; } }
 
+/* ═════════════ 한 페이지 버전 (single.html) — 전체 · 이력 섹션 + 상세 모달 ═════════════ */
+.one { position: relative; background: #0b0c10; padding: 120px 0; }
+.one + .one { border-top: 1px solid var(--line); }
+.one-head { margin-bottom: 48px; }
+.one-head h2 { font-size: clamp(40px, 5.4vw, 80px); letter-spacing: -0.03em; margin-top: 14px; line-height: 1.1; }
+.one-head p:not(.eyebrow) { color: var(--mut); margin-top: 14px; }
+.page-single .wall { padding-bottom: 120px; }
+.page-single .ab ul li small { display: block; color: var(--dim); font-size: 13px; }
+.page-single .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.page-single .dl-card { border: 1px solid var(--line); border-radius: 8px; padding: 26px; background: var(--card); }
+.page-single .dl-card h3 { font-size: 20px; margin-bottom: 6px; }
+.page-single .dl-card p { font-size: 14px; margin-bottom: 18px; }
+.page-single .dl-card .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.page-single .ab .btn-red, .page-single .ab .btn-line { padding: 12px 20px; font-size: 14px; }
+.page-single .ab .btn-red { border: 0; }
+.page-single .ab .btn-line { border-bottom-color: #3a3b42; }
+.page-single .ab .btn-line:hover { border-color: var(--red); }
+.me-row { display: flex; gap: 32px; align-items: stretch; }
+.me-row ul { flex: 1; min-width: 0; }
+.me-ph { position: relative; flex: none; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; } /* 높이 = 정보 목록 높이, 너비는 비율로 */
+.me-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+@media (max-width: 760px) { .me-row { flex-direction: column-reverse; } .me-ph { width: 160px; } }
+/* 이력 접기 — Education 아래는 그라디언트로 덮고 SHOW MORE */
+.fold { position: relative; }
+.fold-in { position: relative; max-height: 260px; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.fold-in::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: 0; z-index: 3; background: linear-gradient(to bottom, rgba(11, 12, 16, 0), rgba(11, 12, 16, 0.9) 30%, #0b0c10 46%); pointer-events: none; transition: opacity 0.4s; }
+.fold.open .fold-in::after { opacity: 0; }
+.fold-cta { position: relative; z-index: 4; display: flex; justify-content: center; margin-top: -150px; transition: margin-top 0.5s; }
+.fold.open .fold-cta { margin-top: 32px; }
+.fold-cta .btn-red { border: 0; cursor: pointer; font-family: var(--ui); letter-spacing: 0.08em; }
+.page-single .cv-l .slogan { color: var(--fg); font-size: clamp(24px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 14px; }
+.cv-caps { margin: 26px 0 30px; }
+.cv-caps li { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.cv-caps em { font-style: normal; font-family: ui-monospace, monospace; font-size: 14px; color: var(--red2); }
+.cv-caps b { font-size: 17px; }
+.cv-caps .ev { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.page-single .cv-caps .ev a { font-size: 13px; border: 1px solid #34353b; border-radius: 999px; padding: 3px 12px; }
+.page-single .cv-caps .ev a:hover { border-color: var(--red); color: var(--red2); }
+@media (max-width: 760px) { .cv-caps li { grid-template-columns: 36px 1fr; } .cv-caps .ev { grid-column: 2; justify-content: flex-start; } }
+.page-single .cv-l .more a { border-bottom-color: #3a3b42; }
+
+
 /* ═════════════ 문서 페이지 (이력서 · 자기소개서) — A4 용지, 인쇄하면 용지만 출력 ═════════════ */
 .page-doc main { padding: 130px 0 120px; background: radial-gradient(ellipse at 50% 0, #15161b, var(--bg) 60%); }
 .doc-bar { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; max-width: calc(210mm + 2 * var(--gut)); margin-bottom: 28px; }
@@ -330,7 +372,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .paper { --ink: #141416; --sub: #5d5e66; --rule: #d9d9de; width: 210mm; min-height: 297mm; margin: 0 auto; padding: 13mm 16mm; background: #fff; color: var(--ink);
   font-family: var(--kr); font-size: 9.6pt; line-height: 1.55; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); }
 .paper a { color: inherit; }
-@media (max-width: 860px) { .paper { width: auto; min-height: 0; margin: 0 var(--gut); padding: 28px 22px; } }
+/* 좁은 화면에서는 A4 비율 그대로 축소 (main.js fitPapers) */
 
 /* 이력서 */
 .rs-top { display: grid; grid-template-columns: 40mm 1fr; gap: 9mm; align-items: center; padding-bottom: 6mm; border-bottom: 2px solid var(--ink); }

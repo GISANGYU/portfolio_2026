@@ -280,9 +280,9 @@
   /* ═══════════ PROJECTS: 코어 / 전체 ═══════════ */
   function index() {
     var grid = document.querySelector("[data-core]");
-    (window.CORE || []).map(byId).filter(Boolean).forEach(function (p, i) { var c = coreCard(p, i); c.classList.add("in"); grid.appendChild(c); });
-    document.querySelector("[data-n-core]").textContent = pad((window.CORE || []).length);
-    document.querySelector("[data-n-all]").textContent = pad(P.length);
+    if (grid) (window.CORE || []).map(byId).filter(Boolean).forEach(function (p, i) { var c = coreCard(p, i); c.classList.add("in"); grid.appendChild(c); });
+    document.querySelectorAll("[data-n-core]").forEach(function (el) { el.textContent = pad((window.CORE || []).length); });
+    document.querySelectorAll("[data-n-all]").forEach(function (el) { el.textContent = pad(P.length); });
 
     var tb = document.querySelector("[data-rows]"), pv = document.querySelector(".preview"), pvi = pv.querySelector("img"), rows = "";
     P.forEach(function (p, i) {
@@ -321,14 +321,13 @@
     tabs.forEach(function (t) {
       t.addEventListener("click", function () { var k = t.getAttribute("data-tab"); show(k); history.replaceState(null, "", "#" + k); });
     });
-    show(location.hash === "#all" ? "all" : "core");
+    if (tabs.length) show(location.hash === "#all" ? "all" : "core");
   }
 
   /* ═══════════ PROJECT (STANDARD §5) ═══════════ */
-  function project() {
-    var p = byId(new URLSearchParams(location.search).get("id")) || P[0], i = P.indexOf(p);
+  function projectHTML(p) { // 상세 페이지 · 모달 공용
+    var i = P.indexOf(p);
     var c = p.case || {}, o = c.outcome || {};
-    document.title = p.title + " | 유기상 포트폴리오";
     function has(v) { return Array.isArray(v) ? v.filter(Boolean).length : !!v; }
     function sec(no, name, rows) { // 값이 있는 칸만 표시, 모두 비면 섹션 생략
       rows = rows.filter(function (r) { return r.ch || has(r[1]); });
@@ -362,8 +361,7 @@
       var rows = x[1].filter(function (r) { return r.ch || has(r[1]); });
       return rows.length ? sec(no(), x[0], rows) : "";
     }).join("");
-    document.querySelector("[data-project]").innerHTML =
-      '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" +
+    return '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" +
       (links.length ? '<p class="p-links">' + links.join("") + "</p>" : "") + img + "</div>" +
       '<dl class="p-meta">' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + esc(m[1]) + "</dd></div>"; }).join("") + "</dl>" + secs +
       (caps.length ? '<section class="cs"><h2><em>' + no() + "</em>Capabilities</h2><div class=\"p-caps\">" + caps.map(function (k) {
@@ -371,10 +369,17 @@
       }).join("") + "</div></section>" : "") +
       '<nav class="p-nav" aria-label="다른 프로젝트"><a href="' + href(prev) + '"><small>PREV</small>' + esc(prev.title) + '</a><a href="' + href(next) + '" style="text-align:right"><small>NEXT</small>' + esc(next.title) + "</a></nav>";
   }
+  function project() {
+    var p = byId(new URLSearchParams(location.search).get("id")) || P[0];
+    document.title = p.title + " | 유기상 포트폴리오";
+    document.querySelector("[data-project]").innerHTML = projectHTML(p);
+  }
 
   /* ═══════════ CAPABILITIES ═══════════ */
   function skills() {
-    document.querySelector("[data-caps]").innerHTML = (window.CAPS || []).map(function (k, n) {
+    document.querySelector("[data-caps]").innerHTML = (window.CAPS || []).map(capHTML).join("");
+  }
+  function capHTML(k, n) { // 역량 페이지 · 모달 공용
       var ps = k.projects.map(byId).filter(Boolean);
       return '<section class="cap" id="' + esc(k.id) + '"><div class="cap-h"><span class="n">' + pad(n + 1) + "</span><h2>" + esc(k.ko) + "<small>" + esc(k.en) + "</small></h2></div>" +
         '<div class="cap-b"><p class="cap-d">' + esc(k.desc) + '</p><ul class="cap-p">' + k.points.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
@@ -382,9 +387,22 @@
         '<div class="cap-w">' + ps.map(function (p) {
           return '<a href="' + href(p) + '"><img src="' + esc(p.kv || p.thumb || "") + '" alt="" loading="lazy"><span>' + esc(p.title) + "<small>" + esc(p.titleKo || "") + "</small></span></a>";
         }).join("") + "</div></div></section>";
-    }).join("");
   }
 
+  /* A4 문서가 화면보다 넓으면 비율 그대로 축소 */
+  function fitPapers(root) {
+    (root || document).querySelectorAll(".paper").forEach(function (pp) {
+      pp.style.zoom = "";
+      var avail = pp.parentElement.clientWidth - 24, w = pp.offsetWidth;
+      if (w > avail) pp.style.zoom = (avail / w).toFixed(3);
+    });
+  }
+  if (body.classList.contains("page-doc")) {
+    fitPapers();
+    window.addEventListener("resize", function () { fitPapers(); });
+  }
+
+  window.UI = { projectHTML: projectHTML, capHTML: capHTML, byId: byId, lenis: lenis, fitPapers: fitPapers }; // 한 페이지 버전(single.js)에서 사용
   if (body.classList.contains("page-home")) home();
   if (body.classList.contains("page-index")) index();
   if (body.classList.contains("page-project")) project();
