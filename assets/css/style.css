@@ -405,18 +405,33 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cl-lb { font-family: var(--ui); font-weight: 700; font-size: 7.5pt; letter-spacing: 0.28em; color: var(--red); margin-top: 5.5mm; }
 .cl h1 { font-size: 19pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; margin: 1.5mm 0 3mm; }
 .cl-lead { color: #33343a; }
-.cl-list li { padding: 2.8mm 0; border-bottom: 1px solid var(--rule); }
-.cl-list li:first-child { padding-top: 1.5mm; }
-.cl-list h2 { font-size: 12pt; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.2mm; }
-.cl-list h2 em { display: inline-block; width: 9mm; font-style: normal; font-family: var(--ui); font-weight: 600; font-size: 9pt; color: var(--red); }
-.cl-list p { padding-left: 9mm; color: #33343a; font-size: 9.3pt; }
-.cl-list .cl-ev { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2mm 2mm; margin-top: 1.6mm; font-family: var(--ui); font-size: 7.6pt; font-weight: 700; letter-spacing: 0.1em; color: var(--sub); }
-.cl-ev a { font-family: var(--kr); font-weight: 600; font-size: 8.4pt; letter-spacing: 0; color: var(--ink); border: 1px solid #c6c7cd; border-radius: 999px; padding: 0.2mm 2.8mm; }
-.cl-ev a::after { content: " ↗"; color: var(--red); }
-.cl-ev a:hover { border-color: var(--red); color: var(--red); }
-.cl-dir { margin-top: 5mm; background: #f6f3f3; border-left: 3px solid var(--red); padding: 4mm 6mm; }
-.cl-dir .cl-lb { margin-top: 0; }
-.cl-dir p:last-child { font-weight: 700; font-size: 11.5pt; letter-spacing: -0.02em; margin-top: 1mm; }
+.cl-top { display: grid; grid-template-columns: 62mm 1fr; gap: 8mm; align-items: end; padding: 6mm 0 5mm; border-bottom: 1px solid var(--rule); }
+.cl-top h1 { font-size: 20pt; line-height: 1.22; margin: 0; }
+.cl-top .cl-lead { font-size: 9.4pt; }
+.cl-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 2mm; counter-reset: f; }
+.cl-flow li { position: relative; border-top: 2px solid var(--ink); padding: 2.2mm 0 0; }
+.cl-flow li + li::before { content: "→"; position: absolute; left: -2.6mm; top: -3.4mm; font-size: 9pt; color: var(--red); background: #fff; }
+.cl-flow b { display: block; font-family: var(--ui); font-size: 10.5pt; letter-spacing: 0.08em; }
+.cl-flow span { display: block; margin-top: 1mm; font-size: 8.8pt; color: #33343a; line-height: 1.5; }
+.cl-tb { width: 100%; border-collapse: collapse; margin-top: 1.5mm; font-size: 9pt; }
+.cl-tb th, .cl-tb td { text-align: left; vertical-align: top; padding: 1.9mm 3mm 1.9mm 0; border-bottom: 1px solid var(--rule); }
+.cl-tb th { width: 27mm; font-weight: 700; color: var(--sub); font-size: 8.6pt; }
+.cl-tb td:nth-child(2) { width: 30mm; }
+.cl-tb td:nth-child(2) a { font-family: var(--pj); font-weight: 600; text-decoration: none; }
+.cl-tb td:nth-child(2) a::after { content: " ↗"; color: var(--red); font-size: 8pt; }
+.cl-tb td:last-child { color: #33343a; }
+.cl-case { margin-top: 1.8mm; background: #f6f3f3; padding: 3.6mm 5mm; }
+.cl-case-q { font-weight: 700; font-size: 11pt; letter-spacing: -0.02em; }
+.cl-case ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin-top: 2.4mm; }
+.cl-case li { font-size: 8.5pt; line-height: 1.5; color: #33343a; border-left: 2px solid var(--red); padding-left: 2.4mm; }
+.cl-case li b { display: block; font-size: 8.4pt; color: var(--red); margin-bottom: 0.6mm; }
+.cl-act { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 1.8mm; }
+.cl-act li { border: 1px solid var(--rule); padding: 2.4mm 3mm; }
+.cl-act b { display: block; font-size: 9pt; line-height: 1.4; }
+.cl-act span { display: block; margin-top: 0.8mm; font-size: 8pt; color: var(--sub); }
+.cl-sign { display: flex; justify-content: space-between; align-items: flex-end; gap: 8mm; margin-top: 6mm; }
+.cl-sign p { font-weight: 700; font-size: 11.5pt; letter-spacing: -0.02em; }
+.cl-sign span { font-size: 13pt; font-weight: 800; white-space: nowrap; border-bottom: 2px solid var(--red); padding-bottom: 0.6mm; }
 .cl-foot { display: flex; justify-content: space-between; margin-top: 5mm; padding-top: 3mm; border-top: 1px solid var(--rule); font-family: var(--ui); font-size: 7.5pt; letter-spacing: 0.16em; color: var(--sub); }
 
 @page { size: A4; margin: 0; }
