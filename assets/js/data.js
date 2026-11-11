@@ -565,7 +565,7 @@ window.PROJECTS = [
 ];
 
 /* 메인 "코어 프로젝트" 8개 — 순서대로 표시. 바꾸려면 id만 교체 */
-window.CORE = ["snooze-limen", "smilepizza", "chroma", "inside-gisang", "ludibrium", "weatherup", "limen-site", "filtered"];
+window.CORE = ["snooze-limen", "smilepizza", "chroma", "weatherup"]; // 매체별 대표작. 나머지는 ALL 탭 · 홈 카드 벽
 
 /* 역량 (메인 목록 + skills.html) — 매체별로 할 수 있는 일, 도구, 관련 작업 */
 window.CAPS = [
