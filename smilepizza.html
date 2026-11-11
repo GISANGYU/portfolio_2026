@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>SMILE PIZZA | 유기상 포트폴리오</title>
+    <meta name="description" content="SMILE PIZZA · 웃음꽃 피자 — Unity 미니게임 2종. 웹에서 바로 플레이하고 게임 로직과 제작 과정을 확인할 수 있습니다." />
+    <meta name="theme-color" content="#060607" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="SMILE PIZZA | 유기상 포트폴리오" />
+    <meta property="og:description" content="Unity 미니게임 2종 · 웹에서 바로 플레이" />
+    <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/smilepizza.html" />
+    <meta property="og:site_name" content="유기상 포트폴리오" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content="https://gisangyu.github.io/portfolio_2026/assets/kv/smilepizza.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 29,9 29,23 16,30 3,23 3,9' fill='%23e5232b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/smilepizza.css" />
+  </head>
+  <body class="page-work">
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <header class="hd">
+      <h1 class="hd-h1"><a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a></h1>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html" aria-current="page">프로젝트</a><a href="resume.html">이력</a></nav>
+      <a class="hd-cta" href="#contact">연락하기 →</a>
+    </header>
+
+    <main id="main" class="wrap page sp">
+      <!-- ── 상단 ── -->
+      <div class="p-top sp-top">
+        <p class="eyebrow red"><span class="dot"></span>02 · GAME</p>
+        <h2>SMILE PIZZA</h2>
+        <p class="ko">웃음꽃 피자 · Unity 미니게임 2종</p>
+        <p class="sp-lead">셰프가 되어 떨어지는 재료를 고르는 2D 게임과, 피자 트럭으로 손님이 원하는 피자를 던지는 3D 게임입니다. 기획, 그래픽 소스, 씬 구성, C# 로직, 빌드까지 혼자 만들었습니다.</p>
+        <p class="p-links"><a href="#play">바로 플레이 ↓</a><a href="#behind">비하인드 · 로직 ↓</a><a href="#delivery">배달 게임 영상 ↓</a></p>
+      </div>
+
+      <!-- ── 플레이 ── -->
+      <section class="sp-playwrap" id="play" aria-labelledby="play-h">
+        <div class="sp-head">
+          <h3 id="play-h"><em>PLAY</em>피자 만들기</h3>
+          <p>Unity 원본 C#의 규칙과 수치를 그대로 옮긴 웹 버전입니다. 오른쪽 패널에서 지금 돌아가는 로직을 함께 볼 수 있습니다.</p>
+        </div>
+        <div class="sp-play" data-pizza>
+          <div class="sp-cab">
+            <div class="sp-stage" tabindex="0" aria-label="피자 만들기 게임 화면. 방향키로 이동, 스페이스로 발사">
+              <canvas aria-hidden="true"></canvas>
+              <div class="sp-ov sp-start">
+                <img class="sp-logo" src="assets/work/smilepizza/img/logo.webp" alt="웃음꽃 피자 로고" />
+                <button type="button" data-act="start" class="sp-imgbtn s1"><img src="assets/work/smilepizza/img/start_button.webp" alt="게임 시작" /></button>
+                <button type="button" data-act="guide" class="sp-imgbtn s2"><img src="assets/work/smilepizza/img/explanation_button.webp" alt="게임 설명" /></button>
+              </div>
+              <div class="sp-ov sp-guide" hidden>
+                <img src="assets/work/smilepizza/img/guide.webp" alt="게임 설명: 방향키로 이동, 스페이스로 케첩 발사, 좋은 재료는 도마로 받고 나쁜 재료는 쏴서 막기, 60초 안에 A+ 도전" />
+                <button type="button" data-act="close" class="sp-x" aria-label="설명 닫기">×</button>
+              </div>
+              <div class="sp-ov sp-end" hidden>
+                <img src="" alt="" />
+                <span data-e="score" style="top: 71.97%"></span>
+                <span data-e="good" style="top: 77.18%"></span>
+                <span data-e="bad" style="top: 82.54%"></span>
+                <button type="button" data-act="restart" class="sp-retry">다시하기</button>
+              </div>
+              <button type="button" class="sp-pause" data-act="resume" hidden><b>PAUSED</b>화면 밖으로 나가 멈췄습니다. 누르면 이어서 합니다.</button>
+            </div>
+            <div class="sp-touch" aria-label="터치 조작">
+              <button type="button" data-touch="l" aria-label="왼쪽">◀</button>
+              <button type="button" data-touch="fire" class="fire">FIRE</button>
+              <button type="button" data-touch="r" aria-label="오른쪽">▶</button>
+            </div>
+            <p class="sp-keys"><kbd>←</kbd><kbd>→</kbd> 이동 <kbd>Space</kbd> 발사 <kbd>R</kbd> 처음으로</p>
+          </div>
+
+          <aside class="sp-logic" aria-label="실시간 로직">
+            <div class="sp-lh">
+              <p class="eyebrow"><span class="dot"></span>LIVE LOGIC</p>
+              <div class="sp-tg">
+                <button type="button" data-act="boxes" aria-pressed="false">충돌 박스 보기</button>
+                <button type="button" data-act="sound" aria-pressed="true">소리 켬</button>
+              </div>
+            </div>
+            <dl class="sp-stat">
+              <div><dt>남은 시간</dt><dd data-l="time">60s</dd></div>
+              <div><dt>점수</dt><dd data-l="score">0</dd></div>
+              <div><dt>예상 등급</dt><dd data-l="grade">F</dd></div>
+              <div><dt>토핑 성공</dt><dd data-l="good">0</dd></div>
+              <div><dt>막은 재료</dt><dd data-l="bad">0</dd></div>
+            </dl>
+            <div class="sp-bar" aria-hidden="true"><i></i><span style="left: 33.33%"></span><span style="left: 66.66%"></span></div>
+            <table class="sp-phase">
+              <caption>Spawner.cs · 경과 시간별 난이도</caption>
+              <thead><tr><th>구간</th><th>간격</th><th>낙하</th><th>좋은 재료</th></tr></thead>
+              <tbody>
+                <tr data-phase="0"><td>0–20s 워밍업</td><td>1.2s</td><td>2.0</td><td>70%</td></tr>
+                <tr data-phase="1"><td>20–40s 가속</td><td>0.9s</td><td>3.0</td><td>50%</td></tr>
+                <tr data-phase="2"><td>40–60s 폭주</td><td>0.6s</td><td>4.0</td><td>40%</td></tr>
+              </tbody>
+            </table>
+            <p class="sp-logcap">점수 이벤트 · 어느 스크립트가 처리했는지</p>
+            <ol class="sp-log" data-l="log"></ol>
+            <p class="sp-note">웹 버전에서 더한 것: 터치 버튼, 화면을 벗어나면 일시정지, 충돌 박스 보기. 게임 규칙은 원본과 같습니다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <dl class="p-meta">
+        <div><dt>Type</dt><dd>게임</dd></div>
+        <div><dt>Year</dt><dd>2026.04 – 06</dd></div>
+        <div><dt>Team</dt><dd>1인</dd></div>
+        <div><dt>Role</dt><dd>기획 · 그래픽 소스 · 씬 구성 · C# · 빌드</dd></div>
+        <div><dt>Tools</dt><dd>Unity 2D · 3D · C# · Photoshop</dd></div>
+      </dl>
+
+      <!-- ── 01 OVERVIEW ── -->
+      <section class="cs">
+        <h2><em>01</em>Overview</h2>
+        <div class="sp-body">
+          <div class="sp-two">
+            <article class="sp-game">
+              <p class="sp-tag">GAME 1 · 2D · 기말</p>
+              <h4>피자 만들기</h4>
+              <p>위에서 떨어지는 재료 중 좋은 재료는 도마로 받고, 나쁜 재료는 케첩을 쏴서 막습니다. 60초가 끝나면 누적 점수로 피자 등급(A+ ~ F)이 정해집니다.</p>
+              <ul><li>세로 화면 2D 슈팅</li><li>라이프 없음, 60초 단판</li><li>엔딩 6종</li></ul>
+            </article>
+            <article class="sp-game">
+              <p class="sp-tag">GAME 2 · 3D · 중간</p>
+              <h4>피자 배달</h4>
+              <p>피자 트럭을 몰고 도시를 돌며 손님 머리 위에 뜬 피자와 같은 종류를 골라 던집니다. Tab으로 피자 3종을 바꾸고, 종류가 맞아야 점수가 오릅니다.</p>
+              <ul><li>3D 주행 + 발사</li><li>제한시간 40초</li><li>건물에 맞으면 튕겨 나감</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 02 PROBLEM ── -->
+      <section class="cs">
+        <h2><em>02</em>Problem</h2>
+        <div class="sp-body">
+          <p class="sp-big">“다 쏘면 이기는 게임”이 되지 않게 하기</p>
+          <p>갤러그 같은 세로 슈팅은 보이는 대로 쏘는 쪽이 유리합니다. 피자 만들기에서는 매 순간 <b>쏠지 말지</b>를 판단하게 만들고 싶었습니다. 그래서 점수를 한 가지 숫자로만 두고, 행동마다 득실이 다르게 붙도록 정했습니다.</p>
+          <table class="sp-score">
+            <thead><tr><th>상황</th><th>의미</th><th>점수</th><th>처리 위치</th></tr></thead>
+            <tbody>
+              <tr><td>좋은 재료가 도마에 닿음</td><td>토핑 성공</td><td class="up">+10</td><td><code>Ingredient.cs</code></td></tr>
+              <tr><td>나쁜 재료를 쏴서 막음</td><td>방어 성공</td><td class="up">+5</td><td><code>Bullet.cs</code></td></tr>
+              <tr><td>나쁜 재료가 도마에 닿음</td><td>오염</td><td class="down">−15</td><td><code>Ingredient.cs</code></td></tr>
+              <tr><td>좋은 재료를 쏨</td><td>재료 낭비</td><td class="down">−10</td><td><code>Bullet.cs</code></td></tr>
+            </tbody>
+          </table>
+          <p class="sp-cap">좋은 재료 오발에 −10을 둬서 전부 쏘는 전략이 손해가 되게 했습니다. 재료는 색(밝음/탁함)과 실루엣(둥긂/각짐) 두 가지로 구분해 색만으로 판단하지 않아도 되게 했습니다.</p>
+        </div>
+      </section>
+
+      <!-- ── 03 MY ROLE ── -->
+      <section class="cs">
+        <h2><em>03</em>My Role</h2>
+        <div class="sp-body">
+          <ol class="sp-role">
+            <li><b>기획</b><span>규칙 · 점수 구조 · 난이도 곡선 · 화면 4종을 기획서로 정리</span></li>
+            <li><b>그래픽</b><span>이미지 생성으로 시안을 만든 뒤 Photoshop에서 배경 제거 · 크기 통일 · UI 패널 정리</span></li>
+            <li><b>Unity 씬</b><span>2D 스프라이트 · Canvas UI · 프리팹 · 효과음 연결, 3D 도시 맵 배치</span></li>
+            <li><b>C# 로직</b><span>이동 · 발사 · 생성 · 충돌 판정 · 점수 · 타이머 · 화면 전환 설계와 구현</span></li>
+            <li><b>빌드</b><span>Windows 빌드, 제작 과정 영상 편집</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── 04 BEHIND ── -->
+      <section class="sp-behind" id="behind" aria-labelledby="behind-h">
+        <div class="sp-bhead">
+          <p class="eyebrow red"><span class="dot"></span>04 · BEHIND</p>
+          <h3 id="behind-h">로직을 만든 과정</h3>
+          <p>기획서에서 시작해 스크립트를 나누고, 테스트하며 숫자를 고친 기록입니다.</p>
+        </div>
+
+        <!-- 타임라인 -->
+        <ol class="sp-time">
+          <li><time>2026.04 – 05</time><b>피자 배달 (중간)</b><span>3D 주행 · 발사 · 종류 매칭 구현</span></li>
+          <li><time>2026.06.04</time><b>피자 만들기 기획서</b><span>규칙 · 점수 · 난이도 · 스크립트 설계</span></li>
+          <li><time>2026.06</time><b>소스 제작 · 씬 조립</b><span>재료 · 캐릭터 · 엔딩 6종 · UI 패널</span></li>
+          <li><time>2026.06.11</time><b>빌드 · 제작 영상</b><span>Windows 빌드와 제작 과정 영상</span></li>
+          <li><time>2026.11</time><b>웹 버전</b><span>같은 규칙을 JavaScript로 옮겨 사이트에서 바로 플레이</span></li>
+        </ol>
+
+        <!-- 스크립트 구조 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-01</span><h4>스크립트를 역할별로 나눔</h4></div>
+          <p class="sp-bd">기획 단계에서 7개로 나눈 스크립트를 구현하면서 6개로 줄였습니다. 도마 판정용 <code>CuttingBoard</code>는 따로 두지 않고, 도마에 <code>Board</code> 태그만 달아 재료 쪽에서 판정했습니다.</p>
+          <div class="sp-arch" role="img" aria-label="스크립트 구조: Spawner가 Ingredient를 만들고, Chef가 Bullet을 만든다. Ingredient와 Bullet이 GameManager.AddScore를 호출하고, GameManager가 UIManager를 갱신한다.">
+            <div class="col">
+              <div class="node"><b>Spawner</b><small>시간별 재료 생성</small></div>
+              <div class="arrow">↓ Instantiate · isGood · fallSpeed 주입</div>
+              <div class="node hot"><b>Ingredient</b><small>낙하 · 도마 안착 판정</small></div>
+            </div>
+            <div class="col">
+              <div class="node"><b>Chef</b><small>좌우 이동 · Space 발사</small></div>
+              <div class="arrow">↓ Instantiate (쿨다운 0.25s)</div>
+              <div class="node hot"><b>Bullet</b><small>직진 · 재료 격추 판정</small></div>
+            </div>
+            <div class="join">↘ <code>AddScore(±n)</code> ↙</div>
+            <div class="node core"><b>GameManager</b><small>싱글톤 · 60초 타이머 · 등급 계산</small></div>
+            <div class="arrow c">↓ UpdateScore · UpdateTime · ShowEnding</div>
+            <div class="node"><b>UIManager</b><small>시작 · HUD · 엔딩 · 설명 팝업</small></div>
+          </div>
+        </div>
+
+        <!-- 로직 노트 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-02</span><h4>구현하면서 내린 판단</h4></div>
+          <div class="sp-notes">
+            <article>
+              <h5>점수는 한 곳에서만 계산</h5>
+              <p>총알과 재료가 부딪히면 두 오브젝트 모두 <code>OnTriggerEnter2D</code>가 불립니다. 양쪽에서 점수를 더하면 한 번 맞혔는데 점수가 두 번 들어갑니다. 격추 점수는 <code>Bullet</code>, 안착 점수는 <code>Ingredient</code>만 처리하도록 나눴습니다.</p>
+<pre><code><i>// Bullet.cs — 격추 점수는 여기서만</i>
+if (ing.isGood) AddScore(-10);   <i>// 좋은 재료 오발</i>
+else { AddScore(+5); badShot++; } <i>// 나쁜 재료 격추</i>
+Destroy(other.gameObject);
+Destroy(gameObject);</code></pre>
+            </article>
+            <article>
+              <h5>사라지는 오브젝트의 소리</h5>
+              <p>맞은 순간 총알과 재료를 바로 파괴하기 때문에, 그 오브젝트에 붙은 AudioSource로 재생하면 소리가 끊깁니다. <code>AudioSource.PlayClipAtPoint</code>로 카메라 위치에 따로 재생했습니다. 2D라 거리 감쇠가 없어서 볼륨만 따로 맞췄습니다(오발 0.11, 격추 1.0).</p>
+            </article>
+            <article>
+              <h5>발사 모션 0.1초</h5>
+              <p>Space를 누르면 셰프 스프라이트를 발사 자세로 바꾸고 0.1초 뒤 되돌립니다. 연속으로 쏠 때 이전 복귀 예약이 먼저 실행되지 않도록 <code>CancelInvoke</code>로 지운 뒤 다시 예약합니다.</p>
+            </article>
+            <article>
+              <h5>난이도는 시간 구간으로</h5>
+              <p><code>GameManager.Elapsed</code>(60 − 남은 시간)를 기준으로 20초마다 생성 간격, 낙하 속도, 좋은 재료 비율을 바꿉니다. 후반으로 갈수록 나쁜 재료가 많아져서 쏴야 할 일이 늘어납니다.</p>
+              <div class="sp-curve" aria-hidden="true">
+                <div style="--h: 30%"><b>70%</b><span>0–20s</span></div>
+                <div style="--h: 50%"><b>50%</b><span>20–40s</span></div>
+                <div style="--h: 60%"><b>40%</b><span>40–60s</span></div>
+              </div>
+              <p class="sp-cap">막대 = 나쁜 재료 비율 · 위 숫자 = 좋은 재료 비율</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- 기획 vs 구현 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-03</span><h4>기획서와 달라진 숫자</h4></div>
+          <p class="sp-bd">기획서에 적은 값은 초안이었고, 직접 플레이하면서 고쳤습니다.</p>
+          <table class="sp-diff">
+            <thead><tr><th>항목</th><th>기획서</th><th>구현</th><th>메모</th></tr></thead>
+            <tbody>
+              <tr><td>등급 기준</td><td>A+ 400 · A 300 · B 200 · C 120 · D 50</td><td>A+ 480 · A 380 · B 280 · C 180 · D 80</td><td>기획서에 “플레이테스트 후 평균 = C, 잘하면 A가 되도록 조정”이라고 적어 둔 대로 기준을 올림</td></tr>
+              <tr><td>발사 쿨다운</td><td>0.2–0.3초</td><td>0.25초</td><td>범위 안에서 값 하나로 고정. 좋은 재료 오발 감점과 함께 신중하게 쏘도록 유도</td></tr>
+              <tr><td>총알 속도</td><td>—</td><td>스크립트 기본 12 → 프리팹 8</td><td>인스펙터에서 프리팹 값으로 조정</td></tr>
+              <tr><td>도마 판정</td><td><code>CuttingBoard</code> 스크립트</td><td><code>Board</code> 태그</td><td>판정할 일이 하나뿐이라 스크립트를 늘리지 않음</td></tr>
+              <tr><td>재료 종류</td><td>좋은 7 · 나쁜 7</td><td>좋은 6 · 나쁜 4</td><td>파인애플과 선택 항목으로 둔 나쁜 재료(벌레 · 압정 · 비누 · 신발)는 넣지 않음</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 배달 게임 로직 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-04</span><h4>피자 배달 · 3D 로직</h4></div>
+          <div class="sp-notes">
+            <article>
+              <h5>길 밖으로 못 나가게</h5>
+              <p>이동 전 위치를 저장하고, 이동 후 <code>Physics.OverlapSphere</code>로 <code>Road</code> 트리거 안인지 확인합니다. 밖이면 저장한 위치로 되돌립니다. 도로 영역 트리거 하나로 이동 범위를 정합니다.</p>
+            </article>
+            <article>
+              <h5>건물에 맞으면 반사</h5>
+              <p>피자 박스가 <code>Building</code>에 닿으면 가장 가까운 점에서 법선을 구해 <code>Vector3.Reflect</code>로 방향을 바꿉니다. 벽 안에 끼지 않도록 법선 방향으로 0.5만큼 밀어냅니다.</p>
+            </article>
+            <article>
+              <h5>날아가는 방향과 회전 분리</h5>
+              <p>박스를 회전시키면 직진 방향도 같이 돌아갑니다. 이동은 발사 순간의 방향을 월드 기준으로 저장해 쓰고, 회전은 자식 오브젝트(<code>PizzaSpinner</code>)에만 줬습니다.</p>
+            </article>
+            <article>
+              <h5>종류가 맞을 때만 배달</h5>
+              <p>손님(<code>Target</code>)은 원하는 피자 번호를 가지고 있고, 맞은 박스의 <code>CurrentType</code>과 같을 때만 점수와 이펙트를 냅니다. 틀리면 박스가 그대로 지나갑니다.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- 제작 파이프라인 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-05</span><h4>소스에서 씬까지</h4></div>
+          <div class="sp-pipe">
+            <figure><video src="assets/work/smilepizza/vid/imagegen.mp4" poster="assets/work/smilepizza/vid/imagegen.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>01 시안</b>이미지 생성으로 캐릭터 · 엔딩 패널 시안 제작</figcaption></figure>
+            <figure><video src="assets/work/smilepizza/vid/photoshop.mp4" poster="assets/work/smilepizza/vid/photoshop.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>02 소스 정리</b>Photoshop에서 배경 제거 · 재료 크기 통일</figcaption></figure>
+            <figure><video src="assets/work/smilepizza/vid/unity.mp4" poster="assets/work/smilepizza/vid/unity.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>03 씬 조립</b>Unity에서 프리팹 · Canvas UI · 효과음 연결</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 05 RESULT ── -->
+      <section class="cs">
+        <h2><em>05</em>Result</h2>
+        <div class="sp-body">
+          <h4 class="sp-sub">엔딩 6종</h4>
+          <p>60초가 끝나면 점수에 맞는 피자 이미지가 엔딩 패널에 들어가고, 빈칸에 점수 · 토핑 성공 · 막은 재료 수가 채워집니다.</p>
+          <div class="sp-ends">
+            <figure><img src="assets/work/smilepizza/img/ending_Aplus.webp" alt="A+ 엔딩" loading="lazy" /><figcaption>A+ <small>480+</small></figcaption></figure>
+            <figure><img src="assets/work/smilepizza/img/ending_A.webp" alt="A 엔딩" loading="lazy" /><figcaption>A <small>380+</small></figcaption></figure>
+            <figure><img src="assets/work/smilepizza/img/ending_B.webp" alt="B 엔딩" loading="lazy" /><figcaption>B <small>280+</small></figcaption></figure>
+            <figure><img src="assets/work/smilepizza/img/ending_C.webp" alt="C 엔딩" loading="lazy" /><figcaption>C <small>180+</small></figcaption></figure>
+            <figure><img src="assets/work/smilepizza/img/ending_D.webp" alt="D 엔딩" loading="lazy" /><figcaption>D <small>80+</small></figcaption></figure>
+            <figure><img src="assets/work/smilepizza/img/ending_F.webp" alt="F 엔딩" loading="lazy" /><figcaption>F <small>~79</small></figcaption></figure>
+          </div>
+          <h4 class="sp-sub" id="delivery">피자 배달 플레이</h4>
+          <div class="sp-vid"><video src="assets/work/smilepizza/vid/delivery.mp4" poster="assets/work/smilepizza/vid/delivery.jpg" controls playsinline preload="none"></video></div>
+        </div>
+      </section>
+
+      <!-- ── 06 REVIEW ── -->
+      <section class="cs">
+        <h2><em>06</em>Review</h2>
+        <div class="sp-body">
+          <dl>
+            <dt>배운 점</dt>
+            <dd>충돌 한 번에 양쪽 스크립트가 모두 반응하기 때문에, 결과를 처리할 쪽을 먼저 정하고 스크립트를 나눴습니다.</dd>
+            <dt>다시 만든다면</dt>
+            <dd>기획서에 있던 일시정지(P · Esc)를 넣고, 도마 위 피자에 받은 재료가 실제로 쌓이게 해서 점수 대신 피자 모양으로 결과가 보이게 하고 싶습니다.</dd>
+            <dt>웹으로 옮기며</dt>
+            <dd>Unity 월드 좌표(카메라 y=1, 시야 60°)를 그대로 픽셀로 환산해서 원본과 같은 크기 · 속도로 움직이게 했습니다.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <nav class="p-nav" aria-label="다른 프로젝트"><a href="project.html?id=snooze-limen"><small>PREV</small>LIMEN</a><a href="project.html?id=chroma" style="text-align: right"><small>NEXT</small>CHROMA</a></nav>
+    </main>
+
+    <footer class="ft" id="contact">
+      <canvas aria-hidden="true"></canvas>
+      <div class="ft-in wrap">
+        <div class="ft-main">
+          <div>
+            <p class="eyebrow red"><span class="dot"></span>CONTACT</p>
+            <h2>함께 일할 곳을<br />찾고 있습니다<em>.</em></h2>
+            <p class="ft-sub">프로젝트 · 채용 관련 연락은 메일로 부탁드립니다.</p>
+            <dl class="ft-contact">
+              <dt>EMAIL</dt><dd><a href="mailto:yu2647@gmail.com">yu2647@gmail.com</a></dd>
+              <dt>TEL</dt><dd data-phone><span class="blank"></span></dd>
+              <dt>GITHUB</dt><dd><a href="https://github.com/GISANGYU" rel="noopener">github.com/GISANGYU</a></dd>
+              <dt>FILES</dt><dd class="ft-docs"><a href="assets/docs/YU_GISANG_resume.pdf" download>이력서 PDF ↓</a><a href="assets/docs/YU_GISANG_cover_letter.pdf" download>자기소개서 PDF ↓</a></dd>
+            </dl>
+          </div>
+          <a class="ft-cta" href="mailto:yu2647@gmail.com">메일 보내기<br />↗</a>
+        </div>
+        <nav class="ft-nav" aria-label="하단 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html">프로젝트</a><a href="resume.html">이력</a></nav>
+        <div class="ft-bot"><div><span>유기상</span><span>계원예술대학교 디지털미디어디자인과</span></div><span>© 2026 YU GISANG</span></div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/work/smilepizza/game.js"></script>
+    <script>
+      /* 과정 영상: 화면에 들어오면 재생 */
+      (function () {
+        var vs = document.querySelectorAll("video[data-auto]");
+        if (!("IntersectionObserver" in window)) return;
+        var io = new IntersectionObserver(function (en) {
+          en.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
+        }, { threshold: 0.4 });
+        vs.forEach(function (v) { io.observe(v); });
+      })();
+    </script>
+  </body>
+</html>

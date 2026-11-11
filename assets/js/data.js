@@ -285,6 +285,7 @@ window.PROJECTS = [
   /* ── 05~ 프로젝트 ──────────────────────────────────────── */
   {
     id: "smilepizza",
+    page: "smilepizza.html",
     kv: "assets/kv/smilepizza.jpg",
     title: "SMILE PIZZA",
     titleKo: "Unity 미니게임 2종",
@@ -300,7 +301,7 @@ window.PROJECTS = [
     url: "",
     repo: "",
     video: "",
-    status: "로컬 실행",
+    status: "웹 플레이",
     thumb: "assets/thumbs/smilepizza.jpg",
     ai: "",
     case: { flow: "타이틀 → 게임 선택 → 플레이(점수 · 타이머) → 점수별 엔딩", structure: "게임별 씬 · 스포너 · 점수/타이머 UI · 엔딩 씬", why: "Photoshop으로 캐릭터·배경·UI 소스를 직접 만들고 Unity 2D로 조립" },

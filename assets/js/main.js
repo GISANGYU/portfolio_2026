@@ -28,7 +28,7 @@
       '<span class="no">' + pad(i + 1) + " · " + esc(year(p)) + "</span><h3>" + esc(p.title) + '</h3><p class="ko">' + esc(p.titleKo || "") + '</p><div class="chips">' + chipsOf(p) + "</div>";
     return a;
   }
-  function href(p) { return "project.html?id=" + encodeURIComponent(p.id); }
+  function href(p) { return p.page || "project.html?id=" + encodeURIComponent(p.id); } // 전용 상세 페이지가 있으면 그쪽으로
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
   function progress(el) { // 섹션 안에서 스크롤 진행도 0~1
@@ -371,6 +371,7 @@
   }
   function project() {
     var p = byId(new URLSearchParams(location.search).get("id")) || P[0];
+    if (p.page) { location.replace(p.page); return; } // 전용 상세 페이지로 이동
     document.title = p.title + " | 유기상 포트폴리오";
     document.querySelector("[data-project]").innerHTML = projectHTML(p);
   }
