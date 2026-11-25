@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>LIMEN | 유기상 포트폴리오</title>
+    <meta name="description" content="LIMEN · SNOOZE 졸업 전시 — 키넥트 2대와 언리얼 엔진으로 만든 4면 실시간 인터랙션과 전시 경험 설계." />
+    <meta name="theme-color" content="#060607" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="LIMEN | 유기상 포트폴리오" />
+    <meta property="og:description" content="4면 프로젝션 실시간 인터랙션 · 키넥트 2대 · Unity → Unreal 전환" />
+    <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/limen.html" />
+    <meta property="og:site_name" content="유기상 포트폴리오" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content="https://gisangyu.github.io/portfolio_2026/assets/kv/snooze-limen.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 29,9 29,23 16,30 3,23 3,9' fill='%23e5232b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/smilepizza.css" />
+    <link rel="stylesheet" href="assets/css/limen.css?v=1126c" />
+  </head>
+  <body class="page-work">
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <header class="hd">
+      <h1 class="hd-h1"><a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a></h1>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html" aria-current="page">프로젝트</a><a href="resume.html">이력</a></nav>
+      <a class="hd-cta" href="mailto:yu2647@gmail.com">연락하기 →</a>
+    </header>
+
+    <main id="main" class="wrap page sp lx">
+      <!-- ── 상단 ── -->
+      <div class="p-top sp-top">
+        <p class="eyebrow red"><span class="dot"></span>01 · INSTALLATION</p>
+        <h2>LIMEN</h2>
+        <p class="ko">SNOOZE 졸업 전시 · 4면 실시간 인터랙션 개발과 전시 경험 설계</p>
+        <p class="p-ai"><span class="chip ai" title="개발 기록 정리 · 코드 초안 · 시험 리포트에 Claude Code · Codex 사용, 결과는 녹화 · 실기로 확인">AI 협업</span></p>
+        <p class="sp-lead">정면 · 좌 · 우 벽과 바닥, 네 면에 투사한 공간에서 관객의 몸이 장면을 바꾸는 몰입형 전시입니다. 키넥트 2대로 방 전체의 관객을 하나로 합치고, 인터랙션 장면을 Unity에서 Unreal Engine으로 옮겨 NDI로 출력했습니다. 개미 폭포와 휴먼씬 두 장면을 만들었고, 2026.11.20 – 22 전시에서 그대로 운영했습니다.</p>
+        <p class="p-links"><a href="#scenes">씬 6개 ↓</a><a href="#interaction">인터랙션 ↓</a><a href="#kinect">키넥트 2대 ↓</a><a href="#unreal">Unity → Unreal ↓</a><a href="#film">작업과정 영상 ↓</a></p>
+      </div>
+
+      <figure class="lx-hero">
+        <video src="assets/work/limen-exhibit/hero.mp4?v=1126c" poster="assets/work/limen-exhibit/hero.jpg?v=1126c" autoplay muted loop playsinline preload="metadata" aria-label="전시 현장 녹화 몽타주: 개미 폭포, 반딧불이, 나방, 거미, 기억 회상, 휴먼씬"></video>
+        <figcaption>전시 현장 녹화 · 개미 폭포 → 반딧불이 → 나방 → 거미 → 기억 회상 → 휴먼씬<span>2026.11.22 · 정보관 8층 호라이즌 스튜디오</span></figcaption>
+      </figure>
+
+      <dl class="p-meta">
+        <div><dt>Type</dt><dd>몰입형 인터랙티브 전시</dd></div>
+        <div><dt>Year</dt><dd>2026.07 – 11 · 전시 11.20 – 22</dd></div>
+        <div><dt>Team</dt><dd>SNOOZE 7인</dd></div>
+        <div><dt>Role</dt><dd>개미 폭포 · 휴먼씬 · 키넥트 2대 · Unreal 전환 · NDI 출력</dd></div>
+        <div><dt>Tools</dt><dd>Unreal Engine 5 · C++ · Unity · C# · Kinect v2 · NDI · MadMapper</dd></div>
+        <div><dt>Space</dt><dd>4면 프로젝션 · 7.2 × 4 × 4m</dd></div>
+      </dl>
+
+      <!-- ── 01 OVERVIEW ── -->
+      <section class="cs">
+        <h2><em>01</em>Overview</h2>
+        <div class="sp-body">
+          <p class="lx-q">“내가 고른 방향은 정말 나만의 선택일까?”<small>슬로건 · 흐름 속에서, 나의 선택을 마주하다</small></p>
+          <p>LIMEN(리멘)은 꿈과 현실의 경계, 선택에 작용하는 영향을 알아차리는 문턱이라는 뜻입니다. 관객은 곤충의 세계에서 시작해 사람의 세계로 이어지는 여섯 장면을 지나갑니다. 장면 속 생명체는 서로의 신호를 따라 움직이고, 관객도 그 흐름의 일부가 됩니다.</p>
+          <p>네 면은 같은 순간의 한 공간입니다. 벽 세 면은 4320 × 912, 바닥은 1920 × 1200 한 장으로 만들고, MadMapper에서 프로젝터 네 대에 나눠 투사했습니다.</p>
+        </div>
+      </section>
+
+      <!-- ── 02 SCENES ── -->
+      <section class="cs" id="scenes">
+        <h2><em>02</em>Scenes</h2>
+        <div class="sp-body">
+          <p>인터랙션 장면 3개와 영상 장면 3개를 번갈아 보여 줍니다. 아래 영상은 모두 2026.11.22 전시 마지막 날 현장에서 녹화했습니다.</p>
+          <div class="lx-scenes">
+            <figure class="ix"><video src="assets/work/limen-exhibit/s01_waterfall.mp4" poster="assets/work/limen-exhibit/s01_waterfall.jpg" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F01</i>개미 폭포</b>쏟아지는 개미 떼가 관객의 몸 모양대로 갈라집니다.<small>인터랙션</small></figcaption></figure>
+            <figure class="ix"><video src="assets/work/limen-exhibit/s02_fireflies.mp4?v=1126c" poster="assets/work/limen-exhibit/s02_fireflies.jpg?v=1126c" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F02</i>반딧불이</b>관객 주변으로 빛 무리가 모이고 흩어집니다.<small>인터랙션</small></figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/s03_moth.mp4" poster="assets/work/limen-exhibit/s03_moth.jpg" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F03</i>나방</b>남은 불빛을 따라 나방이 날아갑니다.<small>영상</small></figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/s04_spider.mp4" poster="assets/work/limen-exhibit/s04_spider.jpg" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F04</i>거미</b>수정 동굴 안에서 거미가 드러납니다.<small>영상</small></figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/s05_memory.mp4" poster="assets/work/limen-exhibit/s05_memory.jpg" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F05</i>기억 회상</b>생명체의 시점과 사람 · 사회의 이미지가 네 면을 채웁니다.<small>영상</small></figcaption></figure>
+            <figure class="ix"><video src="assets/work/limen-exhibit/s06_human.mp4?v=1126c" poster="assets/work/limen-exhibit/s06_human.jpg?v=1126c" muted loop playsinline preload="none" data-auto></video>
+              <figcaption><b><i>F06</i>휴먼씬</b>빛으로 된 군중이 관객이 가는 쪽으로 함께 걷습니다.<small>인터랙션</small></figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 03 MY ROLE ── -->
+      <section class="cs">
+        <h2><em>03</em>My Role</h2>
+        <div class="sp-body">
+          <ol class="sp-role">
+            <li><b>장면 개발</b><span>F01 개미 폭포 · F06 휴먼씬의 인터랙션 규칙과 비주얼, Unreal Engine 이식</span></li>
+            <li><b>센서</b><span>키넥트 2대 · PC 2대 구조, 좌표 보정, 같은 사람 합치기, 현장 보정 도구</span></li>
+            <li><b>출력</b><span>장면별 NDI 송출(벽 · 바닥 2개)과 MadMapper 수신 · 전환 구성</span></li>
+            <li><b>전시 운영</b><span>실행 순서 · 보정 절차 정리, 전시 대기 루프 영상 편집</span></li>
+            <li class="has-link"><b>웹 구현</b><span>LIMEN 웹사이트(사전 웹 · AWAKE) 구현</span><a class="lx-more" href="project.html?id=limen-web">웹 페이지 보기 →</a></li>
+          </ol>
+          <h4 class="sp-sub" style="margin-top: 40px">팀 크레딧</h4>
+          <table class="lx-credit">
+            <thead><tr><th>영역</th><th>담당</th></tr></thead>
+            <tbody>
+              <tr class="mine"><td>F01 개미 폭포 · 인터랙션</td><td>유기상</td></tr>
+              <tr><td>F02 반딧불이 · 인터랙션</td><td>배정훈</td></tr>
+              <tr><td>F03 – F05 영상 (나방 · 거미 · 기억 회상)</td><td>김현기 · 배정훈 · 심혜민</td></tr>
+              <tr class="mine"><td>F06 휴먼씬 · 인터랙션</td><td>유기상</td></tr>
+              <tr><td>사운드</td><td>김현기</td></tr>
+              <tr><td>웹 UX / UI 디자인</td><td>김노은 · 조가연</td></tr>
+              <tr class="mine"><td>웹 구현 · Unity 인터랙션 개발 · 키넥트 2대 · Unreal 전환 · NDI 출력</td><td>유기상</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── 04 EXPERIENCE ── -->
+      <section class="cs" id="experience">
+        <h2><em>04</em>Experience</h2>
+        <div class="sp-body">
+          <p class="sp-big">전시장 밖에서 시작해 전시장 밖에서 끝나는 관람</p>
+          <p>관객이 4면 공간에 들어가기 전과 나온 뒤까지 하나의 흐름으로 설계했습니다. 전시장 안의 경험은 <b>LUCID DREAM</b>, 관람을 마친 뒤 다시 돌아보는 웹은 <b>AWAKE</b>로 나눴습니다.</p>
+          <ol class="lx-flow">
+            <li><em>BEFORE</em><b>사전 웹사이트</b><span>장면을 다 보여 주지 않는 선에서 세계관과 관람 정보를 미리 봅니다.</span></li>
+            <li class="mine"><em>WAIT</em><b>복도 대기 루프</b><span>입장을 기다리는 동안 복도 TV에서 제작 과정 영상이 돕니다.</span></li>
+            <li class="mine"><em>LUCID DREAM</em><b>4면 공간</b><span>여섯 장면을 지나며 인터랙션 장면에서 몸으로 반응을 만듭니다.</span></li>
+            <li><em>AWAKE</em><b>관람 후 PC · 방명록</b><span>부스 PC에서 장면을 다시 보고 의미를 읽은 뒤 방명록을 남깁니다.</span></li>
+          </ol>
+
+          <h4 class="sp-sub" style="margin-top: 44px">복도 · 부스</h4>
+          <p>대기 루프는 전시 당일 복도 TV에서 그대로 재생했습니다. 부스에는 AWAKE PC와 함께 장면 이미지를 실로 이은 벽, 오브제, 굿즈를 두었습니다. 방명록은 전시장 PC에서 로컬로 실행했습니다.</p>
+          <div class="lx-grid" style="--c: 3">
+            <figure class="wide"><video src="assets/work/limen-exhibit/hall_v9.mp4" poster="assets/work/limen-exhibit/hall_v9.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>복도 대기 루프</b>전시 당일 복도 TV 재생 장면</figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/booth.mp4" poster="assets/work/limen-exhibit/booth.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>부스</b>AWAKE PC · 실 연결 벽 · 오브제</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/booth_awake_pc.jpg" alt="부스의 AWAKE PC 화면" loading="lazy" /><figcaption><b>AWAKE PC</b>관람을 마친 관객에게만 보여 줌</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/booth_thread_wall.jpg" alt="장면 이미지를 붉은 실로 이은 벽" loading="lazy" /><figcaption><b>실 연결 벽</b>장면과 장면 사이의 영향 관계</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/booth_spider_box.jpg" alt="거미 오브제가 든 아크릴 상자" loading="lazy" /><figcaption><b>오브제</b>F04 거미 장면을 옮긴 아크릴 상자</figcaption></figure>
+          </div>
+
+          <h4 class="sp-sub" style="margin-top: 44px">방명록</h4>
+          <div class="lx-ix" style="border-bottom: 0; padding-top: 6px">
+            <video src="assets/work/limen-exhibit/guestbook.mp4" poster="assets/work/limen-exhibit/guestbook.jpg" muted loop playsinline preload="none" data-auto aria-label="방명록 화면: 반딧불이 들판 위를 곤충 캐릭터들이 돌아다니며 관객이 남긴 말을 말풍선으로 보여 줌"></video>
+            <div>
+              <p>방명록도 관람의 마지막 장면으로 만들었습니다. 관객이 사진과 이름, 한 마디를 남기면 작은 곤충 캐릭터가 되어 들판에 나타나고, 돌아다니며 남긴 말을 말풍선으로 보여 줍니다.</p>
+              <ol>
+                <li>전시 장면과 같은 밤 들판 · 반딧불이 톤</li>
+                <li>남긴 사람 수만큼 캐릭터가 늘어남</li>
+                <li>전시 기간에는 전시장 PC에서 로컬로 실행</li>
+              </ol>
+              <p style="margin-top: 14px"><a class="lx-more" href="https://gisangyu.github.io/LIMEN_WEB/GUESTBOOK/" target="_blank" rel="noopener">방명록 열어 보기 ↗</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 05 BEHIND ── -->
+      <section class="sp-behind" id="behind" aria-labelledby="behind-h">
+        <div class="sp-bhead">
+          <p class="eyebrow red"><span class="dot"></span>05 · BEHIND</p>
+          <h3 id="behind-h">인터랙션을 만든 과정</h3>
+          <p>센서 한 대로 시작해 키넥트 2대, Unity에서 Unreal까지 바뀐 과정입니다. 단계마다 결정 · 시험 · 남은 일을 개발 기록 문서로 남기며 진행했습니다.</p>
+        </div>
+
+        <ol class="sp-time">
+          <li><time>2026.08 – 09</time><b>센서 · 첫 4면 시험</b><span>키넥트 녹화본으로 센서 없이 개발, 09.30 4면 첫 테스트</span></li>
+          <li><time>2026.10.12 – 28</time><b>키넥트 2대</b><span>PC 2대 + UDP, 보정 · 합치기 · 세이프존 · 최대 2명</span></li>
+          <li><time>2026.10.30 – 11.10</time><b>Unity HDRP → 전환 결정</b><span>Unity판 비주얼 한계 분석, 엔진 전환 결정</span></li>
+          <li><time>2026.11.11 – 17</time><b>Unreal 이식</b><span>C++ 장면 · NDI 출력 · 개미 폭포 개선 · 키넥트 합치기 이식</span></li>
+          <li><time>2026.11.20 – 22</time><b>전시 운영</b><span>보정 격자 추가(11.20), 휴먼씬 룩 수정(11.21)</span></li>
+        </ol>
+
+        <!-- B-01 인터랙션 -->
+        <div class="sp-block" id="interaction">
+          <div class="sp-bt"><span>B-01</span><h4>몸이 장면을 바꾸는 방식</h4></div>
+          <p class="sp-bd">세 인터랙션 장면 모두 설명 없이 들어온 관객이 몇 초 안에 “내 몸에 반응한다”를 알아채는 것을 기준으로 정했습니다. 10.07 사용자 테스트에서 관객이 벽만 보고 바닥 반응을 거의 알아채지 못해서, 위치 반응에 더해 관객이 보고 서 있는 벽에서도 몸 모양 · 몸짓대로 반응이 나오게 만들었습니다.</p>
+
+          <div class="lx-ix">
+            <video src="assets/work/limen-exhibit/ix_waterfall.mp4" poster="assets/work/limen-exhibit/ix_waterfall.jpg" muted loop playsinline preload="none" data-auto aria-label="관객이 팔을 들고 벌릴 때마다 폭포에 생긴 몸 모양 구멍이 바뀌는 장면"></video>
+            <div>
+              <h5>F01 개미 폭포</h5><span class="who">INTERACTION</span>
+              <p>벽 위에서 개미 떼가 폭포처럼 쏟아집니다. 관객의 실루엣이 장애물이 되어 개미가 몸 둘레로 비켜 흐르고, 몸이 있던 자리만 비어 사람 모양 구멍이 생깁니다.</p>
+              <ol>
+                <li>키넥트 2대를 합친 정면 실루엣을 NDI로 받아 장애물 마스크로 사용</li>
+                <li>입자는 GPU 셰이더에서 계산 — 위에서 고르게 출발해 아래로 갈수록 물줄기로 모임</li>
+                <li>팔을 들거나 벌리면 구멍 모양이 바로 바뀌어 손짓이 그대로 보임</li>
+              </ol>
+            </div>
+          </div>
+          <div class="lx-ix">
+            <video src="assets/work/limen-exhibit/ix_ff_pair.mp4" poster="assets/work/limen-exhibit/ix_ff_pair.jpg" muted loop playsinline preload="none" data-auto aria-label="관객 두 명이 팔을 뻗자 보라색 빛 무리가 각자의 손 쪽으로 흘러와 모이는 장면"></video>
+            <div>
+              <h5>F02 반딧불이</h5><span class="who">INTERACTION</span>
+              <p>Unreal로 옮기며 보라색 빛 무리로 다시 만든 장면입니다. 다른 인터랙션 장면과 같은 키넥트 2대 합치기 데이터(관절 좌표 UDP)를 받아 반응합니다.</p>
+              <ol>
+                <li><span><b>사람마다 한 무리</b> — 관객이 들어오면 무리가 나뉘어 각자에게 붙음. 방 번호(사람 ID)별로 끌어당기는 점을 하나씩 두고 입자를 나눠 배정</span></li>
+                <li><span><b>손을 따라 흐름</b> — 팔을 뻗으면 무리가 리본처럼 곡선을 그리며 손 쪽으로 흘러옴. 손 관절을 목표점으로, 곡선 잡음(curl noise)을 더한 Niagara 입자 이동</span></li>
+                <li><span><b>멈추면 맴돎</b> — 움직임이 줄면 사람 옆에서 작은 구 모양으로 뭉쳐 천천히 회전. 목표점 둘레 궤도 운동</span></li>
+              </ol>
+            </div>
+          </div>
+          <div class="lx-ix">
+            <video src="assets/work/limen-exhibit/ix_follow.mp4?v=1126c" poster="assets/work/limen-exhibit/ix_follow.jpg?v=1126c" muted loop playsinline preload="none" data-auto aria-label="관객이 걸어가면 빛으로 된 군중이 같은 방향으로 따라 걷는 장면"></video>
+            <div>
+              <h5>F06 휴먼씬</h5><span class="who">INTERACTION</span>
+              <p>곤충의 영향 관계를 사람의 사회로 넓힌 장면입니다. 관객이 걸으면 군중이 같은 쪽으로 걷고, 멈춰 서면 관객을 향해 돌아서서 팔 동작을 따라 합니다.</p>
+              <ol>
+                <li>관객 실루엣에 닿은 사람은 빛을 받아 관객 색으로 물듦</li>
+                <li>걸으면 같은 방향으로 이동(사람마다 빠르기 ±18%)</li>
+                <li>멈추면 왼팔 · 오른팔을 든 정도를 거울처럼 따라 함</li>
+                <li>9초 가만히 있거나 관객이 사라지면 색이 빠지며 풀림</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- B-02 키넥트 2대 -->
+        <div class="sp-block" id="kinect">
+          <div class="sp-bt"><span>B-02</span><h4>키넥트 2대를 한 사람으로 합치기</h4></div>
+          <p class="sp-bd">방 폭이 7.2m라 키넥트 한 대로는 전체를 덮지 못했습니다. 공식 Kinect v2 SDK는 PC 한 대에 센서 한 대만 열기 때문에 PC 2대로 나누고, 노트북은 센서 값만 보내고 판단은 모두 메인 PC에서 하도록 했습니다. 센서를 옮겨도 노트북은 손대지 않아도 됩니다.</p>
+          <div class="lx-sys" role="img" aria-label="시스템 구성: 키넥트 B와 송출 노트북이 UDP로 메인 PC에 관절과 점구름을 보내고, 메인 PC는 키넥트 A와 합쳐 보정한 뒤 언리얼 장면에 UDP와 NDI 실루엣으로 넘긴다. 장면은 벽과 바닥을 NDI로 MadMapper에 보내고 MadMapper가 프로젝터 4대로 투사한다.">
+            <div class="row" style="--n: 2">
+              <div class="node"><b>키넥트 B → 송출 노트북</b><small>센서 좌표 그대로 전송 · 보정 없음</small></div>
+              <div class="node"><b>키넥트 A → 메인 PC</b><small>전시 · 맵핑 PC</small></div>
+            </div>
+            <div class="arr"><code>UDP 39540</code> · 관절 30fps · 점구름 15fps · 랜선 직결 1 – 2ms</div>
+            <div class="node hot"><b>LIMEN_DK · 합치기 허브 (메인 PC)</b><small>센서별 방 좌표 보정 → 같은 사람 묶기 → 관절 합치기 → 방 번호 · 세이프존</small></div>
+            <div class="arr"><code>UDP 39541</code> 관절 · 위치 &nbsp;+&nbsp; <code>NDI</code> 정면 실루엣</div>
+            <div class="row" style="--n: 3">
+              <div class="node"><b>F01 개미 폭포</b><small>Unreal · 실루엣 장애물</small></div>
+              <div class="node ghost"><b>F02 반딧불이</b><small>Unreal · 위치 반응</small></div>
+              <div class="node"><b>F06 휴먼씬</b><small>Unreal · 이동 · 팔 동작</small></div>
+            </div>
+            <div class="arr"><code>NDI</code> 벽 4320×912 · 바닥 1920×1200 → MadMapper → 프로젝터 4대</div>
+          </div>
+
+          <div class="sp-notes" style="margin-top: 22px">
+            <article>
+              <h5>좌표는 강체 변환 하나로</h5>
+              <p>키넥트가 바닥 기울기를 이미 펴 주므로 센서마다 자리(x, y) · 방향 · 거울 세 값만 맞추면 됩니다. 바닥 표식 위에 서서 찍는 보정과, 두 센서가 겹치는 곳을 30초 걸으면 B를 A에 자동으로 맞추는 걷기 보정 두 가지를 만들었습니다. 네 점 호모그래피와 달리 점 하나가 틀려도 방 전체가 휘지 않습니다.</p>
+            </article>
+            <article>
+              <h5>등을 보는 센서의 좌우 뒤바뀜</h5>
+              <p>입구 쪽 센서는 관객의 등을 봅니다. 키넥트는 사람이 늘 자기를 본다고 가정해서 오른손이 왼손으로 잡혔습니다. 사람마다 바라보는 방향(어깨선의 수직, 걸을 땐 걷는 방향)을 추적해 등을 보는 센서의 몸만 좌우를 바꿨습니다. 팔은 평균하지 않고 더 잘 본 센서 한 쪽 것만 씁니다.</p>
+            </article>
+            <article>
+              <h5>방 안에서는 사람이 사라지지 않게</h5>
+              <p>랜선 직결 실기에서 잡혀 있던 사람이 45분 동안 40번 지워졌다 다시 붙었습니다. 센서 번호는 그대로여서 거리 필터 경계 문제로 판단하고, 방 가장자리 0.5m 안쪽을 세이프존으로 두어 그 안에서 놓친 사람은 마지막 위치에 세워 두게 했습니다.</p>
+            </article>
+            <article>
+              <h5>빈 슬롯 뒤의 사람 누락 · 최대 2명</h5>
+              <p>앞 슬롯 사람이 빠지면 뒤 사람까지 0명으로 읽히는 결함을 찾아 슬롯 6개를 모두 검사하도록 고쳤습니다(64가지 배치 × 2경로 검사). 센서 앞에 두 사람이 일렬로 서면 3 – 4명으로 불어나는 증상은 최대 2명 제한으로 막았습니다.</p>
+            </article>
+          </div>
+
+          <div class="lx-grid" style="--c: 2">
+            <figure><video src="assets/work/limen-exhibit/dev_1019_kinect2.mp4" poster="assets/work/limen-exhibit/dev_1019_kinect2.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>10.19</b>키넥트 2대로 2명 동시 감지</figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/dev_1019_calibration.mp4" poster="assets/work/limen-exhibit/dev_1019_calibration.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>10.19</b>좌표 보정 화면 — 두 센서가 본 같은 사람</figcaption></figure>
+          </div>
+          <p class="sp-cap">Unreal로 옮긴 뒤에는 합치기 허브를 C++(LIMEN_DK)로 다시 만들어 Unity 메인 없이 돌게 했고, 전시 첫날(11.20) 현장에서 맞추기 쉽도록 보정 격자 화면을 NDI로 띄우는 기능을 더했습니다. Unity에서 맞춘 보정 파일도 그대로 읽습니다.</p>
+        </div>
+
+        <!-- B-03 Unity → Unreal -->
+        <div class="sp-block" id="unreal">
+          <div class="sp-bt"><span>B-03</span><h4>Unity에서 Unreal로 옮긴 이유</h4></div>
+          <p class="sp-bd">10.30부터 반딧불이 · 개미 폭포 · 휴먼씬을 Unity HDRP로 옮겨 시험했지만, 휴먼씬의 빛과 안개가 공간 안에 있는 것처럼 보이지 않았습니다. 전시 열흘 전(11.10) 인터랙션 장면 전체를 Unreal Engine으로 옮기기로 했고, 11.14 Unreal판 녹화 · 비교를 거쳐 전시는 Unreal판으로 운영했습니다.</p>
+          <table class="lx-tab">
+            <thead><tr><th>문제</th><th>Unity HDRP판</th><th>Unreal에서 바꾼 것</th></tr></thead>
+            <tbody>
+              <tr><td>군중의 빛</td><td>사람이 단색 실루엣 마스크 + 화면 후처리(흐림 · 잔상)라 깊이감이 약함</td><td>가운데가 차고 가장자리가 옅은 빛의 몸, 빛 번짐 · 젖은 바닥 반사, 뒷줄일수록 옅게</td></tr>
+              <tr><td>벽 모서리</td><td>면마다 카메라가 따로라 빛 번짐이 벽 모서리를 넘지 못함</td><td>벽 세 면을 한 장(4320 × 912)으로 렌더링해 송출</td></tr>
+              <tr><td>입자</td><td>빽빽한 흰 폭포, 관객 자리에 원형 구멍</td><td>GPU 셰이더 입자 — 가로 512구간에 나눠 출발시켜 고른 폭포</td></tr>
+              <tr><td>키넥트</td><td>키넥트 2대 합치기 · 보정 · 세이프존을 Unity에서 완성</td><td>Unity의 듀얼 키넥트 코드 구조를 분석해 Unreal에 맞게 C++로 다시 짜고, 같은 보정 파일로 키넥트 2대를 그대로 운영</td></tr>
+              <tr><td>출력</td><td>Spout → MadMapper (같은 PC 안)</td><td>NDI로 벽 · 바닥 2개 송출, MadMapper에서 장면 소스를 바꿔 전환</td></tr>
+            </tbody>
+          </table>
+          <div class="sp-notes" style="margin-top: 22px">
+            <article>
+              <h5>한글 경로에서 C++ 빌드 실패</h5>
+              <p>캡스톤 폴더 경로에 한글이 있어 MSVC 미리 컴파일 헤더 단계가 실패했습니다(C1083). 프로젝트를 옮기지 않고 영문 경로 정션(<code>C:\LIMEN_UE</code>)을 만들어 그 경로로 빌드 · 패키징했습니다.</p>
+            </article>
+            <article>
+              <h5>실루엣이 블록 인형으로 보이던 문제</h5>
+              <p>장면들이 관절 25개 좌표만 받아 몸을 직접 그려서, 실제 키넥트를 연결하면 사람이 팔다리 조각을 붙인 블록처럼 보였습니다. 합치기 허브가 정면 실루엣을 NDI로 따로 보내고 장면이 그 마스크를 쓰도록 바꿨습니다(11.17).</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- B-04 비주얼 디벨롭 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-04</span><h4>비주얼 디벨롭</h4></div>
+          <p class="sp-bd">같은 인터랙션 규칙을 두고 엔진과 룩을 바꾸며 녹화본으로 비교했습니다. 가상 관객과 키넥트 녹화본을 넣어 매번 같은 조건에서 전후를 봤습니다.</p>
+
+          <h4 class="sp-sub">개미 폭포</h4>
+          <div class="lx-steps" style="--n: 3; max-width: 980px">
+            <figure class="tall"><video src="assets/work/limen-exhibit/dev_waterfall_unity_hdrp.mp4" poster="assets/work/limen-exhibit/dev_waterfall_unity_hdrp.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unity HDRP</b><time>2026.11 초</time> 빽빽한 흰 폭포, 관객 자리에 원형 구멍</figcaption></figure>
+            <figure class="tall"><video src="assets/work/limen-exhibit/dev_waterfall_ue_1114.mp4" poster="assets/work/limen-exhibit/dev_waterfall_ue_1114.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unreal 첫 판</b><time>2026.11.14</time> 벽 → 바닥으로 이어지는 흐름, 가상 관객 1명</figcaption></figure>
+            <figure class="tall"><video src="assets/work/limen-exhibit/dev_waterfall_ue_1117.mp4" poster="assets/work/limen-exhibit/dev_waterfall_ue_1117.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unreal 개선판</b><time>2026.11.17</time> 상단은 고르게, 아래로 갈수록 물줄기로 모이게 셰이더 수정</figcaption></figure>
+          </div>
+          <p class="sp-cap">위 세 영상은 녹화 화면에서 정면 벽과 바닥 부분만 잘라낸 것입니다. 전시에서는 여기에 실루엣 마스크를 더해 사람 모양 그대로 갈라지게 했습니다.</p>
+
+          <h4 class="sp-sub">반딧불이</h4>
+          <div class="lx-steps" style="--n: 3">
+            <figure><video src="assets/work/limen-exhibit/dev_ff_1012_unity.mp4" poster="assets/work/limen-exhibit/dev_ff_1012_unity.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unity 첫 체험</b><time>2026.10.12</time> 사람이 지나가는 자리에 빛 무리가 모임</figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/dev_ff_1019_gesture.mp4" poster="assets/work/limen-exhibit/dev_ff_1019_gesture.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>손짓 반응</b><time>2026.10.19</time> 팔을 뻗으면 그쪽 빛이 흩어짐</figcaption></figure>
+            <figure><video src="assets/work/limen-exhibit/dev_ff_ue_exhibit.mp4" poster="assets/work/limen-exhibit/dev_ff_ue_exhibit.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unreal 전시판</b><time>2026.11.22</time> 관객 주변에서 빛 무리가 모양을 만들었다 흩어짐</figcaption></figure>
+          </div>
+
+          <h4 class="sp-sub">휴먼씬</h4>
+          <div class="lx-grid" style="--c: 2">
+            <figure><video src="assets/work/limen-exhibit/dev_1012_unity_people.mp4" poster="assets/work/limen-exhibit/dev_1012_unity_people.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>10.12 Unity</b>색 실루엣 군중 · 4면 인터랙션 테스트</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/work_waterfall_code.jpg" alt="노트북으로 코드를 고치며 모니터에 개미 폭포 화면을 띄운 작업 모습" loading="lazy" /><figcaption><b>작업 모습</b>녹화본을 돌리며 셰이더 수치 조정</figcaption></figure>
+          </div>
+          <div class="lx-steps" style="--n: 2">
+            <figure class="strip"><video src="assets/work/limen-exhibit/dev_crowd_ue_1114.mp4" poster="assets/work/limen-exhibit/dev_crowd_ue_1114.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>Unreal 첫 군중</b><time>2026.11.14</time> 실제 키넥트 녹화본을 넣어 팔 동작 따라 하기 확인</figcaption></figure>
+            <figure class="strip"><video src="assets/work/limen-exhibit/dev_look_v1_1121.mp4" poster="assets/work/limen-exhibit/dev_look_v1_1121.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>빛나는 사람으로 바꿈</b><time>2026.11.21</time> 납작한 색 대신 안쪽이 밝게 빛나는 몸으로, 뒷줄은 옅게, 걷는 속도는 절반 가까이 늦춤</figcaption></figure>
+            <figure class="strip"><video src="assets/work/limen-exhibit/dev_look4_1121.mp4" poster="assets/work/limen-exhibit/dev_look4_1121.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>관객별 색 구분</b><time>2026.11.21</time> 첫 번째 관객은 보라, 두 번째 관객은 흰색으로 물들고 물든 사람만 밝게</figcaption></figure>
+            <figure class="strip"><video src="assets/work/limen-exhibit/dev_intro_1121.mp4" poster="assets/work/limen-exhibit/dev_intro_1121.jpg" muted loop playsinline preload="none" data-auto></video><figcaption><b>시작 연출</b><time>2026.11.21</time> 검은 화면에서 군중이 발끝부터 천천히 차오르며 나타남</figcaption></figure>
+          </div>
+          <p class="sp-cap">가로로 긴 영상은 왼쪽 · 정면 · 오른쪽 벽을 이어 붙인 출력 화면(4320 × 912)입니다. 전시 첫날 휴먼씬에 대한 피드백을 듣고, 남은 전시 기간 동안 비주얼과 인터랙션을 현장에서 바로 고쳐 보완했습니다.</p>
+        </div>
+
+        <!-- B-05 작업 사진 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-05</span><h4>전시장에서</h4></div>
+          <div class="lx-grid" style="--c: 3">
+            <figure><img src="assets/work/limen-exhibit/photo/scene_fireflies_flowers.jpg" alt="보라색 꽃밭 장면 앞에 선 관객 두 명의 실루엣" loading="lazy" /><figcaption><b>F03</b>꽃밭과 나방</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/scene_cave.jpg" alt="수정 동굴 장면 앞에 선 관객 실루엣" loading="lazy" /><figcaption><b>F04</b>수정 동굴</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/scene_fireflies.jpg" alt="빛 입자 사이에 선 관객 실루엣" loading="lazy" /><figcaption><b>F02</b>반딧불이</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/work_crowd_review.jpg" alt="노트북으로 군중 장면 녹화본을 확인하는 뒷모습" loading="lazy" /><figcaption><b>검수</b>휴먼씬 녹화본 확인</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/work_awake_ui.jpg" alt="두 사람이 노트북으로 AWAKE 화면 디자인을 보는 뒷모습" loading="lazy" /><figcaption><b>AWAKE</b>웹 화면 디자인 검토</figcaption></figure>
+            <figure><img src="assets/work/limen-exhibit/photo/booth_limen_thread.jpg" alt="LIMEN 글자 조형물과 실 연결 벽" loading="lazy" /><figcaption><b>부스</b>LIMEN 글자와 실 연결 벽</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 06 PROCESS FILM ── -->
+      <section class="cs" id="film">
+        <h2><em>06</em>Process Film</h2>
+        <div class="sp-body">
+          <p>전시 대기 루프로 만든 작업과정 영상입니다. 9월 첫 키넥트 입자 시험부터 공간 설치까지의 기록 23컷 뒤에 타이틀과 LIMEN 웹 메인 영상, COSS × SNOOZE 엔딩을 이었습니다. 개발 로그 영상 · 팀원 휴대폰 영상을 모아 편집했고, 전시 당일 복도 TV에서 반복 재생했습니다.</p>
+          <div class="lx-film" style="margin-top: 22px">
+            <video id="film-v" src="assets/work/limen-exhibit/process_v9.mp4" poster="assets/work/limen-exhibit/process_v9.jpg" controls playsinline preload="none"></video>
+            <ol class="lx-ch" aria-label="영상 챕터 — 누르면 해당 시점으로 이동">
+              <li><button type="button" data-t="0.0"><span class="t">0:00</span><span class="d">2026.09.08</span><span>First Kinect particles</span></button></li>
+              <li><button type="button" data-t="2.69"><span class="t">0:02</span><span class="d">2026.09.08</span><span>Virtual figures on camera</span></button></li>
+              <li><button type="button" data-t="4.49"><span class="t">0:04</span><span class="d">2026.09.17</span><span>Mapping the first gestures</span></button></li>
+              <li><button type="button" data-t="6.28"><span class="t">0:06</span><span class="d">2026.09.22</span><span>Footsteps on the floor</span></button></li>
+              <li><button type="button" data-t="8.08"><span class="t">0:08</span><span class="d">2026.09.23</span><span>Aligning the space</span></button></li>
+              <li><button type="button" data-t="9.87"><span class="t">0:09</span><span class="d">2026.09.23</span><span>Sound check</span></button></li>
+              <li><button type="button" data-t="11.67"><span class="t">0:11</span><span class="d">2026.09.30</span><span>First four-wall test</span></button></li>
+              <li><button type="button" data-t="13.46"><span class="t">0:13</span><span class="d">2026.10.01</span><span>Screen test: crowd</span></button></li>
+              <li><button type="button" data-t="15.26"><span class="t">0:15</span><span class="d">2026.10.01</span><span>Off the clock · 조가연에 무대</span></button></li>
+              <li><button type="button" data-t="17.05"><span class="t">0:17</span><span class="d">2026.10.05</span><span>Screen check</span></button></li>
+              <li><button type="button" data-t="18.85"><span class="t">0:18</span><span class="d">2026.10.08</span><span>First usability test</span></button></li>
+              <li><button type="button" data-t="20.64"><span class="t">0:20</span><span class="d">2026.10.08</span><span>Light trails</span></button></li>
+              <li><button type="button" data-t="22.44"><span class="t">0:22</span><span class="d">2026.10.12</span><span>Fireflies, live</span></button></li>
+              <li><button type="button" data-t="25.13"><span class="t">0:25</span><span class="d">2026.10.12</span><span>People scene</span></button></li>
+              <li><button type="button" data-t="26.93"><span class="t">0:26</span><span class="d">2026.10.19</span><span>Sensor check: two Kinects</span></button></li>
+              <li><button type="button" data-t="28.72"><span class="t">0:28</span><span class="d">2026.10.19</span><span>Calibration</span></button></li>
+              <li><button type="button" data-t="30.52"><span class="t">0:30</span><span class="d">2026.10.19</span><span>Two visitors</span></button></li>
+              <li><button type="button" data-t="32.31"><span class="t">0:32</span><span class="d">2026.10.20</span><span>All-nighter</span></button></li>
+              <li><button type="button" data-t="34.11"><span class="t">0:34</span><span class="d">2026.11.10</span><span>Mounting the sensor</span></button></li>
+              <li><button type="button" data-t="35.9"><span class="t">0:35</span><span class="d">2026.11.14</span><span>Ant waterfall, Unreal</span></button></li>
+              <li><button type="button" data-t="37.7"><span class="t">0:37</span><span class="d">2026.11.14</span><span>Crowd gestures</span></button></li>
+              <li><button type="button" data-t="39.49"><span class="t">0:39</span><span class="d">2026.11.17</span><span>Building the space</span></button></li>
+              <li><button type="button" data-t="42.18"><span class="t">0:42</span><span class="d"></span><span>Outdoor build, time-lapse</span></button></li>
+              <li class="sec"><button type="button" data-t="45.0"><span class="t">0:45</span><span class="d"></span><span>우리들의 졸업작품 · LIMEN</span></button></li>
+              <li class="sec"><button type="button" data-t="50.26"><span class="t">0:50</span><span class="d"></span><span>snooze.design main film</span></button></li>
+              <li class="sec"><button type="button" data-t="64.62"><span class="t">1:04</span><span class="d"></span><span>COSS × SNOOZE</span></button></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 07 REVIEW ── -->
+      <section class="cs">
+        <h2><em>07</em>Review</h2>
+        <div class="sp-body">
+          <dl>
+            <dt>배운 점</dt>
+            <dd>관객이 반응을 알아채는지는 반응이 관객의 시선 안에 있는지에 달려 있었습니다. 사용자 테스트 뒤 반응 위치를 바닥에서 정면 벽으로 옮긴 것이 두 장면 설계의 출발점이 됐습니다.</dd>
+            <dt>전환 판단</dt>
+            <dd>전시 열흘 전 엔진을 바꾸면서 이미 검증된 키넥트 처리는 그대로 두고 결과만 넘기는 쪽을 골랐습니다. 바꾸는 범위를 장면 렌더링으로 좁혀 남은 기간을 비주얼 작업에 썼습니다.</dd>
+            <dt>다시 만든다면</dt>
+            <dd>센서 실측 가동률(방에 사람이 있는 시간 중 잡힌 시간)을 전시 기간 내내 기록해 두고, 인원 제한 2명을 3 – 4명으로 늘릴 수 있는지 현장 수치로 판단하고 싶습니다.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <nav class="p-nav" aria-label="다른 프로젝트"><a href="projects.html"><small>LIST</small>전체 프로젝트</a><a href="smilepizza.html" style="text-align: right"><small>NEXT</small>SMILE PIZZA</a></nav>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      /* 과정 영상: 화면에 들어오면 재생 */
+      (function () {
+        var vs = document.querySelectorAll("video[data-auto]");
+        if (!("IntersectionObserver" in window)) return;
+        var io = new IntersectionObserver(function (en) {
+          en.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
+        }, { threshold: 0.4 });
+        vs.forEach(function (v) { io.observe(v); });
+      })();
+      /* 작업과정 영상 챕터 */
+      (function () {
+        var v = document.getElementById("film-v"); if (!v) return;
+        var items = [].slice.call(document.querySelectorAll(".lx-ch li"));
+        var ts = items.map(function (li) { return parseFloat(li.querySelector("button").dataset.t); });
+        items.forEach(function (li, i) {
+          li.querySelector("button").addEventListener("click", function () {
+            if (v.preload === "none") v.preload = "auto";
+            v.currentTime = ts[i] + 0.05; v.play().catch(function () {});
+          });
+        });
+        var list = document.querySelector(".lx-ch"), cur = -1;
+        /* 목록 높이 = 영상 높이 (넘치는 부분은 숨김) */
+        function fit() { list.style.height = v.getBoundingClientRect().height + "px"; list.style.setProperty("--row2", (items[1].offsetHeight * 2) + "px"); focus(cur < 0 ? 0 : cur, false); }
+        /* 가사처럼: 지금 장면이 목록 위쪽 1/3 지점에 오도록 목록 안에서만 스크롤 */
+        function focus(k, smooth) {
+          var li = items[k]; if (!li) return;
+          /* 지금 장면이 항상 위에서 세 번째 칸에 오도록 (첫 항목 위에 두 칸 여백) */
+          list.scrollTo({ top: li.offsetTop - items[0].offsetTop, behavior: smooth ? "smooth" : "auto" });
+        }
+        function update() {
+          var t = v.currentTime, k = 0;
+          for (var i = 0; i < ts.length; i++) if (t >= ts[i]) k = i;
+          if (k === cur) return;
+          cur = k;
+          items.forEach(function (li, i) { li.classList.toggle("on", i === k); li.classList.toggle("past", i < k); });
+          focus(k, true);
+        }
+        v.addEventListener("timeupdate", update);
+        v.addEventListener("seeked", update);
+        v.addEventListener("play", update);
+        v.addEventListener("ended", function () { cur = -1; update(); });
+        if ("ResizeObserver" in window) new ResizeObserver(fit).observe(v); else window.addEventListener("resize", fit);
+        fit();
+      })();
+    </script>
+  </body>
+</html>
