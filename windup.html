@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>WINDUP TOWN | 유기상 포트폴리오</title>
+    <meta name="description" content="태엽 마을 — AI 세 창에 로직·이미지·소리를 나눠 맡겨 만든 1930년대 카툰풍 2D RPG. 실제 지시 기록과 게임 로직을 만든 과정을 볼 수 있습니다." />
+    <meta name="theme-color" content="#060607" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="WINDUP TOWN | 유기상 포트폴리오" />
+    <meta property="og:description" content="AI 세 창 분업으로 만든 2D RPG · 웹에서 바로 플레이" />
+    <meta property="og:url" content="https://gisangyu.github.io/portfolio_2026/windup.html" />
+    <meta property="og:site_name" content="유기상 포트폴리오" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content="https://gisangyu.github.io/portfolio_2026/assets/thumbs/windup-town.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,2 29,9 29,23 16,30 3,23 3,9' fill='%23e5232b'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/smilepizza.css" />
+    <link rel="stylesheet" href="assets/css/windup.css" />
+  </head>
+  <body class="page-work">
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <header class="hd">
+      <h1 class="hd-h1"><a class="hd-logo" href="./" aria-label="유기상 포트폴리오 홈"><span class="mark" aria-hidden="true"><i></i></span>유기상 <small>YU GISANG</small></a></h1>
+      <nav class="hd-nav" aria-label="주요 메뉴"><a href="about.html">소개</a><a href="skills.html">역량</a><a href="projects.html" aria-current="page">프로젝트</a><a href="resume.html">이력</a></nav>
+      <a class="hd-cta" href="mailto:yu2647@gmail.com">연락하기 →</a>
+    </header>
+
+    <main id="main" class="wrap page sp wt">
+      <!-- ── 상단 ── -->
+      <div class="p-top sp-top">
+        <p class="eyebrow red"><span class="dot"></span>SUB · GAME · AI WORKFLOW</p>
+        <h2>WINDUP TOWN</h2>
+        <p class="ko">태엽 마을 · AI 세 창 분업 2D RPG</p>
+        <p class="sp-lead">태엽이 풀려 멈춘 마을에서 찻주전자 보글이 축음기 그라모를 다시 감는 1930년대 카툰풍 RPG입니다. 게임 로직, 이미지, 소리를 AI 세 창에 나눠 맡기고 저는 방향을 정하고 지시하고 검수했습니다. 3시간 수업 챌린지로 1·2막을 만들고, 이어서 7막까지 늘렸습니다.</p>
+        <p class="p-links"><a href="#play">바로 플레이 ↓</a><a href="#behind">작업 과정 영상 ↓</a><a href="#replay">실제 지시 기록 ↓</a><a href="#fun">게임성을 다듬은 과정 ↓</a></p>
+      </div>
+
+      <!-- ── 플레이 ── -->
+      <section class="sp-playwrap" id="play" aria-labelledby="play-h">
+        <div class="sp-head">
+          <h3 id="play-h"><em>PLAY</em>태엽 마을</h3>
+          <p>GitHub Pages에 올린 게임을 그대로 불러옵니다. 화면을 누른 뒤 키보드로 조작합니다. 오른쪽 패널은 게임 안의 상태 값을 읽어서 보여 줍니다.</p>
+        </div>
+        <div class="wt-play">
+          <div class="wt-screen">
+            <div class="wt-frame" data-game>
+              <img src="assets/work/windup/img/intro.webp" alt="태엽 마을 시작 화면" />
+              <button type="button" class="wt-load" data-act="load"><b>▶ 게임 불러오기</b><small>소리가 납니다 · M 키로 끄기</small></button>
+            </div>
+            <p class="wt-under"><span><kbd>WASD</kbd> 이동 <kbd>Space</kbd> 점프 <kbd>E</kbd> 상호작용 <kbd>Q</kbd> 태엽 ↔ 건전지 <kbd>M</kbd> 소리</span><a href="https://gisangyu.github.io/windup-town/" target="_blank" rel="noopener">새 창에서 열기 ↗</a></p>
+          </div>
+
+          <aside class="sp-logic wt-live" aria-label="게임 상태">
+            <div class="sp-lh">
+              <p class="eyebrow"><span class="dot"></span>LIVE STATE</p>
+              <span class="wt-conn" data-l="conn">대기</span>
+            </div>
+            <dl class="wt-stat">
+              <div><dt>막</dt><dd data-l="act">—</dd></div>
+              <div><dt>장면</dt><dd data-l="scene">—</dd></div>
+              <div><dt>동력</dt><dd data-l="power">—</dd></div>
+              <div><dt>보스</dt><dd data-l="boss">—</dd></div>
+            </dl>
+            <div class="wt-gauge"><span>태엽</span><i><b data-l="wind" style="width: 0%"></b></i></div>
+            <div class="wt-gauge bat"><span>건전지</span><i><b data-l="battery" style="width: 0%"></b></i></div>
+            <p class="sp-logcap">상태가 바뀔 때마다 기록 · <code>WT.Game.state</code></p>
+            <ol class="sp-log wt-log" data-l="log"></ol>
+            <p class="sp-note">모든 반응이 <b>태엽이 감겼나, 풀렸나</b> 하나로 정해지도록 상태를 설계했습니다. 화면은 상태를 읽어 그리기만 하고, 상태는 정해진 함수만 바꿉니다.</p>
+          </aside>
+        </div>
+      </section>
+
+      <dl class="p-meta">
+        <div><dt>Type</dt><dd>웹 게임</dd></div>
+        <div><dt>Year</dt><dd>2026.11</dd></div>
+        <div><dt>Team</dt><dd>1인 + AI 3창</dd></div>
+        <div><dt>Role</dt><dd>기획 · 작업 설계 · AI 지시 · 검수 · 이야기</dd></div>
+        <div><dt>Tools</dt><dd>Claude Code · Codex · JavaScript Canvas · Web Audio · Python</dd></div>
+      </dl>
+
+      <!-- ── 01 OVERVIEW ── -->
+      <section class="cs">
+        <h2><em>01</em>Overview</h2>
+        <div class="sp-body">
+          <div class="sp-two">
+            <article class="sp-game">
+              <p class="sp-tag">수업 조건 · 3 HOURS AI CODING CHALLENGE</p>
+              <h4>3시간 안에 AI로 2D 생활형 RPG</h4>
+              <p>공통 기능 5개(MAP · NPC 2명 이상 · EVENT · HOUSE · VISUAL)를 넣고, 레퍼런스 스타일 하나를 정해 TARGET과 결과를 비교합니다. Prompt Log와 BEST · WORST 프롬프트가 함께 산출물입니다.</p>
+              <ul><li>MAP</li><li>NPC</li><li>EVENT</li><li>HOUSE</li><li>VISUAL</li></ul>
+            </article>
+            <article class="sp-game">
+              <p class="sp-tag">결과 · 7막 구성</p>
+              <h4>튜토리얼에서 최종 보스까지</h4>
+              <p>수업 시간 안에 1막(튜토리얼)과 2막(보스전), 시작 화면, 소리 연결까지 마쳤습니다. 이후 이야기를 이어 붙여 횡스크롤 구간과 보스 3명이 나오는 7막까지 만들었습니다.</p>
+              <ul><li>1930s rubber hose</li><li>태엽 ↔ 건전지</li><li>보스 4명</li><li>자동 점검</li></ul>
+            </article>
+          </div>
+          <ol class="wt-acts" aria-label="막 구성">
+            <li><img src="assets/work/windup/img/story_01_town.webp" alt="" loading="lazy" /><b>1막</b><span>멈춘 음악</span><small>튜토리얼 · 태엽 감기</small></li>
+            <li><img src="assets/work/windup/img/story_06_boss_arrive.webp" alt="" loading="lazy" /><b>2막</b><span>째깍 백작의 습격</span><small>보스 · 과감기</small></li>
+            <li><img src="assets/work/windup/img/story_33_recall_night.webp" alt="" loading="lazy" /><b>3막</b><span>미스터 라디오가 온 날</span><small>건전지 · Q 갈아끼우기</small></li>
+            <li><img src="assets/work/windup/img/story_37_toad_gate.webp" alt="" loading="lazy" /><b>4막</b><span>발전소로 가는 길</span><small>횡스크롤 · 중간 보스</small></li>
+            <li><img src="assets/work/windup/img/story_41_radio_reborn.webp" alt="" loading="lazy" /><b>5막</b><span>볼트 남작</span><small>플러그 뽑기 · 변신</small></li>
+            <li><img src="assets/work/windup/img/story_52_flashback_stage.webp" alt="" loading="lazy" /><b>6막</b><span>오르골이 도착한 날</span><small>풀어 주기</small></li>
+            <li><img src="assets/work/windup/img/story_60_melody_stops.webp" alt="" loading="lazy" /><b>7막</b><span>멈추지 않는 무도회</span><small>춤 상태 · 멜로디 여왕</small></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── 02 PROBLEM ── -->
+      <section class="cs">
+        <h2><em>02</em>Problem</h2>
+        <div class="sp-body">
+          <p class="sp-big">세 AI가 동시에 만들어도 한 게임으로 보이고, 한 게임으로 돌아가게 하기</p>
+          <p>3시간 안에 끝내려면 이미지를 기다리면서 코드를 짤 수 없었습니다. 이미지 · 로직 · 소리를 동시에 진행하기로 하고, 그때 생길 문제를 먼저 적었습니다.</p>
+          <table class="sp-score wt-prob">
+            <thead><tr><th>동시에 돌리면 생기는 문제</th><th>만든 장치</th><th>기준 파일</th></tr></thead>
+            <tbody>
+              <tr><td>이미지마다 선 굵기 · 눈 모양 · 색이 달라짐</td><td>기준 이미지 1장을 먼저 승인받고, 스타일 문장은 한 글자도 바꾸지 않고 붙임</td><td><code>style_anchor.png</code> · <code>ASSET_GUIDE.md</code></td></tr>
+              <tr><td>파일 이름이 달라 게임이 이미지를 못 찾음</td><td>ID · 경로 · 크기를 한 파일에 먼저 등록하고, 세 창 모두 그 파일만 기준으로 삼음</td><td><code>manifest.js</code> · <code>audio_manifest.js</code></td></tr>
+              <tr><td>이미지가 오기 전에는 로직을 확인할 수 없음</td><td>이미지가 없으면 임시 도형으로 그리고, 파일이 들어오면 2초 안에 자동으로 바꿈</td><td><code>src/assets.js</code></td></tr>
+              <tr><td>한 창이 다른 창의 파일을 고쳐 충돌함</td><td>창마다 고칠 수 있는 폴더를 정하고, 커밋과 배포 빌드는 로직 창만 함</td><td><code>AGENTS.md</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── 03 MY ROLE ── -->
+      <section class="cs">
+        <h2><em>03</em>My Role</h2>
+        <div class="sp-body">
+          <ol class="sp-role">
+            <li><b>방향</b><span>레퍼런스 27종 중 1930년대 러버호스 카툰을 고르고 MUST HAVE 3개(상태에 따라 바뀌는 사물 NPC · 원형 화면 전환 · 자막 카드 대화창)와 DO NOT LOSE(#3d3346 외곽선 + 파이 눈)를 정함</span></li>
+            <li><b>작업 설계</b><span>로직 · 이미지 · 소리를 세 창으로 나누고, 이름 기준 파일과 창별 수정 범위를 정함</span></li>
+            <li><b>지시</b><span>창마다 보낼 지시문 작성. 이미지 창은 “JOB18 진행해” 한 줄로 돌아가게 지시서를 미리 쪼갬</span></li>
+            <li><b>검수 · 피드백</b><span>직접 플레이하며 “왜 모으는지 없다”, “서사가 부족하다”, “Q를 미리 예측해야 한다”처럼 문제를 짚고 고칠 방향을 정함</span></li>
+            <li><b>이야기</b><span>3~5막 이야기를 직접 다시 짜고(라디오 씨 · 볼트 남작), 6~7막은 보스 서사 → 기술 → 배우는 이유 순서로 구성</span></li>
+            <li><b>AI 담당</b><span>Claude Code: 게임 코드 · 기획서 · 지시서 / Codex: 이미지 생성 · 자르기 · 검사 / Claude Code(별도 창): 소리 합성</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── 04 BEHIND ── -->
+      <section class="sp-behind" id="behind" aria-labelledby="behind-h">
+        <div class="sp-bhead">
+          <p class="eyebrow red"><span class="dot"></span>04 · BEHIND</p>
+          <h3 id="behind-h">AI에게 일을 나눠 맡긴 과정</h3>
+          <p>어떻게 나누고, 어떻게 지시하고, 결과를 어떻게 걸렀는지에 대한 기록입니다.</p>
+        </div>
+
+        <ol class="sp-time wt-time">
+          <li><time>11.11 09:08</time><b>수업 파악 · 스타일</b><span>과제 조건 정리, 레퍼런스 27종 비교</span></li>
+          <li><time>11.11 09:52</time><b>세 창 분업 설계</b><span>기획서 · 이미지 지시서 · 이름 기준 파일</span></li>
+          <li><time>11.11 12:00</time><b>수업 3시간 종료</b><span>1 · 2막, 시작 화면, 소리 연결, 배포</span></li>
+          <li><time>11.11 22:00</time><b>3~5막 · JOB 분할</b><span>이미지 지시서 9개 · 소리 지시서</span></li>
+          <li><time>11.12 01:51</time><b>이야기 다시 짬</b><span>Codex 축약본 검토 후 3~5막 재구성</span></li>
+          <li><time>11.12 04:05</time><b>6~7막 완료</b><span>풀어 주기 · 멜로디 여왕, 자동 점검 180개</span></li>
+        </ol>
+
+        <!-- 작업 과정 영상 -->
+        <div class="sp-block wt-filmwrap">
+          <div class="sp-bt"><span>FILM</span><h4>작업 과정 · 62초</h4></div>
+          <p class="sp-bd">지시 → 기준 문서 → JOB-0 승인 → 아트팀 동시 생성 → 선행 JOB 대기 → 로직 · 사운드 동시 진행 → 게임 반영 순서입니다. 말풍선과 로그는 실제 지시와 작업 기록을 바탕으로 만들었습니다.</p>
+          <div class="wt-film"><video src="assets/work/windup/vid/process.mp4" poster="assets/work/windup/vid/process.jpg" muted loop playsinline controls preload="none" data-auto></video></div>
+        </div>
+
+        <!-- B-01 조직도 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-01</span><h4>AI 세 팀을 운영한 조직도</h4></div>
+          <p class="sp-bd">팀마다 고칠 수 있는 폴더를 정하고, 모든 팀이 같은 md 문서를 읽고 시작하게 했습니다. 팀끼리 만나는 지점은 이름 목록 두 개뿐입니다. 아트팀이 <code>boss_volt_idle.png</code>를 저장하면 로직팀 코드는 그 이름을 이미 쓰고 있어서 따로 연결할 일이 없습니다.</p>
+          <div class="wt-org" role="img" aria-label="조직도: 디렉터(나) 아래 사내 규정 md 6개를 모든 팀이 읽는다. 로직팀(Claude Code), 아트팀(Codex 창 1~4), 사운드팀(Claude Code 별도 창)이 있고, 세 팀은 manifest.js와 audio_manifest.js를 기준으로 만나 게임에 반영된다.">
+            <div class="wt-ceo"><i>나</i><div><b>디렉터</b><small>방향 · 지시 · 플레이 검수 · 이야기</small></div></div>
+            <div class="wt-rules">
+              <p class="wt-rt">사내 규정 · md로 무드 통일 <small>모든 팀이 작업 전에 읽음</small></p>
+              <ul>
+                <li style="--c: #ff4d55"><em>사규</em><b>AGENTS.md</b><span>팀별 수정 범위 · "JOBn 진행해" 규칙 · 선행 JOB 없으면 시작 금지</span></li>
+                <li style="--c: #f2c14e"><em>브랜드 가이드</em><b>ASSET_GUIDE.md</b><span>STYLE · CHARACTER BLOCK 한 글자도 안 바꿈 · 팔레트 · 검수 10항목</span></li>
+                <li style="--c: #e8794f"><em>기획서</em><b>GAME_DESIGN.md</b><span>세계관 · 막 구성 · 조작 · 상태 · 대사표</span></li>
+                <li style="--c: #7fb2ff"><em>자산 대장</em><b>manifest.js</b><span>이미지 ID · 경로 · 크기 · 프롬프트 · 소속 JOB</span></li>
+                <li style="--c: #7fb2ff"><em>업무 지시서</em><b>jobs/JOB-n.md · AUDIO.md</b><span>manifest에서 자동 생성 · 시트 순서 · 선행 JOB</span></li>
+                <li style="--c: #39d98a"><em>작업 일지</em><b>PROMPT_LOG.md</b><span>생성할 때마다 한 줄 · 합격 / 재생성 사유</span></li>
+              </ul>
+            </div>
+            <div class="wt-teams">
+              <div class="wt-team" style="--c: #e8794f">
+                <p class="wt-tn">로직팀 <small>Claude Code</small></p>
+                <ul><li><code>src/*.js</code> 게임 코드</li><li>기획서 · 지시서 작성</li><li>자동 점검 · 커밋 · 배포 빌드</li></ul>
+                <p class="wt-tw">지시: 문장 프롬프트 + 피드백</p>
+              </div>
+              <div class="wt-team" style="--c: #7fb2ff">
+                <p class="wt-tn">아트팀 <small>Codex 창 1 ~ 4</small></p>
+                <div class="wt-seats"><span>창 1</span><span>창 2</span><span>창 3</span><span>창 4</span></div>
+                <ul><li><code>assets/</code> 이미지만</li><li>시트 생성 → 자르기 → 검사</li></ul>
+                <p class="wt-tw">지시: "JOB18 진행해" 한 줄</p>
+              </div>
+              <div class="wt-team" style="--c: #b48cff">
+                <p class="wt-tn">사운드팀 <small>Claude Code 별도 창</small></p>
+                <ul><li><code>assets/audio/</code>만</li><li>numpy · scipy 절차 합성</li><li>외부 음원 없음</li></ul>
+                <p class="wt-tw">지시: "AUDIO3.md 진행해"</p>
+              </div>
+            </div>
+            <div class="wt-hub2"><b>manifest.js · audio_manifest.js</b><span>이름 하나로 만나는 곳</span></div>
+            <div class="wt-out"><b>게임</b><span>파일이 들어오면 2초 안에 임시 도형 → 이미지</span></div>
+          </div>
+        </div>
+
+        <!-- B-02 JOB 파이프라인 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-02</span><h4>선행 JOB이 끝나야 다음 JOB</h4></div>
+          <p class="sp-bd">컷신이나 초상화는 앞 JOB에서 나온 캐릭터 이미지를 레퍼런스로 붙여야 같은 얼굴로 나옵니다. 그래서 지시서마다 “먼저 끝나 있어야 하는 JOB”을 적고, 결과가 없으면 시작하지 말고 알리게 했습니다. 재생을 누르면 실제 순서대로 진행됩니다. 노드에 마우스를 올리면 의존 관계가 보입니다.</p>
+          <div class="wt-dag" data-dag>
+            <div class="wt-dagbar"><button type="button" data-act="dag">▶ 순서대로 재생</button><span class="wt-leg"><i class="run"></i>진행 <i class="done"></i>완료 <i class="lock"></i>대기 <i class="cut"></i>나중에 폐기</span></div>
+            <div class="wt-dagsvg"></div>
+            <p class="wt-dagtip" data-tip>JOB-0(스타일 앵커)이 승인되기 전에는 어떤 JOB도 시작하지 않습니다.</p>
+          </div>
+        </div>
+
+        <!-- B-02 지시 재생 -->
+        <div class="sp-block" id="replay">
+          <div class="sp-bt"><span>B-03</span><h4>실제로 보낸 지시</h4></div>
+          <p class="sp-bd">각 창에 보낸 지시와 AI가 그 뒤에 한 작업을 순서대로 재생합니다. 지시문은 실제 대화 기록에서 가져왔고 오타와 띄어쓰기만 고쳤습니다.</p>
+          <div class="wt-replay" data-replay>
+            <div class="wt-term">
+              <div class="wt-bar"><i></i><i></i><i></i><span data-r="title">windup-town</span><em data-r="lane"></em></div>
+              <div class="wt-body" data-r="body" aria-live="off"></div>
+            </div>
+            <ol class="wt-eps" data-r="eps"></ol>
+          </div>
+        </div>
+
+        <!-- B-03 소스 생성 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-04</span><h4>이미지를 따로 만들어도 같은 그림체로</h4></div>
+          <p class="sp-bd">이미지를 여러 창에서 동시에 생성해도 스타일이 흔들리지 않도록 순서를 고정했습니다.</p>
+          <div class="wt-steps">
+            <article>
+              <p class="wt-n">01</p>
+              <h5>기준 이미지부터 승인</h5>
+              <p>주인공 · NPC · 나무 · 열쇠 7개와 팔레트 10색을 한 장에 그린 기준 이미지를 먼저 만들고 확인했습니다. 승인 전에는 다른 작업을 시작하지 않고, 이후 모든 생성에 이 이미지를 첨부합니다.</p>
+              <img src="assets/work/windup/img/style_anchor.webp" alt="스타일 기준 이미지: 보글, 그라모, 피프, 나무, 태엽 열쇠와 팔레트 10색" loading="lazy" />
+            </article>
+            <article>
+              <p class="wt-n">02</p>
+              <h5>프롬프트는 조립식</h5>
+              <p>고정 블록 3개는 그대로 붙이고, 바뀌는 건 시트 구성과 ID별 한 줄뿐입니다.</p>
+<pre><code><i>① STYLE BLOCK (고정)</i>
+STYLE: 1930s rubber hose cartoon, hand-inked cel
+animation look, original characters.
+Thick uniform outline in dark plum #3D3346 ...
+pie-cut eyes (black ovals with a small wedge cut out)
+...No text, letters or numbers anywhere.
+<i>② SPRITE RULES (고정) — #FF00FF 마젠타 배경</i>
+<i>③ CHARACTER BLOCK (고정) — BARON VOLT</i>
+<i>④ 시트 구성 — JOB마다 다름</i>
+<i>⑤ manifest.js의 prompt 값</i>
+BARON VOLT standing tall and smug facing LEFT,
+plug arms crossed, coil head crackling ...</code></pre>
+            </article>
+          </div>
+          <div class="wt-sheet">
+            <figure class="wt-sheet-src"><img src="assets/work/windup/img/sheet_job18a.webp" alt="JOB-18 시트 a: 마젠타 배경 위 볼트 남작 다섯 자세" loading="lazy" /><figcaption><b>03 시트 한 장으로 생성</b>같은 캐릭터의 자세는 마젠타 배경 한 장에 같이 그려야 크기 · 색이 맞습니다.</figcaption></figure>
+            <div class="wt-arrow" aria-hidden="true"><code>slice_sheet.py --names boss_volt_idle,…</code><span>→</span></div>
+            <figure class="wt-sliced"><div><img src="assets/work/windup/img/volt_idle.webp" alt="boss_volt_idle" loading="lazy" /><img src="assets/work/windup/img/volt_spark.webp" alt="boss_volt_spark" loading="lazy" /><img src="assets/work/windup/img/volt_magnet.webp" alt="boss_volt_magnet" loading="lazy" /><img src="assets/work/windup/img/volt_spray.webp" alt="boss_volt_spray" loading="lazy" /><img src="assets/work/windup/img/volt_throw.webp" alt="boss_volt_throw" loading="lazy" /></div><figcaption><b>04 잘라서 이름대로 저장</b>배경을 지우고 manifest 이름으로 저장하면 게임이 2초 안에 읽어 갑니다.</figcaption></figure>
+          </div>
+          <h5 class="wt-h5">합격 · 재생성 기준 <small>PROMPT_LOG.md에 생성할 때마다 한 줄씩 기록</small></h5>
+          <div class="wt-fix">
+            <figure>
+              <div class="wt-ba"><img src="assets/work/windup/img/job8_wind_draft_line.webp" alt="수정 전: 열쇠 구멍이 몸 중심선보다 아래" loading="lazy" /><img src="assets/work/windup/img/job8_wind_line.webp" alt="수정 후: 열쇠 구멍이 몸 중심선 위" loading="lazy" /></div>
+              <figcaption><b>열쇠 구멍을 몸 중심으로</b>감기 모달은 코드가 화면 가운데에서 열쇠를 돌립니다. 구멍이 중심선(점선)보다 아래에 있으면 열쇠가 허공에서 돕니다. 구멍판을 위로 옮겨 다시 만들었습니다.</figcaption>
+            </figure>
+            <figure>
+              <div class="wt-ba"><img src="assets/work/windup/img/job8_defeat_draft_crop.webp" alt="수정 전: 얼굴 없는 뻐꾸기시계" loading="lazy" /><img src="assets/work/windup/img/job8_defeat_crop.webp" alt="수정 후: 파이 눈과 미소가 있는 뻐꾸기시계" loading="lazy" /></div>
+              <figcaption><b>백작이 변한 시계에는 얼굴</b>보스를 이긴 장면인데 가구용 시계(얼굴 없음)로 나왔습니다. 백작이 변했다는 게 보이도록 파이 눈과 미소를 넣었습니다.</figcaption>
+            </figure>
+            <ul class="wt-reasons">
+              <li><b>집 내부</b>벽이 화면의 49%를 차지 → 벽 1/3, 바닥 2/3으로 다시 만듦</li>
+              <li><b>버튼</b>장식이 맞닿아 한 덩어리로 잘림 → 간격을 넓혀 다시 만듦</li>
+              <li><b>먼 숲 배경</b>비율 3:1, 가장자리 색 잔여 → 다시 만듦</li>
+              <li><b>건전지 사물</b>눈 규칙 예외를 따로 정함: 파이 눈 대신 불빛 점 눈</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- B-04 임시 데이터 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-05</span><h4>이미지가 오기 전에도 게임은 돈다</h4></div>
+          <p class="sp-bd">게임은 시작할 때 manifest의 이미지를 모두 불러오고, 없는 파일은 2초마다 다시 찾습니다. 없는 동안에는 코드가 그린 임시 도형을 씁니다. 임시 도형도 외곽선 색과 파이 눈 규칙을 지켜서, 이미지 없이도 장면의 크기와 판정을 확인할 수 있었습니다.</p>
+          <div class="wt-cmp" data-compare style="--x: 50%">
+            <img src="assets/work/windup/img/town_final.webp" alt="이미지가 들어온 마을" />
+            <img class="top" src="assets/work/windup/img/town_placeholder.webp" alt="이미지 없이 임시 도형으로 그린 마을" />
+            <span class="wt-cl">임시 도형</span><span class="wt-cr">생성 이미지</span>
+            <input type="range" min="0" max="100" value="50" aria-label="임시 도형과 생성 이미지 비교" />
+            <i class="wt-handle" aria-hidden="true"></i>
+          </div>
+          <div class="sp-notes wt-notes3">
+            <article><h5>자동으로 맞추는 것</h5><p>생성 이미지는 여백과 크기가 제각각입니다. 투명 여백을 잘라내고, manifest에 적은 높이에 맞춰 발끝 기준으로 세웁니다. 배경이 마젠타나 흰색이면 테두리부터 지웁니다.</p></article>
+            <article><h5>대체 순서</h5><p>파일이 없으면 같은 그룹의 다른 이미지 → 그것도 없으면 임시 도형. 걷기 프레임이 없으면 대기 이미지 한 장에 튀기 · 눌림 · 기울기를 코드로 입힙니다.</p></article>
+            <article><h5>소리도 같은 방식</h5><p>소리 파일이 없거나 해석에 실패하면 그 소리만 조용하고 게임은 계속 돕니다. 소리 창이 파일을 추가해도 게임 쪽은 고칠 게 없습니다.</p></article>
+          </div>
+        </div>
+
+        <!-- B-05 지시를 한 줄로 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-06</span><h4>지시를 한 줄로 줄이기</h4></div>
+          <p class="sp-bd">3~7막에만 이미지가 170개 넘게 필요했습니다. 창마다 긴 설명을 붙여 넣는 대신, 로직 창이 manifest에서 지시서를 만들게 하고 이미지 창에는 번호만 보냈습니다.</p>
+          <div class="wt-job">
+            <div class="wt-chat">
+              <p class="wt-cw">Codex 창 1</p><p class="wt-msg">JOB18 진행해</p>
+              <p class="wt-cw">Codex 창 2</p><p class="wt-msg">JOB19 진행해</p>
+              <p class="wt-cw">Codex 창 3</p><p class="wt-msg">JOB20 진행해</p>
+              <p class="wt-cw">Codex 창 4</p><p class="wt-msg">JOB21 진행해</p>
+              <p class="wt-cap">1차 4개를 동시에 → 캐릭터가 나온 뒤 2차(컷신)</p>
+            </div>
+<pre class="wt-pre"><code><i># AGENTS.md — 명령 규칙</i>
+사람이 "JOB9 진행해"처럼 번호만 말하면
+jobs/JOB-09.md를 열고 그 지시서만 끝까지 수행한다.
+먼저 끝나 있어야 하는 JOB의 결과가 없으면
+시작하지 말고 사람에게 알린다.
+
+<i># jobs/JOB-18.md (make_jobs.py가 manifest에서 생성)</i>
+- 만들 파일: 12개 · 먼저 끝나야 하는 JOB: 없음
+- 첨부: style_anchor.png, boss_idle.png(2막 백작과 같은 크기감)
+- 시트 a: idle → spark → magnet → spray → throw
+python tools/slice_sheet.py assets/sheets/JOB-18_a.png \
+  --names boss_volt_idle,boss_volt_spark,...
+- 잘린 개수가 다르면 --dry로 보고 다시 만든다</code></pre>
+          </div>
+          <p class="sp-cap">소리 창에도 같은 방식으로 <code>jobs/AUDIO.md</code>를 만들고 “처음부터 끝까지 읽고 그대로 진행해 줘. src/는 수정하지 말고 커밋 · 빌드도 하지 마.”로 범위를 정해 보냈습니다.</p>
+        </div>
+
+        <!-- B-06 게임성 -->
+        <div class="sp-block" id="fun">
+          <div class="sp-bt"><span>B-07</span><h4>게임을 재밌게 만든 판단들</h4></div>
+          <p class="sp-bd">직접 플레이하면서 걸린 부분을 적어 보내고, 고친 결과를 다시 플레이했습니다. 왼쪽이 제 피드백, 오른쪽이 바뀐 결과입니다.</p>
+          <div class="wt-fun">
+            <article>
+              <div class="wt-fq"><span>피드백</span>“퀘스트를 왜 해야 하는지가 없고 그냥 모아 와 하니까 시켜서 모아 온 느낌이야. 태엽 감는 걸 실제로 돌리는 모션이 있으면 좋겠어.”</div>
+              <div class="wt-fa">
+                <h5>열쇠를 모으는 이유 + 직접 감는 손맛</h5>
+                <p>오프닝 컷신에 밤중에 시계탑 그림자가 열쇠를 뽑아 가는 장면을 넣었습니다(2막 보스 복선). 감기는 마우스로 원을 그리거나 A · D를 번갈아 누르는 모달로 만들었습니다. 1/3 · 2/3에서 “딸깍” 고정되고, 손을 떼면 천천히 풀립니다.</p>
+              </div>
+              <video src="assets/work/windup/vid/wind.mp4" poster="assets/work/windup/vid/wind.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+            <article>
+              <div class="wt-fq"><span>설계</span>1막에서 배운 동작을 2막 보스전의 무기로</div>
+              <div class="wt-fa">
+                <h5>점프 = 회피, 감기 = 공격</h5>
+                <p>째깍 백작은 때려서 이기는 게 아니라 지쳤을 때 등의 태엽을 지나치게 감아(과감기) 스프링을 튕겨 내야 합니다. 스프링 3개가 빠지면 작은 뻐꾸기시계가 됩니다. 1930년대 카툰 톤에 맞춰 아무도 다치지 않는 결말입니다.</p>
+              </div>
+              <video src="assets/work/windup/vid/boss2.mp4" poster="assets/work/windup/vid/boss2.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+            <article class="wide">
+              <div class="wt-fq"><span>아이디어</span>“태엽은 느리지만 기능이 많고, 건전지는 빠르지만 점프 같은 기능이 봉인되고. 횡스크롤에서 둘을 갈아끼워 가며 푸는 게임 어때?”</div>
+              <div class="wt-fa">
+                <h5>태엽 ↔ 건전지</h5>
+                <p>이야기에서 건전지는 낭만을 빼앗는 물건이지만, 플레이에서는 둘 다 필요하게 수치를 나눴습니다. 장애물마다 맞는 모드가 정해져 있습니다.</p>
+                <div class="wt-swap" data-swap data-mode="wind">
+                  <table>
+                    <thead><tr><th></th><th class="w">태엽</th><th class="b">건전지</th></tr></thead>
+                    <tbody>
+                      <tr><td>걷기</td><td class="w">230 px/s</td><td class="b">×1.6</td></tr>
+                      <tr><td>점프</td><td class="w">모아 뛰기 122 → 226px</td><td class="b">봉인</td></tr>
+                      <tr><td>소모</td><td class="w">이동 3/s · 정지 0.5/s</td><td class="b">7/s</td></tr>
+                      <tr><td>회복</td><td class="w">체크포인트</td><td class="b">충전소에서 E</td></tr>
+                      <tr><td>맞는 장애물</td><td class="w">구덩이 · 물웅덩이 · 전선</td><td class="b">컨베이어 · 셔터 · 자동문</td></tr>
+                    </tbody>
+                  </table>
+                  <button type="button" data-act="swap"><kbd>Q</kbd> 갈아끼워 보기</button>
+                </div>
+              </div>
+              <video src="assets/work/windup/vid/road.mp4" poster="assets/work/windup/vid/road.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+            <article>
+              <div class="wt-fq"><span>피드백</span>“Q로 바꿀 때 멈추니까 상대 패턴을 미리 예측하고 써야 해. 그건 말이 안 돼. 누르는 순간 주변 시간이 멈추면서 갈아끼워져야 할 것 같아.”</div>
+              <div class="wt-fa">
+                <h5>누르는 순간 0.6초 시간 정지</h5>
+                <p>Q를 누르면 보스 · 공격 · 장치 · 중력이 모두 0.6초 멈추고 화면이 회색으로 바뀝니다. 그동안 건전지가 딸깍 들어가거나 태엽이 끼기기긱 감깁니다. 공중에서도 됩니다. 이제 패턴을 보고 바로 바꾸면 됩니다.</p>
+              </div>
+              <img src="assets/work/windup/img/swap.webp" alt="갈아끼우는 동안 회색으로 멈춘 화면과 시계 고리" loading="lazy" />
+            </article>
+            <article>
+              <div class="wt-fq"><span>피드백</span>“두꺼비가 탈진할 때 달려가는 시간이 너무 짧아. 패턴을 알고 미리 달려가도 모자라.”</div>
+              <div class="wt-fa">
+                <h5>밀려나는 거리를 고정</h5>
+                <p>원인은 과열 폭발이 보글을 일정한 속도로 밀어내던 것이었습니다. 미리 왼쪽에 서 있으면 레버에서 900px 가까이 밀려나 건전지로도 2.5초가 걸렸는데, 제한은 2.2초였습니다. 어디 있든 레버에서 540px 자리로 밀려나게 고정하고, 경직이 풀린 뒤부터 2.05초를 줬습니다. 건전지는 1.47초에 닿고 태엽은 2.35초라 닫힙니다. 건전지가 필요하다는 규칙은 그대로 남겼습니다.</p>
+              </div>
+              <video src="assets/work/windup/vid/toad.mp4" poster="assets/work/windup/vid/toad.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+            <article>
+              <div class="wt-fq"><span>뒤집기</span>지금까지 낭만을 빼앗던 건전지가 7막에서는 보글을 지켜 줌</div>
+              <div class="wt-fa">
+                <h5>과감기 음악과 춤 상태</h5>
+                <p>멜로디 여왕의 음악 안에서 태엽 보글은 0.5초마다 저절로 뛰고 좌우 입력이 1초마다 뒤집힙니다. 건전지 보글은 음악에 반응하지 않습니다. 6막까지 쌓은 규칙을 거꾸로 써서 새 공략을 만들었습니다.</p>
+              </div>
+              <video src="assets/work/windup/vid/dance.mp4" poster="assets/work/windup/vid/dance.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+            <article>
+              <div class="wt-fq"><span>피드백</span>“보스의 서사가 있으면서도 그걸 이기기 위한 기술, 그 기술을 배우는 서사적 장치가 필요해.”</div>
+              <div class="wt-fa">
+                <h5>감기의 반대, 풀어 주기</h5>
+                <p>멜로디 여왕은 멈추는 게 두려워 자신을 너무 감아 버렸습니다. 그래서 지금까지의 결정타(과감기)가 통하지 않습니다. 풀기는 속도 띠 안에서 천천히 돌려야 차고, 너무 빠르면 “팅” 하고 튕겨 15% 되돌아갑니다. 빠를수록 좋던 감기와 정반대 손맛입니다.</p>
+              </div>
+              <video src="assets/work/windup/vid/unwind.mp4" poster="assets/work/windup/vid/unwind.jpg" muted loop playsinline preload="none" data-auto></video>
+            </article>
+          </div>
+        </div>
+
+        <!-- B-07 AI 결과 검토 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-08</span><h4>AI가 줄인 버전을 그대로 받지 않은 이유</h4></div>
+          <p class="sp-bd">3~5막이 지루하다고 Codex에 전달했더니 Codex가 코드를 직접 줄였습니다. 로직 창에 무엇이 바뀌었는지 비교하게 한 뒤, 줄인 것 중 남길 것과 되살릴 것을 골랐습니다.</p>
+          <div class="wt-keep">
+            <div><p class="wt-k ok">남김</p><ul><li>축제 장식 놓기 삭제 (1막 열쇠 찾기와 같은 구조)</li><li>말뚝 반복 삭제</li><li>5막 구간 길이 축소</li><li>송신탑 마무리 장면</li></ul></div>
+            <div><p class="wt-k back">되살림</p><ul><li>보글이 건전지를 넣고 점프가 막히는 깨달음 장면 (5막 복선)</li><li>가로등 이름 짓기</li><li>5막의 소모 · 0.6초 교체 (소모 0이면 갈아끼울 이유가 없음)</li></ul></div>
+            <div><p class="wt-k no">문제</p><ul><li>꺼 둔 코드를 지우지 않고 <code>if (false && …)</code>로 남김</li><li>자동 점검과 기획서는 그대로</li><li>이미지 창이 <code>src/</code>를 고친 것 자체가 역할 규칙 밖</li></ul></div>
+          </div>
+          <p class="sp-bd wt-gap">그다음 3막을 다시 플레이하니 “라디오는 어디서 왔고, 건전지는 왜 주는지” 물음표만 남았습니다. 템포를 위해 이야기를 뺀 결과였습니다. 그래서 3~5막 이야기를 직접 다시 짰습니다. 측량기 · 리본 · 마을 안 반복 콘텐츠를 버리고, 마을 밖으로 떠나는 이유와 라디오 씨가 쓰러졌다 태엽으로 다시 태어나는 장면을 중심에 뒀습니다.</p>
+          <div class="wt-story">
+            <figure class="old"><img src="assets/work/windup/img/story_13_surveyors.webp" alt="폐기한 장면: 측량기들" loading="lazy" /><figcaption><s>측량기가 마을을 재다</s> 폐기</figcaption></figure>
+            <figure class="old"><img src="assets/work/windup/img/story_14_grey_spread.webp" alt="폐기한 장면: 회색 번짐" loading="lazy" /><figcaption><s>말뚝과 회색 번짐</s> 폐기</figcaption></figure>
+            <figure><img src="assets/work/windup/img/story_35_gramo_key.webp" alt="그라모가 보글에게 열쇠를 건넴" loading="lazy" /><figcaption>그라모가 열쇠 하나를 건넴 “저 친구가 멈추거든 이걸로 감아 주거라”</figcaption></figure>
+            <figure><img src="assets/work/windup/img/story_41_radio_reborn.webp" alt="라디오 씨가 태엽 라디오로 다시 태어남" loading="lazy" /><figcaption>5막에서 그 열쇠로 라디오 씨를 감음</figcaption></figure>
+          </div>
+          <div class="wt-radio">
+            <figure><img src="assets/work/windup/img/npc_radio_idle.webp" alt="변신 전 라디오 씨: 회색 상자, 다이얼 눈" loading="lazy" /><figcaption>전 · 건전지 · 다이얼 눈</figcaption></figure>
+            <span aria-hidden="true">→</span>
+            <figure><img src="assets/work/windup/img/npc_radio_reborn_idle.webp" alt="변신 후 라디오 씨: 나팔 스피커, 황동 열쇠, 파이 눈" loading="lazy" /><figcaption>후 · 태엽 · 파이 눈</figcaption></figure>
+            <p>“기존보다 더 변화가 있게”라고 요청해서, 지시서에 <b>전 · 후 실루엣이 확 달라야 한다</b>를 규칙으로 넣었습니다.</p>
+          </div>
+        </div>
+
+        <!-- B-08 자동 점검 -->
+        <div class="sp-block">
+          <div class="sp-bt"><span>B-09</span><h4>AI가 고친 뒤에는 자동 점검부터</h4></div>
+          <p class="sp-bd">주소 끝에 <code>?selftest</code>를 붙이면 1막부터 7막까지 상태를 직접 바꿔 가며 확인합니다. 막을 추가하거나 다른 창이 코드를 고칠 때마다 항목을 늘렸고, 지시할 때도 “selftest 통과까지”를 끝 조건으로 넣었습니다.</p>
+          <div class="wt-test">
+            <div class="wt-bars" role="img" aria-label="자동 점검 항목 수: 1·2막 23, 시작 화면 54, 3~5막 131, Codex 축약 병합 116, 이야기 교체 123, 6~7막 180">
+              <div style="--v: 23"><b>23</b><span>1 · 2막</span></div>
+              <div style="--v: 54"><b>54</b><span>시작 화면 · 소리</span></div>
+              <div style="--v: 131"><b>131</b><span>3~5막</span></div>
+              <div style="--v: 116"><b>116</b><span>축약 병합</span></div>
+              <div style="--v: 123"><b>123</b><span>이야기 교체</span></div>
+              <div style="--v: 180" class="on"><b>180</b><span>6 · 7막</span></div>
+            </div>
+            <ol class="wt-pass" data-pass>
+              <li>PASS 덤불 앞에서 막힘</li><li>PASS 점프로 덤불을 넘음</li><li>PASS 번갈아 누르기로 감김</li><li>PASS 깨어난 장면 동안 말풍선 없음</li><li>PASS 큰 톱니는 점프해도 피격</li><li>PASS 음표 구역 졸음 감소</li><li>PASS 점프 막힘 → 깨달음</li><li>PASS 다시 태엽으로</li><li>PASS 보스전에서 건전지가 다 떨어지면 라디오 씨가 알려 줌</li><li>PASS 라디오 씨가 쓰러짐</li><li>PASS 변신 컷신</li><li>PASS 6막: 피프가 소포를 가져옴</li><li>PASS 그라모의 회상 컷신</li><li>PASS 한 번 더 · 섬세하게</li>
+            </ol>
+          </div>
+          <p class="sp-cap">항목이 줄어든 구간(131 → 116)은 Codex가 줄인 내용을 병합하며 없어진 장면의 항목을 지운 때입니다.</p>
+        </div>
+      </section>
+
+      <!-- ── 05 RESULT ── -->
+      <section class="cs">
+        <h2><em>05</em>Result</h2>
+        <div class="sp-body">
+          <h4 class="sp-sub">플레이 장면</h4>
+          <div class="wt-clips">
+            <figure><video src="assets/work/windup/vid/town.mp4" poster="assets/work/windup/vid/town.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>1막 마을 · 음악이 멈춰 바랜 화면</figcaption></figure>
+            <figure><video src="assets/work/windup/vid/battery.mp4" poster="assets/work/windup/vid/battery.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>3막 건전지 끼우기 모달 · E 길게</figcaption></figure>
+            <figure><video src="assets/work/windup/vid/volt.mp4" poster="assets/work/windup/vid/volt.jpg" muted loop playsinline preload="none" data-auto></video><figcaption>5막 볼트 남작 · 최종 라운드</figcaption></figure>
+          </div>
+          <h4 class="sp-sub">컷신</h4>
+          <p>장면 전환은 모두 1930년대 아이리스(검은 원이 닫혔다 열림)로 넘깁니다. 컷신 위에도 필름 그레인 · 스크래치 · 깜빡임을 코드로 덮었습니다.</p>
+          <div class="wt-gal">
+            <img src="assets/work/windup/img/story_45_shadow_plan.webp" alt="흑막 실루엣: 볼트 남작과 두꺼비" loading="lazy" />
+            <img src="assets/work/windup/img/story_39_radio_collapse.webp" alt="라디오 씨가 쓰러짐" loading="lazy" />
+            <img src="assets/work/windup/img/story_40_key_insert.webp" alt="보글이 라디오 씨 등에 열쇠를 꽂음" loading="lazy" />
+            <img src="assets/work/windup/img/story_61_duet.webp" alt="그라모와 멜로디의 듀엣" loading="lazy" />
+          </div>
+          <dl class="wt-num">
+            <div><dt>막</dt><dd>7</dd></div>
+            <div><dt>보스</dt><dd>4</dd></div>
+            <div><dt>이미지 ID</dt><dd>255</dd></div>
+            <div><dt>소리 (절차 합성)</dt><dd>194</dd></div>
+            <div><dt>자동 점검</dt><dd>180</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ── 06 REVIEW ── -->
+      <section class="cs">
+        <h2><em>06</em>Review</h2>
+        <div class="sp-body">
+          <dl>
+            <dt>배운 점</dt>
+            <dd>AI 여러 개를 동시에 쓸 때 먼저 정해야 하는 건 프롬프트보다 기준 파일과 수정 범위였습니다. 이름 목록 하나를 세 창이 같이 보니 연결 작업이 거의 없었습니다.</dd>
+            <dt>AI 결과를 고른 기준</dt>
+            <dd>제안이 재밌어도 1막 열쇠 찾기와 같은 구조가 반복되면 뺐고, 템포를 위해 이야기가 빠지면 되살렸습니다. 판단 기준은 직접 플레이했을 때 “왜?”가 남는지였습니다.</dd>
+            <dt>다시 만든다면</dt>
+            <dd>이미지 창이 <code>src/</code>를 고친 일이 있었습니다. 처음부터 창마다 브랜치를 나누고, 코드 변경은 diff로만 받도록 하겠습니다.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <nav class="p-nav" aria-label="다른 프로젝트"><a href="smilepizza.html"><small>PREV</small>SMILE PIZZA</a><a href="filtered.html" style="text-align: right"><small>NEXT</small>FILTERED</a></nav>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/work/windup/windup.js"></script>
+  </body>
+</html>

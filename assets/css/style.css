@@ -148,6 +148,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .wcard .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
 .chip { font-family: var(--ui); font-size: 12.5px; border: 1px solid #2e2f36; border-radius: 4px; padding: 3px 10px; color: #c9c9ce; }
 .chip.ai { border-color: rgba(229,35,43,0.5); color: var(--red2); }
+.chip.nonai { border-color: #d8d8dc; background: #f2f2f4; color: #0b0b0d; font-weight: 700; letter-spacing: 0.04em; }
+.p-ai { margin-top: 14px; display: flex; gap: 6px; }
+.row .nm .chip { font-size: 11px; padding: 1px 7px; vertical-align: 2px; }
 .chip.go { width: 30px; text-align: center; padding: 3px 0; }
 @media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } .work-col.r { padding-top: 0; } .wcard { margin-bottom: 72px; } }
 
@@ -231,7 +234,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .p-top h2 { font-family: var(--pj); font-weight: 600; font-size: clamp(44px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.02em; margin-top: 16px; }
 .p-top .ko { color: var(--mut); font-size: 18px; margin-top: 12px; }
 .p-img { margin: 56px 0 0; aspect-ratio: 16 / 8; overflow: hidden; background: #15161a; border-radius: 6px; }
-.p-img img { width: 100%; height: 100%; object-fit: cover; }
+.p-img img, .p-img video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .p-img.none { position: relative; background: radial-gradient(circle at 80% 20%, rgba(229, 35, 43, 0.28), transparent 45%), linear-gradient(160deg, #15161a, #070708);
   display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(24px, 4vw, 56px); border: 1px solid var(--line); }
 .p-img.none span { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 9vw, 150px); line-height: 0.9; text-transform: uppercase; }
@@ -340,7 +343,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .page-single .ab .btn-line:hover { border-color: var(--red); }
 .me-row { display: flex; gap: 32px; align-items: stretch; }
 .me-row ul { flex: 1; min-width: 0; }
-.me-ph { position: relative; flex: none; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; } /* 높이 = 정보 목록 높이, 너비는 비율로 */
+.me-ph { position: relative; flex: none; align-self: flex-start; width: 160px; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; }
 .me-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 @media (max-width: 760px) { .me-row { flex-direction: column-reverse; } .me-ph { width: 160px; } }
 /* 이력 접기 — Education 아래는 그라디언트로 덮고 SHOW MORE */

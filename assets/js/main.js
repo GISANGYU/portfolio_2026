@@ -17,8 +17,13 @@
   }
   function byId(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return P[i]; return null; }
   function year(p) { return String(p.period || "").slice(0, 4); }
+  function aiChip(p) { // AI 협업 / NON-AI 분류
+    if (p.nonAi) return '<span class="chip nonai" title="' + esc(p.nonAi) + '">NON-AI</span>';
+    if (p.ai) return '<span class="chip ai" title="' + esc(p.ai) + '">AI 협업</span>';
+    return "";
+  }
   function chipsOf(p) {
-    return [CATS[p.cat]].concat((p.stack || []).slice(0, 2)).filter(Boolean).map(function (c) { return '<span class="chip">' + esc(c) + "</span>"; }).join("") +
+    return aiChip(p) + [CATS[p.cat]].concat((p.stack || []).slice(0, 2)).filter(Boolean).map(function (c) { return '<span class="chip">' + esc(c) + "</span>"; }).join("") +
       '<span class="chip go" aria-hidden="true">↗</span>';
   }
   function coreCard(p, i) { // 코어 프로젝트 카드 (키 비주얼)
@@ -287,7 +292,7 @@
     var tb = document.querySelector("[data-rows]"), pv = document.querySelector(".preview"), pvi = pv.querySelector("img"), rows = "";
     P.forEach(function (p, i) {
       rows += '<tr class="row" data-cat="' + esc(p.cat) + '" data-href="' + href(p) + '" data-thumb="' + esc(p.thumb || p.kv || "") + '">' +
-        '<td class="no">' + pad(i + 1) + '</td><td class="nm"><a href="' + href(p) + '"><b>' + esc(p.title) + "</b></a><small>" + esc(p.titleKo || p.summary || "") + "</small></td>" +
+        '<td class="no">' + pad(i + 1) + '</td><td class="nm"><a href="' + href(p) + '"><b>' + esc(p.title) + "</b></a> " + aiChip(p) + "<small>" + esc(p.titleKo || p.summary || "") + "</small></td>" +
         '<td class="hide-m">' + esc(CATS[p.cat] || "") + '</td><td class="hide-m">' + esc(year(p)) + '</td><td class="hide-m">' +
         (p.stack || []).map(function (x) { return '<span class="chip">' + esc(x) + "</span>"; }).join(" ") + '</td><td class="go" aria-hidden="true">↗</td></tr>';
     });
@@ -346,13 +351,14 @@
       p.video && '<a href="' + esc(p.video) + '" target="_blank" rel="noopener">영상 ↗</a>'].filter(Boolean);
     var meta = [["Type", CATS[p.cat]], ["Year", p.period], ["Team", p.team], ["Role", p.role]].filter(function (m) { return m[1]; });
     var prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
-    var img = p.thumb ? '<div class="p-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면"></div>'
+    var img = p.loop ? '<div class="p-img"><video src="' + esc(p.loop) + '" poster="' + esc(p.loop.replace(/\.mp4$/, ".jpg")) + '" autoplay muted loop playsinline aria-label="' + esc(p.title) + ' 메인 영상"></video></div>'
+      : p.thumb ? '<div class="p-img"><img src="' + esc(p.thumb) + '" alt="' + esc(p.title) + ' 대표 화면"></div>'
       : '<div class="p-img none"><span>' + esc(p.title) + "</span><small>" + esc(CATS[p.cat] || "") + "</small></div>";
     var n = 0;
     function no() { n++; return pad(n); }
     var secs = [
       ["Overview", [["한 줄 설명", p.summary], ["목표", p.problem], ["핵심 인터랙션", p.interaction]]],
-      ["My Role", [["팀 구성", p.team], ["담당", p.role], ["직접 구현", c.built], ["AI 도구 활용", p.ai]]],
+      ["My Role", [["팀 구성", p.team], ["담당", p.role], ["직접 구현", c.built], ["AI 도구 활용", p.ai], ["직접 작성", p.nonAi]]],
       ["Stack", [["사용 기술", p.stack], ["제작 방식", c.why]]],
       ["Interaction", [["사용자 흐름", c.flow], ["입력 → 반응", c.io], ["구조", c.structure], ["데이터 · 출력", c.data]]],
       ["Process", chRows],
@@ -361,7 +367,7 @@
       var rows = x[1].filter(function (r) { return r.ch || has(r[1]); });
       return rows.length ? sec(no(), x[0], rows) : "";
     }).join("");
-    return '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" +
+    return '<div class="p-top"><p class="eyebrow red"><span class="dot"></span>' + pad(i + 1) + " · " + esc(CATS[p.cat] || "") + "</p><h2>" + esc(p.title) + '</h2><p class="ko">' + esc(p.titleKo || "") + "</p>" + (aiChip(p) ? '<p class="p-ai">' + aiChip(p) + "</p>" : "") +
       (links.length ? '<p class="p-links">' + links.join("") + "</p>" : "") + img + "</div>" +
       '<dl class="p-meta">' + meta.map(function (m) { return "<div><dt>" + m[0] + "</dt><dd>" + esc(m[1]) + "</dd></div>"; }).join("") + "</dl>" + secs +
       (caps.length ? '<section class="cs"><h2><em>' + no() + "</em>Capabilities</h2><div class=\"p-caps\">" + caps.map(function (k) {

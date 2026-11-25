@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FILTERED — 기자 시점</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <!-- Pretendard CDN — 비차단 로드: print → all 트릭으로 렌더 블록 방지 -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+        media="print"
+        onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" /></noscript>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─────────────────────────────────────────────
+       SVG Filter Defs
+  ───────────────────────────────────────────────── -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true">
+    <defs>
+      <!-- 손떨림: 라인이 손으로 그린 듯 흔들림 -->
+      <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="4" />
+        <feDisplacementMap in="SourceGraphic" scale="2.4" />
+      </filter>
+      <filter id="wobble-strong">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" />
+        <feDisplacementMap in="SourceGraphic" scale="3.2" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ─────────────────────────────────────────────
+       TEST · 게이지 추적 패널 — 안정성 검증용 (출시 전 제거)
+       백틱 ` 키로 숨김/표시 토글 가능
+  ───────────────────────────────────────────────── -->
+  <aside class="dev-panel" id="devPanel" hidden>
+    <header class="dev-head">
+      <span class="dev-title">TEST · 게이지 추적</span>
+      <button class="dev-close" data-dev-toggle aria-label="숨기기 (` 으로 다시 켜기)">×</button>
+    </header>
+
+    <div class="dev-row">
+      <span class="dev-key">재력</span>
+      <span class="dev-val" data-dev-balance>1000</span>
+      <span class="dev-bar"><span data-dev-balance-fill style="width:100%"></span></span>
+      <span class="dev-tier" data-dev-balance-tier>high</span>
+    </div>
+    <div class="dev-row">
+      <span class="dev-key">양심</span>
+      <span class="dev-val" data-dev-conscience>100</span>
+      <span class="dev-bar"><span data-dev-conscience-fill style="width:100%"></span></span>
+      <span class="dev-tier" data-dev-conscience-tier>high</span>
+    </div>
+    <div class="dev-row">
+      <span class="dev-key">신뢰도</span>
+      <span class="dev-val" data-dev-credibility>50</span>
+      <span class="dev-bar"><span data-dev-credibility-fill style="width:50%"></span></span>
+      <span class="dev-tier" data-dev-credibility-tier>normal</span>
+    </div>
+
+    <div class="dev-misc" data-dev-misc>—</div>
+
+    <footer class="dev-foot">
+      <span>` 토글 · ↑↓ 게이지 ±10 · 1~5 프리셋</span>
+    </footer>
+  </aside>
+
+  <main class="scene" data-conscience="stable" data-balance="high" data-credibility="normal">
+
+    <!-- ─────────────────────────────────────────────
+         상단 헤더 — DAY · 5 슬롯 · TIME
+    ───────────────────────────────────────────────── -->
+    <header class="hud">
+      <div class="hud-left">
+        <span class="hud-key">DAY</span>
+        <span class="hud-val" data-hud-day>월 · WEEK 01 · 01</span>
+      </div>
+
+      <div class="hud-slots" aria-label="오늘 남은 행동 5칸">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <div class="hud-right">
+        <span class="hud-key">TIME</span>
+        <span class="hud-val" data-hud-time>09:42</span>
+      </div>
+    </header>
+
+    <!-- ─────────────────────────────────────────────
+         책상 — 탑다운 시점
+    ───────────────────────────────────────────────── -->
+    <div class="desk">
+
+      <!-- 책상 가장자리 (얇은 사각 테두리) -->
+      <svg class="desk-edge" viewBox="0 0 1600 900" preserveAspectRatio="none">
+        <rect x="20" y="20" width="1560" height="860"
+              fill="none" stroke="#0e0e0e" stroke-width="2"
+              filter="url(#wobble)" />
+      </svg>
+
+      <!-- 책상 위 종이 더미 (배경 종이 깔개) -->
+      <svg class="desk-paper" viewBox="0 0 800 500" preserveAspectRatio="none">
+        <g filter="url(#wobble)">
+          <rect x="40" y="60" width="720" height="380"
+                fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.5"
+                transform="rotate(-1 400 250)" />
+        </g>
+      </svg>
+
+      <!-- ── 모니터 (책상 상단 가운데) ── -->
+      <button class="hot monitor" data-hotspot="computer" aria-label="컴퓨터">
+        <svg viewBox="0 0 360 240" class="art">
+          <g filter="url(#wobble)">
+            <!-- 베젤 -->
+            <rect x="6" y="6" width="348" height="228"
+                  fill="#0e0e0e" stroke="#0e0e0e" stroke-width="3" />
+            <!-- 화면 -->
+            <rect x="20" y="20" width="320" height="200"
+                  fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.2" />
+            <!-- 작성 중 텍스트 라인 -->
+            <line x1="36" y1="44"  x2="180" y2="44"  stroke="#0e0e0e" stroke-width="2.5" />
+            <line x1="36" y1="60"  x2="280" y2="60"  stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="36" y1="74"  x2="240" y2="74"  stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="36" y1="88"  x2="300" y2="88"  stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="36" y1="102" x2="200" y2="102" stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="36" y1="116" x2="270" y2="116" stroke="#0e0e0e" stroke-width="1.5" />
+            <!-- 사진 영역 (해칭) -->
+            <rect x="36" y="136" width="120" height="70"
+                  fill="none" stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="36" y1="136" x2="156" y2="206" stroke="#0e0e0e" stroke-width="0.8" />
+            <line x1="156" y1="136" x2="36" y2="206" stroke="#0e0e0e" stroke-width="0.8" />
+            <!-- 표 / 메타 -->
+            <line x1="180" y1="140" x2="300" y2="140" stroke="#0e0e0e" stroke-width="1.2" />
+            <line x1="180" y1="156" x2="280" y2="156" stroke="#0e0e0e" stroke-width="1.2" />
+            <line x1="180" y1="172" x2="290" y2="172" stroke="#0e0e0e" stroke-width="1.2" />
+            <line x1="180" y1="188" x2="260" y2="188" stroke="#0e0e0e" stroke-width="1.2" />
+            <!-- 커서 -->
+            <rect x="38" y="216" width="10" height="3" fill="#0e0e0e">
+              <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+        </svg>
+        <span class="tip">기사 작성 — 컴퓨터</span>
+      </button>
+
+      <!-- ── 전화기 (좌측) ── -->
+      <button class="hot phone alert" data-hotspot="phone" aria-label="전화기">
+        <svg viewBox="0 0 200 140" class="art">
+          <g filter="url(#wobble)">
+            <!-- 본체 -->
+            <rect x="10" y="40" width="180" height="90"
+                  fill="#f4ecd8" stroke="#0e0e0e" stroke-width="2.5" rx="2" />
+            <!-- 키패드 -->
+            <g fill="#0e0e0e">
+              <circle cx="40"  cy="62" r="4" />
+              <circle cx="68"  cy="62" r="4" />
+              <circle cx="96"  cy="62" r="4" />
+              <circle cx="40"  cy="84" r="4" />
+              <circle cx="68"  cy="84" r="4" />
+              <circle cx="96"  cy="84" r="4" />
+              <circle cx="40" cy="106" r="4" />
+              <circle cx="68" cy="106" r="4" />
+              <circle cx="96" cy="106" r="4" />
+            </g>
+            <!-- 디스플레이 -->
+            <rect x="124" y="56" width="60" height="32"
+                  fill="#0e0e0e" stroke="#0e0e0e" stroke-width="1.2" />
+            <line x1="130" y1="68"  x2="170" y2="68"  stroke="#f4ecd8" stroke-width="1.2" />
+            <line x1="130" y1="78"  x2="160" y2="78"  stroke="#f4ecd8" stroke-width="1.2" />
+            <!-- 코드 -->
+            <path d="M 184 96 Q 196 100 188 110 Q 180 116 192 124"
+                  fill="none" stroke="#0e0e0e" stroke-width="2" />
+          </g>
+          <!-- 수화기 (위) -->
+          <g class="handset" filter="url(#wobble)">
+            <rect x="30" y="6" width="150" height="28" rx="14"
+                  fill="#f4ecd8" stroke="#0e0e0e" stroke-width="2.5" />
+            <circle cx="50"  cy="20" r="6" fill="#0e0e0e" />
+            <circle cx="160" cy="20" r="6" fill="#0e0e0e" />
+            <line x1="60" y1="20" x2="150" y2="20" stroke="#0e0e0e" stroke-width="1" stroke-dasharray="2 3" />
+          </g>
+        </svg>
+        <!-- 알림 배지 (3건) -->
+        <span class="badge">3</span>
+        <span class="tip">정보 카드 3건 도착</span>
+      </button>
+
+      <!-- ── 서류 더미 (좌하) ── -->
+      <button class="hot papers" data-hotspot="papers" aria-label="서류">
+        <svg viewBox="0 0 240 180" class="art">
+          <g filter="url(#wobble)">
+            <!-- 종이 3 (제일 밑) -->
+            <g transform="rotate(-5 120 90)">
+              <rect x="20" y="20" width="200" height="140"
+                    fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.5" />
+              <line x1="34" y1="40" x2="200" y2="40" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="34" y1="56" x2="180" y2="56" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="34" y1="72" x2="190" y2="72" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="34" y1="88" x2="160" y2="88" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="34" y1="104" x2="200" y2="104" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="34" y1="120" x2="170" y2="120" stroke="#0e0e0e" stroke-width="1" />
+            </g>
+            <!-- 종이 2 -->
+            <g transform="rotate(3 120 90)">
+              <rect x="14" y="14" width="200" height="140"
+                    fill="#f8f3e3" stroke="#0e0e0e" stroke-width="1.5" />
+              <line x1="28" y1="36" x2="170" y2="36" stroke="#0e0e0e" stroke-width="2" />
+              <line x1="28" y1="50" x2="190" y2="50" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="28" y1="64" x2="160" y2="64" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="28" y1="78" x2="180" y2="78" stroke="#0e0e0e" stroke-width="1" />
+              <!-- 도장 자국 -->
+              <circle cx="160" cy="120" r="22" fill="none" stroke="#0e0e0e" stroke-width="2" />
+              <text x="160" y="125" text-anchor="middle" font-size="10" font-weight="700"
+                    font-family="Pretendard" fill="#0e0e0e">검토</text>
+            </g>
+            <!-- 종이 1 (제일 위) -->
+            <g transform="rotate(-1 120 90)">
+              <rect x="22" y="8" width="200" height="140"
+                    fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.5" />
+              <text x="32" y="32" font-family="Pretendard" font-size="14" font-weight="700"
+                    fill="#0e0e0e">기사 ARCHIVE</text>
+              <line x1="32" y1="46" x2="190" y2="46" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="32" y1="60" x2="170" y2="60" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="32" y1="74" x2="184" y2="74" stroke="#0e0e0e" stroke-width="1" />
+              <line x1="32" y1="88" x2="160" y2="88" stroke="#0e0e0e" stroke-width="1" />
+            </g>
+            <!-- 종이클립 -->
+            <path d="M 220 14 Q 232 14 232 26 L 232 50 Q 232 60 222 60 L 218 60"
+                  fill="none" stroke="#0e0e0e" stroke-width="2" />
+          </g>
+        </svg>
+        <span class="tip">과거 기사 ARCHIVE</span>
+      </button>
+
+      <!-- ── 다이어리 (우측) ── -->
+      <button class="hot diary" data-hotspot="diary" aria-label="다이어리">
+        <svg viewBox="0 0 200 140" class="art">
+          <g filter="url(#wobble)">
+            <!-- 표지 -->
+            <rect x="10" y="10" width="180" height="120"
+                  fill="#0e0e0e" stroke="#0e0e0e" stroke-width="2" />
+            <!-- 띠 -->
+            <rect x="10" y="60" width="180" height="20"
+                  fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.5" />
+            <text x="100" y="74" text-anchor="middle"
+                  font-family="Pretendard" font-size="12" font-weight="700"
+                  letter-spacing="3" fill="#0e0e0e">JOURNAL · 2026</text>
+            <!-- 책장 단면 -->
+            <line x1="10" y1="14" x2="190" y2="14" stroke="#f4ecd8" stroke-width="1" stroke-dasharray="2 2" />
+            <line x1="10" y1="126" x2="190" y2="126" stroke="#f4ecd8" stroke-width="1" stroke-dasharray="2 2" />
+          </g>
+        </svg>
+        <span class="tip">취재 다이어리</span>
+      </button>
+
+      <!-- ── 가족사진 (좌상) ── -->
+      <button class="hot family" data-hotspot="family-photo"
+              data-conscience="upright" aria-label="가족사진">
+        <svg viewBox="0 0 160 120" class="art frame-art">
+          <g filter="url(#wobble)">
+            <!-- 액자 -->
+            <rect x="6" y="6" width="148" height="108"
+                  fill="#0e0e0e" stroke="#0e0e0e" stroke-width="2" />
+            <rect x="14" y="14" width="132" height="92"
+                  fill="#f8f3e3" stroke="#0e0e0e" stroke-width="1" />
+            <!-- 풍경 — 멀리 산 (해칭) -->
+            <line x1="16" y1="64" x2="76" y2="36" stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="76" y1="36" x2="120" y2="56" stroke="#0e0e0e" stroke-width="1.5" />
+            <line x1="120" y1="56" x2="144" y2="44" stroke="#0e0e0e" stroke-width="1.5" />
+            <!-- 산 해칭 -->
+            <g stroke="#0e0e0e" stroke-width="0.6">
+              <line x1="40" y1="50" x2="48" y2="60" />
+              <line x1="55" y1="42" x2="63" y2="58" />
+              <line x1="70" y1="40" x2="78" y2="56" />
+              <line x1="90" y1="42" x2="98" y2="58" />
+              <line x1="105" y1="48" x2="113" y2="60" />
+            </g>
+            <!-- 인물 실루엣 (정면) -->
+            <g fill="#0e0e0e">
+              <!-- 아빠 -->
+              <circle cx="58" cy="78" r="8" />
+              <rect x="50" y="86" width="16" height="22" />
+              <!-- 엄마 -->
+              <circle cx="80" cy="80" r="7" />
+              <rect x="73" y="87" width="14" height="20" />
+              <!-- 딸 -->
+              <circle cx="100" cy="86" r="5" />
+              <rect x="95" y="91" width="10" height="14" />
+            </g>
+            <!-- 손글씨 캡션 -->
+            <text x="80" y="100" text-anchor="middle" font-family="cursive"
+                  font-size="9" fill="#0e0e0e" opacity="0.5">2024 · 봄</text>
+          </g>
+        </svg>
+        <!-- 책 가림 오버레이 (양심 단계별) -->
+        <div class="cover cover-book"></div>
+        <span class="tip">가족사진</span>
+      </button>
+
+      <!-- ── 머그컵 (우상) ── -->
+      <button class="hot mug" data-hotspot="mug" aria-label="머그">
+        <svg viewBox="0 0 100 100" class="art">
+          <g filter="url(#wobble)">
+            <!-- 받침 (얇은 원) -->
+            <circle cx="50" cy="50" r="44" fill="none"
+                    stroke="#0e0e0e" stroke-width="1" stroke-dasharray="3 3" opacity="0.5" />
+            <!-- 컵 외곽 -->
+            <circle cx="50" cy="50" r="32"
+                    fill="#f4ecd8" stroke="#0e0e0e" stroke-width="2.5" />
+            <!-- 커피 면 -->
+            <circle cx="50" cy="50" r="26" fill="#0e0e0e" />
+            <!-- 거품 작은 원 -->
+            <circle cx="44" cy="46" r="2" fill="#f4ecd8" opacity="0.8" />
+            <circle cx="54" cy="52" r="1.5" fill="#f4ecd8" opacity="0.6" />
+            <!-- 손잡이 (옆) -->
+            <path d="M 80 50 Q 96 50 92 62 Q 88 70 80 64"
+                  fill="none" stroke="#0e0e0e" stroke-width="2.5" />
+          </g>
+          <!-- 김 -->
+          <g class="steam" stroke="#0e0e0e" stroke-width="1.2" fill="none" opacity="0.5">
+            <path d="M 42 30 Q 38 22 44 14 Q 50 6 46 -2" />
+            <path d="M 50 28 Q 54 18 48 10 Q 42 2 50 -4" />
+            <path d="M 58 30 Q 62 22 56 14 Q 50 6 58 -2" />
+          </g>
+        </svg>
+        <span class="tip">커피</span>
+      </button>
+
+      <!-- ── 메모지 / 포스트잇 (우하) ── -->
+      <button class="hot memo" data-hotspot="memo" aria-label="메모">
+        <svg viewBox="0 0 140 140" class="art">
+          <g filter="url(#wobble)">
+            <g transform="rotate(-6 70 70)">
+              <rect x="14" y="14" width="112" height="112"
+                    fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1.5" />
+              <!-- 손글씨 — 라인 모방 -->
+              <path d="M 26 38 Q 36 32 46 38 T 66 38" fill="none" stroke="#0e0e0e" stroke-width="1.2" />
+              <path d="M 26 56 Q 38 50 50 56 T 80 56 T 100 56" fill="none" stroke="#0e0e0e" stroke-width="1.2" />
+              <path d="M 26 74 Q 36 68 46 74" fill="none" stroke="#0e0e0e" stroke-width="1.2" />
+              <path d="M 26 92 Q 40 86 54 92 T 80 92" fill="none" stroke="#0e0e0e" stroke-width="1.2" />
+              <!-- 끝 동그라미 (강조) -->
+              <circle cx="92" cy="74" r="14" fill="none" stroke="#0e0e0e" stroke-width="2" />
+              <line x1="86" y1="68" x2="98" y2="80" stroke="#0e0e0e" stroke-width="2" />
+            </g>
+          </g>
+        </svg>
+        <span class="tip">메모</span>
+      </button>
+
+      <!-- ── 펜 (장식, 클릭 안 됨) ── -->
+      <div class="prop pen" aria-hidden="true">
+        <svg viewBox="0 0 200 26">
+          <g filter="url(#wobble)">
+            <line x1="6" y1="13" x2="180" y2="13" stroke="#0e0e0e" stroke-width="6" stroke-linecap="round" />
+            <polygon points="180,4 198,13 180,22" fill="#0e0e0e" stroke="#0e0e0e" stroke-width="1" />
+            <line x1="20" y1="13" x2="160" y2="13" stroke="#f4ecd8" stroke-width="1" opacity="0.4" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- ── 잉크 얼룩 (장식) ── -->
+      <div class="prop ink-stain" aria-hidden="true">
+        <svg viewBox="0 0 60 60">
+          <g filter="url(#wobble-strong)">
+            <ellipse cx="30" cy="30" rx="22" ry="18" fill="#0e0e0e" opacity="0.85" />
+            <circle cx="48" cy="20" r="3" fill="#0e0e0e" opacity="0.7" />
+            <circle cx="12" cy="44" r="2" fill="#0e0e0e" opacity="0.6" />
+          </g>
+        </svg>
+      </div>
+
+    </div>
+
+    <!-- ─────────────────────────────────────────────
+         우측 하단 — 모바일
+    ───────────────────────────────────────────────── -->
+    <button class="mobile alert" aria-label="핸드폰 열기">
+      <svg viewBox="0 0 80 130" class="art">
+        <g filter="url(#wobble)">
+          <!-- 외곽 -->
+          <rect x="4" y="4" width="72" height="122" rx="10"
+                fill="#0e0e0e" stroke="#0e0e0e" stroke-width="2.5" />
+          <!-- 화면 -->
+          <rect x="10" y="14" width="60" height="100" rx="2"
+                fill="#f4ecd8" stroke="#0e0e0e" stroke-width="1" />
+          <!-- 노치 -->
+          <rect x="32" y="4" width="16" height="6" rx="3" fill="#0e0e0e" />
+          <!-- 시간 -->
+          <text x="40" y="26" text-anchor="middle"
+                font-family="Pretendard" font-size="7" font-weight="700"
+                fill="#0e0e0e">9:42</text>
+          <!-- 앱 그리드 -->
+          <g fill="none" stroke="#0e0e0e" stroke-width="1.2">
+            <rect x="16" y="34" width="12" height="12" />
+            <rect x="34" y="34" width="12" height="12" />
+            <rect x="52" y="34" width="12" height="12" />
+            <rect x="16" y="52" width="12" height="12" />
+            <rect x="34" y="52" width="12" height="12" />
+            <rect x="52" y="52" width="12" height="12" />
+            <rect x="16" y="70" width="12" height="12" />
+            <rect x="34" y="70" width="12" height="12" />
+            <rect x="52" y="70" width="12" height="12" />
+          </g>
+          <!-- 알림 점 한 앱에 -->
+          <circle cx="44" cy="34" r="3" fill="#0e0e0e" />
+          <!-- 홈 인디케이터 -->
+          <line x1="28" y1="120" x2="52" y2="120" stroke="#0e0e0e" stroke-width="2" stroke-linecap="round" />
+        </g>
+      </svg>
+      <span class="m-badge">5</span>
+    </button>
+
+    <!-- ─────────────────────────────────────────────
+         좌측 하단 — 라벨
+    ───────────────────────────────────────────────── -->
+    <aside class="signoff">
+      <div class="signoff-line">FILTERED · ep.01</div>
+      <div class="signoff-sub" data-signoff-sub>DESK · 화요일 09:42</div>
+    </aside>
+
+    <!-- 우측 하단 — 하루 마치기 버튼 (모바일 위) -->
+    <button class="end-day-btn" data-end-day aria-label="하루 마치기">
+      <span class="edb-key">END</span>
+      <span class="edb-label">DAY</span>
+    </button>
+
+  </main>
+
+  <!-- ─────────────────────────────────────────────
+       정보 카드 풀스크린 모달
+  ───────────────────────────────────────────────── -->
+  <div class="overlay" id="cardOverlay" hidden>
+    <div class="overlay-paper">
+
+      <header class="overlay-head">
+        <div class="overlay-title">
+          <span class="overlay-key">INCOMING</span>
+          <span class="overlay-h">오늘의 정보 — 화 · 09:42</span>
+        </div>
+        <div class="overlay-head-actions">
+          <button class="recase-btn" data-recase hidden aria-label="이번 주 사건 변경">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <g filter="url(#wobble)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12 A9 9 0 0 1 21 12"/>
+                <polyline points="21,4 21,12 13,12"/>
+              </g>
+            </svg>
+            <span>다시 고르기</span>
+          </button>
+          <button class="overlay-close" data-close-overlay aria-label="닫기">
+            <svg viewBox="0 0 32 32">
+              <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" stroke-linecap="round" fill="none">
+                <line x1="8" y1="8" x2="24" y2="24" />
+                <line x1="24" y1="8" x2="8" y2="24" />
+              </g>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- 카드 3장 (JS 동적 생성) — 토큰 한도 내 여러 건 동시 수락 가능 -->
+      <div class="card-row" data-card-host></div>
+
+    </div>
+  </div>
+
+
+  <!-- ─────────────────────────────────────────────
+       게시판 — 월요일 편집 회의 / 사건 선택
+  ───────────────────────────────────────────────── -->
+  <div class="overlay bulletin-overlay" id="bulletinOverlay" hidden>
+    <div class="bulletin-shell">
+      <header class="bulletin-head">
+        <span class="bulletin-key" data-bulletin-key>EDITORIAL · WEEK 01</span>
+        <h2 class="bulletin-title">이번 주, 어떤 사건을 다룰 것인가</h2>
+        <p class="bulletin-sub">하나만 고를 수 있다. 나머진 다른 매체의 몫이다.</p>
+      </header>
+
+      <div class="bulletin-grid" data-bulletin-grid></div>
+
+      <footer class="bulletin-foot">
+        <span class="foot-key">RULE</span>
+        <span class="foot-val">한 번 고르면 이번 주는 그 사건만 추적할 수 있다 (월~목 자료수집 → 금 마감)</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       금요일 편집 데스크 — 주간 자료 정리 + 방향 결정
+  ───────────────────────────────────────────────── -->
+  <div class="overlay friday-overlay" id="fridayBriefingOverlay" hidden>
+    <div class="briefing-shell">
+      <header class="briefing-head">
+        <span class="briefing-key" data-briefing-key>FRIDAY · 편집 데스크</span>
+        <h2 class="briefing-title">이번 주 마감 회의</h2>
+        <p class="briefing-sub" data-briefing-sub>출근 5일차 · WEEK 01</p>
+      </header>
+
+      <section class="briefing-case">
+        <span class="bc-label">이번 주 보도</span>
+        <h3 class="bc-title" data-briefing-case-title>—</h3>
+        <div class="bc-meta">
+          <span class="bc-tag" data-briefing-category>—</span>
+          <span class="bc-tag" data-briefing-views>—</span>
+        </div>
+      </section>
+
+      <section class="briefing-stats">
+        <span class="bs-label">수집 자료</span>
+        <div class="bs-row">
+          <span class="bs-key">단서 총량</span>
+          <span class="bs-val" data-briefing-clue-count>0</span>
+        </div>
+        <div class="bs-row">
+          <span class="bs-key">출처 다양성</span>
+          <span class="bs-val" data-briefing-source-count>0종</span>
+        </div>
+        <div class="bs-types" data-briefing-types></div>
+      </section>
+
+      <section class="briefing-comment">
+        <span class="bcm-label">데스크 코멘트</span>
+        <p class="bcm-body" data-briefing-comment>—</p>
+      </section>
+
+      <footer class="briefing-actions">
+        <button class="briefing-skip" data-briefing-skip>
+          <span class="ba-key">휴재</span>
+          <span class="ba-sub">이번 주 미발행 — 신뢰 -2</span>
+        </button>
+        <button class="briefing-write" data-briefing-write>
+          <span class="ba-key">기사 작성으로</span>
+          <span class="ba-sub">컴퓨터 앞에 앉는다</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       조사 방법 상세 — 카드 클릭 시 200자 서론 + 결정
+  ───────────────────────────────────────────────── -->
+  <div class="overlay investigation-overlay" id="investigationDetailOverlay" hidden>
+    <div class="invest-shell">
+      <header class="invest-head">
+        <div class="invest-head-left">
+          <span class="invest-method-key" data-invest-method-key>METHOD</span>
+          <h3 class="invest-method-label" data-invest-method-label>잠복근무</h3>
+        </div>
+        <span class="invest-cost" data-invest-cost>5 코스트</span>
+      </header>
+
+      <p class="invest-prose" data-invest-prose>—</p>
+
+      <div class="invest-meta">
+        <div class="invest-row">
+          <span class="invest-row-key">예상 조회수</span>
+          <span class="invest-row-val" data-invest-views>—</span>
+        </div>
+        <div class="invest-row">
+          <span class="invest-row-key">정보 출처</span>
+          <span class="invest-row-val" data-invest-certainty>—</span>
+        </div>
+        <div class="invest-row invest-dist-row">
+          <span class="invest-row-key">결과 분포</span>
+          <div class="invest-dist" data-invest-dist></div>
+        </div>
+      </div>
+
+      <div class="invest-actions">
+        <button class="invest-back" data-close-overlay>되돌아가기</button>
+        <button class="invest-go" data-invest-confirm>
+          <span>조사 시작</span>
+          <svg viewBox="0 0 24 12"><g filter="url(#wobble)" stroke="currentColor" stroke-width="2" fill="none"><line x1="2" y1="6" x2="22" y2="6"/><polyline points="16,2 22,6 16,10"/></g></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       날짜 전환 암전 — N일차 · 요일 표시
+  ───────────────────────────────────────────────── -->
+  <div class="daybreak-overlay" id="daybreakOverlay" hidden>
+    <div class="daybreak-shell">
+      <div class="db-num" data-db-num>2일차</div>
+      <div class="db-label" data-db-label>화요일 · 09:42</div>
+      <div class="db-week" data-db-week>WEEK 01</div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       엔딩 시스템 — 3-phase 통합 모달
+       phase: event (분기 선택) / finale (엔딩 텍스트) / epilogue (피해자 실태)
+  ───────────────────────────────────────────────── -->
+  <div class="overlay ending-overlay" id="endingOverlay" hidden>
+    <div class="ending-shell" data-phase="event">
+      <header class="ending-head">
+        <span class="ending-key" data-ending-key>—</span>
+        <span class="ending-progress" data-ending-progress></span>
+      </header>
+
+      <div class="ending-body" data-ending-body>—</div>
+
+      <div class="ending-actions" data-ending-actions></div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       주말 컷씬 모달 — 양심 × 재력 4분면
+  ───────────────────────────────────────────────── -->
+  <div class="overlay weekend-overlay" id="weekendOverlay" hidden>
+    <div class="weekend-shell" data-quad="hh">
+      <header class="we-head">
+        <span class="we-key">WEEKEND</span>
+        <span class="we-day" data-we-day>토 · WEEK 02</span>
+      </header>
+
+      <figure class="we-stage" data-we-stage>
+        <!-- SVG 일러스트가 JS로 렌더링됨 -->
+      </figure>
+
+      <p class="we-caption" data-we-caption>—</p>
+
+      <div class="we-footer">
+        <span class="we-tag" data-we-tag>—</span>
+        <div class="we-progress" data-we-progress>
+          <span class="we-progress-label">월요일 아침으로 자동 이동…</span>
+          <span class="we-progress-bar"><span class="we-progress-fill" data-we-progress-fill></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       기사 작성 모달 — 금요일 마감
+  ───────────────────────────────────────────────── -->
+  <div class="overlay article-overlay" id="articleOverlay" hidden>
+    <div class="article-shell">
+
+      <header class="article-head">
+        <div class="ah-meta">
+          <span class="ah-key">FRIDAY · DEADLINE</span>
+          <h2 class="ah-title">기사 작성</h2>
+          <span class="ah-sub" data-article-day>금 · WEEK 01 · 05</span>
+        </div>
+        <button class="overlay-close" data-close-overlay aria-label="닫기">
+          <svg viewBox="0 0 32 32">
+            <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" stroke-linecap="round" fill="none">
+              <line x1="8" y1="8" x2="24" y2="24" />
+              <line x1="24" y1="8" x2="8" y2="24" />
+            </g>
+          </svg>
+        </button>
+      </header>
+
+      <div class="article-body">
+
+        <!-- ── 좌측: 단서 인벤토리 ── -->
+        <aside class="article-clues">
+          <div class="ac-section">
+            <div class="ac-section-key">CLUES · 이번 주 수집</div>
+            <div class="ac-list" data-article-clues>
+              <p class="ac-empty">단서가 없습니다.</p>
+            </div>
+          </div>
+
+          <div class="ac-section">
+            <div class="ac-section-key">PHOTOS · 수집된 사진</div>
+            <div class="ac-photos" data-article-photos>
+              <p class="ac-empty">아직 수집한 사진이 없습니다.</p>
+            </div>
+          </div>
+
+          <div class="ac-section ac-special" data-glitch-section hidden>
+            <div class="ac-section-key">⚡ 지지직 단서 — 알 수 없는 카드</div>
+            <p class="ac-special-note">날조일 수도, 진실일 수도 있다. 발행 후에 알 수 있다.</p>
+            <div class="ac-list" data-article-glitch></div>
+          </div>
+        </aside>
+
+        <!-- ── 중앙: 기사 폼 ── -->
+        <main class="article-form">
+
+          <div class="af-eventpick">
+            <span class="af-eventpick-key">대상 사건</span>
+            <select class="af-event-select" data-event-select aria-label="기사 대상 사건"></select>
+          </div>
+
+          <!-- 헤드라인 슬롯 -->
+          <div class="af-slot" data-slot-type="headline" data-axis="headline">
+            <div class="afs-head">
+              <span class="afs-key">HEADLINE</span>
+              <span class="afs-stage" data-stage-label>사실</span>
+            </div>
+            <div class="afs-drop" data-slot-drop>
+              <span class="afs-placeholder">단서를 끌어다 놓으세요</span>
+            </div>
+            <div class="afs-dial" data-slot-dial role="radiogroup" aria-label="헤드라인 자극성">
+              <button class="active" data-dial-step="1">사실</button>
+              <button data-dial-step="2">강조</button>
+              <button data-dial-step="3">과장</button>
+              <button data-dial-step="4">날조</button>
+            </div>
+          </div>
+
+          <!-- 본문 슬롯 1-3 -->
+          <div class="af-slot" data-slot-type="body" data-slot-index="1" data-axis="body">
+            <div class="afs-head">
+              <span class="afs-key">BODY · 1</span>
+              <span class="afs-stage" data-stage-label>사실</span>
+            </div>
+            <div class="afs-drop" data-slot-drop>
+              <span class="afs-placeholder">— 빈칸을 채워야 발행할 수 있다 —</span>
+            </div>
+            <div class="afs-dial" data-slot-dial role="radiogroup">
+              <button class="active" data-dial-step="1">사실</button>
+              <button data-dial-step="2">편집</button>
+              <button data-dial-step="3">왜곡</button>
+              <button data-dial-step="4">창작</button>
+            </div>
+          </div>
+
+          <div class="af-slot" data-slot-type="body" data-slot-index="2" data-axis="body">
+            <div class="afs-head">
+              <span class="afs-key">BODY · 2</span>
+              <span class="afs-stage" data-stage-label>사실</span>
+            </div>
+            <div class="afs-drop" data-slot-drop>
+              <span class="afs-placeholder">— 빈칸을 채워야 발행할 수 있다 —</span>
+            </div>
+            <div class="afs-dial" data-slot-dial role="radiogroup">
+              <button class="active" data-dial-step="1">사실</button>
+              <button data-dial-step="2">편집</button>
+              <button data-dial-step="3">왜곡</button>
+              <button data-dial-step="4">창작</button>
+            </div>
+          </div>
+
+          <div class="af-slot" data-slot-type="body" data-slot-index="3" data-axis="body">
+            <div class="afs-head">
+              <span class="afs-key">BODY · 3</span>
+              <span class="afs-stage" data-stage-label>사실</span>
+            </div>
+            <div class="afs-drop" data-slot-drop>
+              <span class="afs-placeholder">— 빈칸을 채워야 발행할 수 있다 —</span>
+            </div>
+            <div class="afs-dial" data-slot-dial role="radiogroup">
+              <button class="active" data-dial-step="1">사실</button>
+              <button data-dial-step="2">편집</button>
+              <button data-dial-step="3">왜곡</button>
+              <button data-dial-step="4">창작</button>
+            </div>
+          </div>
+
+          <!-- 사진 슬롯 -->
+          <div class="af-slot af-slot-photo" data-slot-type="photo" data-axis="photo">
+            <div class="afs-head">
+              <span class="afs-key">PHOTO</span>
+              <span class="afs-stage" data-stage-label>원본</span>
+            </div>
+            <div class="afs-drop" data-slot-drop>
+              <span class="afs-placeholder">사진 단서를 끌어다 놓으세요 (선택)</span>
+            </div>
+            <div class="afs-dial" data-slot-dial role="radiogroup">
+              <button class="active" data-dial-step="1">원본</button>
+              <button data-dial-step="2">크롭</button>
+              <button data-dial-step="3">포토샵</button>
+              <button data-dial-step="4">도용</button>
+            </div>
+          </div>
+        </main>
+
+        <!-- ── 우측: 미리보기 + 발행 ── -->
+        <aside class="article-preview">
+          <div class="ap-section-key">PREVIEW · 발행 결과</div>
+
+          <ul class="ap-stats">
+            <li class="ap-stat">
+              <span class="ap-stat-key">예상 조회수</span>
+              <span class="ap-stat-val" data-preview-views>—</span>
+            </li>
+            <li class="ap-stat">
+              <span class="ap-stat-key">신뢰도 변동</span>
+              <span class="ap-stat-val" data-preview-trust>—</span>
+            </li>
+            <li class="ap-stat ap-stat-warn">
+              <span class="ap-stat-key">발각 확률</span>
+              <span class="ap-stat-val" data-preview-exposure>—</span>
+            </li>
+            <li class="ap-stat">
+              <span class="ap-stat-key">양심 변동</span>
+              <span class="ap-stat-val" data-preview-conscience>—</span>
+            </li>
+          </ul>
+
+          <div class="ap-status" data-preview-status>
+            슬롯을 채우면 결과가 계산됩니다.
+          </div>
+
+          <button class="ap-publish" data-publish>
+            <strong>발행</strong>
+            <svg viewBox="0 0 24 12"><g filter="url(#wobble)" stroke="#f4ecd8" stroke-width="2" fill="none"><line x1="2" y1="6" x2="22" y2="6"/><polyline points="16,2 22,6 16,10"/></g></svg>
+          </button>
+
+          <div class="ap-alts">
+            <button class="ap-alt" data-publish-short>짧은 기사로 발행</button>
+            <button class="ap-alt" data-publish-skip>휴재 (이번 주 미발행)</button>
+          </div>
+
+          <p class="ap-note">
+            발각은 *조작 슬롯이 1개 이상*일 때만 굴림됨. 결과는 다음 주 화요일이 가장 위험.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       추적 결과 컷씬 모달 — 다음날 아침 도착
+  ───────────────────────────────────────────────── -->
+  <div class="overlay result-overlay" id="resultOverlay" hidden>
+    <div class="result-paper">
+      <header class="result-head">
+        <span class="result-key" data-result-key>RESULT · 화 09:42</span>
+        <span class="result-tag" data-result-tag>허탕</span>
+      </header>
+      <h2 class="result-title" data-result-title>차은우 · 카리나 연애설</h2>
+      <p class="result-body" data-result-body>—</p>
+      <figure class="result-photo" data-result-photo hidden>
+        <div class="rp-frame">
+          <img class="rp-img" data-result-photo-img src="" alt="수집된 사진 자료" />
+          <div class="rp-fallback" data-result-photo-fallback hidden>사진 자료 미생성</div>
+        </div>
+        <figcaption class="rp-caption" data-result-photo-caption>—</figcaption>
+      </figure>
+      <div class="result-clues" data-result-clues></div>
+      <button class="result-cta" data-result-next>
+        <span data-result-cta-label>오늘을 시작한다</span>
+        <svg viewBox="0 0 24 12"><g filter="url(#wobble)" stroke="#f4ecd8" stroke-width="2" fill="none"><line x1="2" y1="6" x2="22" y2="6"/><polyline points="16,2 22,6 16,10"/></g></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       다이어리 모달 — 단서 인벤토리
+  ───────────────────────────────────────────────── -->
+  <div class="overlay diary-overlay" id="diaryOverlay" hidden>
+    <div class="overlay-paper diary-paper">
+      <header class="overlay-head">
+        <div class="overlay-title">
+          <span class="overlay-key">JOURNAL</span>
+          <span class="overlay-h">취재 다이어리 — 누적 단서</span>
+        </div>
+        <button class="overlay-close" data-close-overlay aria-label="닫기">
+          <svg viewBox="0 0 32 32">
+            <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" stroke-linecap="round" fill="none">
+              <line x1="8" y1="8" x2="24" y2="24" />
+              <line x1="24" y1="8" x2="8" y2="24" />
+            </g>
+          </svg>
+        </button>
+      </header>
+
+      <p class="overlay-lead">
+        이번 주 모은 단서들이다. <em>금요일 마감에 사용된다.</em>
+      </p>
+
+      <div class="diary-summary" data-diary-summary>
+        <div class="ds-item"><span class="ds-num" data-clue-count>0</span><span class="ds-key">총 단서</span></div>
+        <div class="ds-item"><span class="ds-num" data-event-count>0</span><span class="ds-key">진행 사건</span></div>
+        <div class="ds-item"><span class="ds-num" data-photo-count>0</span><span class="ds-key">수집 사진</span></div>
+        <div class="ds-item"><span class="ds-num" data-contradict-count>0</span><span class="ds-key">모순 단서</span></div>
+      </div>
+
+      <div class="diary-events" data-diary-events>
+        <p class="diary-empty">아직 모은 단서가 없습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       주말 시간 선택 — 토요일 컷씬 후 인터랙티브
+  ───────────────────────────────────────────────── -->
+  <div class="overlay weekend-choice-overlay" id="weekendChoiceOverlay" hidden>
+    <div class="wc-shell">
+      <header class="wc-head">
+        <span class="wc-key" data-wc-key>WEEKEND · 주말 일정</span>
+        <h3 class="wc-title">시간을 어떻게 쓸까</h3>
+        <p class="wc-sub">남은 시간 <span data-wc-remaining>3</span>칸 — 어디에 쓸지 결정한다.</p>
+      </header>
+      <div class="wc-slots" data-wc-slots-display>
+        <div class="wc-slot empty"></div>
+        <div class="wc-slot empty"></div>
+        <div class="wc-slot empty"></div>
+      </div>
+      <ul class="wc-choices" data-wc-choices></ul>
+      <button class="wc-done" data-wc-done>다음으로 →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       일요일 가족 컷씬 — 양심 5단계 별 (주말 컷씬 직후)
+  ───────────────────────────────────────────────── -->
+  <div class="overlay family-sunday-overlay" id="familySundayOverlay" hidden>
+    <div class="fs-shell" data-fs-tier="">
+      <header class="fs-head">
+        <span class="fs-key" data-fs-key>SUNDAY · 일요일 아침</span>
+        <h3 class="fs-title" data-fs-title>—</h3>
+      </header>
+      <div class="fs-body" data-fs-body>—</div>
+      <div class="fs-progress">
+        <div class="fs-progress-fill" data-fs-progress-fill></div>
+      </div>
+      <button class="fs-skip" data-fs-skip>건너뛰기 →</button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       독자 댓글 스트림 — 기사 발행 직후 노출
+  ───────────────────────────────────────────────── -->
+  <div class="overlay comment-stream-overlay" id="commentStreamOverlay" hidden>
+    <div class="cs-shell">
+      <header class="cs-head">
+        <span class="cs-key" data-comment-key>READERS · 독자 반응</span>
+        <h3 class="cs-title" data-comment-title>기사 발행 후 — 실시간 댓글</h3>
+        <span class="cs-meta" data-comment-meta></span>
+      </header>
+      <ul class="cs-list" data-comment-list></ul>
+      <button class="cs-close" data-comment-close disabled>
+        <span class="cs-close-label">잠시 기다려…</span>
+        <svg viewBox="0 0 24 12"><g filter="url(#wobble)" stroke="currentColor" stroke-width="2" fill="none"><line x1="2" y1="6" x2="22" y2="6"/><polyline points="16,2 22,6 16,10"/></g></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       단서 상세 — 단서 카드 클릭 시 수집 당시 전체 장면
+  ───────────────────────────────────────────────── -->
+  <div class="overlay clue-detail-overlay" id="clueDetailOverlay" hidden>
+    <div class="cd-shell">
+      <header class="cd-head">
+        <div class="cd-head-left">
+          <span class="cd-key" data-cd-key>METHOD · STAKEOUT</span>
+          <h3 class="cd-method" data-cd-method>잠복근무</h3>
+          <span class="cd-event" data-cd-event>—</span>
+        </div>
+        <button class="cd-close" data-close-overlay aria-label="닫기">
+          <svg viewBox="0 0 32 32">
+            <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" stroke-linecap="round" fill="none">
+              <line x1="8" y1="8" x2="24" y2="24" />
+              <line x1="24" y1="8" x2="8" y2="24" />
+            </g>
+          </svg>
+        </button>
+      </header>
+      <div class="cd-meta">
+        <span class="cd-tag" data-cd-outcome>성공</span>
+        <span class="cd-day" data-cd-day>2일차</span>
+        <span class="cd-source" data-cd-source>—</span>
+      </div>
+      <p class="cd-summary" data-cd-summary>—</p>
+      <div class="cd-body" data-cd-body></div>
+      <details class="cd-context">
+        <summary>당시 전체 상황 보기</summary>
+        <div class="cd-context-body" data-cd-fulltext>—</div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       사진 라이트박스 — 썸네일 클릭 시 확대
+  ───────────────────────────────────────────────── -->
+  <div class="overlay photo-lightbox" id="photoLightbox" hidden>
+    <div class="pl-shell">
+      <button class="pl-close" data-close-overlay aria-label="닫기">
+        <svg viewBox="0 0 32 32">
+          <g filter="url(#wobble)" stroke="#f4ecd8" stroke-width="2.5" stroke-linecap="round" fill="none">
+            <line x1="8" y1="8" x2="24" y2="24" />
+            <line x1="24" y1="8" x2="8" y2="24" />
+          </g>
+        </svg>
+      </button>
+      <div class="pl-frame">
+        <img class="pl-img" data-lightbox-img src="" alt="" />
+        <div class="pl-fallback" data-lightbox-fallback hidden>사진 자료 미생성</div>
+      </div>
+      <figcaption class="pl-caption" data-lightbox-caption>—</figcaption>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       핸드폰 모달
+  ───────────────────────────────────────────────── -->
+  <div class="overlay phone-overlay" id="phoneOverlay" hidden>
+    <div class="phone-shell">
+
+      <!-- 노치 -->
+      <div class="phone-notch-top"></div>
+
+      <!-- 상태바 -->
+      <div class="phone-statusbar">
+        <span class="ps-time">9:42</span>
+        <span class="ps-right">
+          <svg class="ps-signal" viewBox="0 0 16 10">
+            <g filter="url(#wobble)" fill="#0e0e0e">
+              <rect x="0" y="7" width="2" height="3"/>
+              <rect x="4" y="5" width="2" height="5"/>
+              <rect x="8" y="3" width="2" height="7"/>
+              <rect x="12" y="1" width="2" height="9"/>
+            </g>
+          </svg>
+          <svg class="ps-battery" viewBox="0 0 24 10">
+            <g filter="url(#wobble)" fill="none" stroke="#0e0e0e" stroke-width="1.2">
+              <rect x="0.5" y="0.5" width="20" height="9" />
+              <rect x="21" y="3" width="2" height="4" fill="#0e0e0e" />
+              <rect x="2" y="2" width="14" height="6" fill="#0e0e0e" />
+            </g>
+          </svg>
+        </span>
+      </div>
+
+      <!-- 화면 영역 — 여러 앱 -->
+      <div class="phone-screen">
+
+        <!-- ── 홈 화면 ── -->
+        <section class="phone-app active" data-app="home">
+          <div class="home-time">
+            <div class="ht-time">9:42</div>
+            <div class="ht-date">화 · WEEK 02 · DAY 5</div>
+            <div class="ht-divider"></div>
+          </div>
+
+          <div class="app-grid">
+            <button class="app-tile" data-open-app="messages">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linejoin="round">
+                    <path d="M 6 10 L 34 10 L 34 28 L 22 28 L 16 34 L 16 28 L 6 28 Z"/>
+                    <line x1="12" y1="16" x2="28" y2="16" stroke-width="1.5"/>
+                    <line x1="12" y1="22" x2="24" y2="22" stroke-width="1.5"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">메시지</span>
+              <span class="app-tile-badge" data-tile-badge="messages" hidden>0</span>
+            </button>
+
+            <button class="app-tile" data-open-app="calls">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linejoin="round">
+                    <path d="M 8 10 Q 10 8 14 8 L 16 14 Q 14 16 12 16 Q 14 22 18 26 Q 22 30 28 32 Q 28 30 30 28 L 36 30 Q 36 34 34 36 Q 22 36 14 28 Q 6 20 8 10 Z" fill="#0e0e0e"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">전화</span>
+              <span class="app-tile-badge" data-tile-badge="calls" hidden>0</span>
+            </button>
+
+            <button class="app-tile" data-open-app="calendar">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none">
+                    <rect x="6" y="10" width="28" height="24"/>
+                    <line x1="6" y1="16" x2="34" y2="16"/>
+                    <line x1="12" y1="6" x2="12" y2="12"/>
+                    <line x1="28" y1="6" x2="28" y2="12"/>
+                    <line x1="14" y1="22" x2="14" y2="22" stroke-width="3"/>
+                    <line x1="20" y1="22" x2="20" y2="22" stroke-width="3"/>
+                    <line x1="26" y1="22" x2="26" y2="22" stroke-width="3"/>
+                    <line x1="14" y1="28" x2="14" y2="28" stroke-width="3"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">캘린더</span>
+            </button>
+
+            <button class="app-tile" data-open-app="gallery">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none">
+                    <rect x="6" y="8" width="28" height="22"/>
+                    <circle cx="14" cy="16" r="2.5" fill="#0e0e0e"/>
+                    <path d="M 6 26 L 16 18 L 22 24 L 28 20 L 34 26 L 34 30 L 6 30 Z" fill="#0e0e0e"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">갤러리</span>
+            </button>
+
+            <button class="app-tile" data-open-app="news">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2" fill="none">
+                    <rect x="6" y="8" width="28" height="24"/>
+                    <line x1="10" y1="14" x2="20" y2="14" stroke-width="3"/>
+                    <line x1="22" y1="14" x2="30" y2="14"/>
+                    <line x1="10" y1="20" x2="30" y2="20"/>
+                    <line x1="10" y1="24" x2="30" y2="24"/>
+                    <line x1="10" y1="28" x2="22" y2="28"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">뉴스</span>
+            </button>
+
+            <button class="app-tile" data-open-app="archive">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2" fill="none">
+                    <rect x="8" y="6" width="24" height="28"/>
+                    <line x1="12" y1="12" x2="28" y2="12"/>
+                    <line x1="12" y1="16" x2="28" y2="16"/>
+                    <line x1="12" y1="20" x2="28" y2="20"/>
+                    <line x1="12" y1="24" x2="22" y2="24"/>
+                    <line x1="12" y1="28" x2="26" y2="28"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">내 기사</span>
+            </button>
+
+            <button class="app-tile" data-open-app="sns">
+              <div class="app-tile-icon">
+                <svg viewBox="0 0 40 40">
+                  <g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none">
+                    <circle cx="20" cy="20" r="12"/>
+                    <path d="M 14 18 Q 20 24 26 18"/>
+                    <line x1="16" y1="14" x2="16" y2="14" stroke-width="3"/>
+                    <line x1="24" y1="14" x2="24" y2="14" stroke-width="3"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="app-tile-name">SNS</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ── 메시지 앱 — 대화창 목록 ── -->
+        <section class="phone-app" data-app="messages" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">메시지</h2>
+            <div class="app-spacer"></div>
+          </header>
+
+          <ul class="thread-list">
+            <li class="thread-item unread" data-open-app="chat-daughter">
+              <div class="thread-avatar avatar-daughter">딸</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">딸 (8살)</span>
+                  <span class="thread-time">방금</span>
+                </div>
+                <div class="thread-preview" data-thread-preview="daughter">
+                  아빠 잘 다녀와요! 오늘 어린이집에서…
+                </div>
+              </div>
+              <span class="thread-badge">2</span>
+            </li>
+
+            <li class="thread-item" data-open-app="chat-wife">
+              <div class="thread-avatar avatar-wife">아</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">아내</span>
+                  <span class="thread-time">어제</span>
+                </div>
+                <div class="thread-preview" data-thread-preview="wife">
+                  저녁 늦으면 미리 알려줘.
+                </div>
+              </div>
+            </li>
+
+            <li class="thread-item unread" data-open-app="chat-editor">
+              <div class="thread-avatar avatar-editor">編</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">편집장</span>
+                  <span class="thread-time">08:14</span>
+                </div>
+                <div class="thread-preview" data-thread-preview="editor">
+                  오늘 마감 신경 좀 써. 광고주 미팅 있어.
+                </div>
+              </div>
+              <span class="thread-badge">1</span>
+            </li>
+
+            <li class="thread-item" data-open-app="chat-park">
+              <div class="thread-avatar avatar-park">박</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">박 기자</span>
+                  <span class="thread-time">07:42</span>
+                </div>
+                <div class="thread-preview">
+                  형, 그 사건 어디까지 들었어?
+                </div>
+              </div>
+            </li>
+
+            <li class="thread-item" data-open-app="chat-tip">
+              <div class="thread-avatar avatar-tip">?</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">제보 메일</span>
+                  <span class="thread-time">06:30</span>
+                </div>
+                <div class="thread-preview">
+                  익명입니다. 당신이 어제 쓴 기사…
+                </div>
+              </div>
+            </li>
+
+            <li class="thread-item warn" data-open-app="chat-loan" data-show-when="balance-low">
+              <div class="thread-avatar avatar-loan">$</div>
+              <div class="thread-body">
+                <div class="thread-top">
+                  <span class="thread-name">대출 안내</span>
+                  <span class="thread-time">금요일</span>
+                </div>
+                <div class="thread-preview" data-thread-preview="loan">
+                  ○○ 카드 결제일이 다가옵니다.
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ── 채팅: 트리거 이벤트 (동적) ── -->
+        <section class="phone-app chat-app event-chat-app" data-app="chat-event" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title" data-event-title>—</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-event-stream></div>
+          <div class="event-choices" data-event-choices></div>
+        </section>
+
+        <!-- ── 채팅: 딸 ── -->
+        <section class="phone-app chat-app" data-app="chat-daughter" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">딸 (8살)</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="daughter"></div>
+        </section>
+
+        <!-- ── 채팅: 아내 ── -->
+        <section class="phone-app chat-app" data-app="chat-wife" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">아내</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="wife"></div>
+        </section>
+
+        <!-- ── 채팅: 편집장 ── -->
+        <section class="phone-app chat-app" data-app="chat-editor" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">편집장</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="editor"></div>
+        </section>
+
+        <!-- ── 채팅: 박 기자 ── -->
+        <section class="phone-app chat-app" data-app="chat-park" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">박 기자</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="park"></div>
+        </section>
+
+        <!-- ── 채팅: 제보 메일 ── -->
+        <section class="phone-app chat-app" data-app="chat-tip" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">제보 메일</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="tip"></div>
+        </section>
+
+        <!-- ── 채팅: 대출 안내 ── -->
+        <section class="phone-app chat-app" data-app="chat-loan" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="messages" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">대출 안내</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="chat-stream" data-chat="loan"></div>
+        </section>
+
+        <!-- ── 통화 / 캘린더 / 갤러리 / 뉴스 / SNS — 간이 placeholder ── -->
+        <section class="phone-app generic-app" data-app="calls" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">전화 — 부재중</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <ul class="call-list">
+            <li class="call-item unknown">
+              <div class="call-name">모르는 번호</div>
+              <div class="call-meta">3 회 · 9:18</div>
+            </li>
+            <li class="call-item unknown">
+              <div class="call-name">02-xxx-xxxx</div>
+              <div class="call-meta">1 회 · 어제 23:42</div>
+            </li>
+            <li class="call-item">
+              <div class="call-name">아내</div>
+              <div class="call-meta">1 회 · 어제 21:10</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="phone-app generic-app" data-app="calendar" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">2026 · 4월</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="cal-list" data-cal-list>
+            <div class="cal-item today"><span class="cal-day">화 · 27</span><span class="cal-event">기사 마감 D-3</span></div>
+            <div class="cal-item"><span class="cal-day">목 · 29</span><span class="cal-event">광고주 미팅 (편집장)</span></div>
+            <div class="cal-item warn" data-show-when="balance-low"><span class="cal-day">금 · 30</span><span class="cal-event">○○ 카드 결제일</span></div>
+          </div>
+        </section>
+
+        <section class="phone-app generic-app" data-app="gallery" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">갤러리</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="gallery-grid"></div>
+        </section>
+
+        <section class="phone-app generic-app" data-app="news" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">뉴스</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <ul class="news-list" data-news-list></ul>
+        </section>
+
+        <section class="phone-app generic-app" data-app="archive" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">내 기사</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <div class="archive-summary" data-archive-summary></div>
+          <ul class="archive-list" data-archive-list></ul>
+        </section>
+
+        <section class="phone-app generic-app" data-app="sns" hidden>
+          <header class="app-header">
+            <button class="app-back" data-back-to="home" aria-label="뒤로">
+              <svg viewBox="0 0 24 24"><g filter="url(#wobble)" stroke="#0e0e0e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,6 8,12 14,18"/></g></svg>
+            </button>
+            <h2 class="app-title">SNS — 댓글</h2>
+            <div class="app-spacer"></div>
+          </header>
+          <ul class="sns-list" data-sns-list></ul>
+        </section>
+
+      </div>
+
+      <!-- 홈 인디케이터 -->
+      <button class="phone-home-bar" data-close-overlay aria-label="닫기"></button>
+
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       Toast — 결과 알림 (간단)
+  ───────────────────────────────────────────────── -->
+  <div class="toast" id="toast" hidden></div>
+
+  <!-- ─────────────────────────────────────────────
+       사운드 시스템
+  ───────────────────────────────────────────────── -->
+  <audio id="audioBg"        src="sound/loopBackground.mp3" preload="auto" loop></audio>
+  <audio id="audioWeekend"   src="sound/amusement_park.mp3" preload="auto"></audio>
+  <audio id="audioCardClick" src="sound/cardClick.mp3"      preload="auto"></audio>
+  <audio id="audioBell"      src="sound/bell.mp3"           preload="auto"></audio>
+  <audio id="audioEnding"    src="sound/Ending_money.mp3"   preload="auto"></audio>
+  <audio id="phoneVibSound"  src="sound/phone-vibration.mp3" preload="auto"></audio>
+
+  <!-- ─────────────────────────────────────────────
+       설정 패널 (우측 상단 · 톱니바퀴 클릭 → 펼침)
+       향후 사운드 외 다른 설정도 추가 예정
+  ───────────────────────────────────────────────── -->
+  <div class="settings-panel" id="settingsPanel">
+    <button class="settings-toggle" id="settingsToggle" aria-label="설정 열기">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <g filter="url(#wobble)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2 L12 5 M12 19 L12 22 M2 12 L5 12 M19 12 L22 12 M4.9 4.9 L7 7 M17 17 L19.1 19.1 M4.9 19.1 L7 17 M17 7 L19.1 4.9"/>
+        </g>
+      </svg>
+    </button>
+    <div class="settings-body" id="settingsBody" hidden>
+      <header class="settings-head">
+        <span class="settings-title">설정</span>
+        <button class="settings-close" id="settingsClose" aria-label="닫기">×</button>
+      </header>
+      <div class="settings-row">
+        <button class="settings-mute" id="settingsMute" aria-label="음소거 토글">
+          <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10 L3 14 L7 14 L12 18 L12 6 L7 10 Z" fill="currentColor"/>
+              <path d="M16 8 Q19 12 16 16"/>
+              <path d="M19 5 Q24 12 19 19"/>
+            </g>
+          </svg>
+          <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10 L3 14 L7 14 L12 18 L12 6 L7 10 Z" fill="currentColor"/>
+              <line x1="16" y1="8" x2="22" y2="14"/>
+              <line x1="22" y1="8" x2="16" y2="14"/>
+            </g>
+          </svg>
+        </button>
+        <input type="range" id="settingsVolume" class="settings-volume" min="0" max="100" value="50" aria-label="볼륨" />
+        <span class="settings-volume-val" id="settingsVolumeVal">50</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core 글로벌 설정 (메서드/게이지/엔딩/카톡 등) — 항상 필요 -->
+  <script src="data/content_core.js"></script>
+  <!-- 폰 이벤트 — 트리거 기반 메시지 풀 -->
+  <script src="data/content_phone_events.js"></script>
+  <!-- 사건별 사진 자료 (프롬프트/매칭 태그) -->
+  <script src="data/content_photos.js"></script>
+  <!-- Week 1 + cross-week 사건 — 게임 시작 즉시 필요 -->
+  <script src="data/content_week1.js"></script>
+  <script src="data/content_cross.js"></script>
+  <!-- Week 2~4 는 ensureWeekData() 가 동적 로드 (game.js) -->
+  <script src="game.js"></script>
+</body>
+</html>
