@@ -327,6 +327,7 @@ window.PROJECTS = [
   },
   {
     id: "limen-web",
+    page: "limen-web.html",
     title: "snooze.design",
     titleKo: "LIMEN 전시 웹사이트 · 사전 웹 + AWAKE",
     cat: "web",
