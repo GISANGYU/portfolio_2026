@@ -57,7 +57,7 @@
         <div><dt>Type</dt><dd>전시 웹사이트 3종</dd></div>
         <div><dt>Year</dt><dd>2026.10 – 11 · 전시 11.20 – 22</dd></div>
         <div><dt>Team</dt><dd>SNOOZE · 웹 디자인 김노은 · 조가연</dd></div>
-        <div><dt>Role</dt><dd>웹 구현 전체 · 배포 · 방명록 기획</dd></div>
+        <div><dt>Role</dt><dd>웹 구현 전체 · 방명록 · 배포</dd></div>
         <div><dt>Tools</dt><dd>JavaScript · Three.js · Lenis · Canvas 2D · IndexedDB · Figma · Vercel</dd></div>
         <div><dt>Domain</dt><dd><a href="https://snooze.design/limen/" target="_blank" rel="noopener">snooze.design</a></dd></div>
       </dl>
@@ -120,7 +120,7 @@
             </article>
             <article>
               <h5><i>D</i>방명록은 웹 밖에서, 전시장 PC로</h5>
-              <p>방명록은 카메라로 사진을 찍고, 찍은 사진을 원본 화질로 남겨야 했습니다. 전시장 인터넷에 기대지 않도록 서버와 DB 없이 부스 PC 한 대에서 로컬로 실행했고, 글은 브라우저에, 사진은 PC의 다운로드 폴더에 jpg로 저장했습니다. 전시가 끝난 뒤 그 사진을 온라인 아카이브로 공개했습니다.</p>
+              <p>방명록은 카메라로 사진을 찍고, 찍은 사진을 원본 화질로 남겨야 했습니다. 인터넷 없이도 돌도록 서버와 DB 없이 부스 PC 한 대에서 로컬로 실행했고, 글은 브라우저에, 사진은 PC의 다운로드 폴더에 jpg로 저장했습니다. 전시가 끝난 뒤 그 사진을 온라인 아카이브로 공개했습니다.</p>
               <ul><li>글꼴 · 캐릭터를 폴더 안에 넣어 오프라인 실행</li><li>백업 파일(JSON) 저장 · 불러오기로 업데이트 중에도 글 보존</li></ul>
             </article>
           </div>
@@ -217,7 +217,7 @@
             <tr><td>등장</td><td class="w">줄 단위로 올라오고, 아래로 빠지면 되돌아가 다시 등장</td><td>IntersectionObserver</td></tr>
             <tr><td>시차 · 떠다니는 배경</td><td class="w">이미지가 늦게 따라오고, 고정 배경 안개가 스크롤 일부만큼만 움직임</td><td><code>data-par</code> · <code>data-drift</code> · <code>data-lag</code></td></tr>
             <tr><td>팀 프로필 층</td><td class="w">햄버거를 누르면 위에서 팀 프로필이 내려옴(별도 페이지 아님), 다시 누르거나 Esc로 닫힘</td><td><code>inert</code> · <code>aria-expanded</code>, 열린 동안 스크롤 정지</td></tr>
-            <tr><td>해상도 대응</td><td class="w">1920 시안 비율을 유지하며 화면 폭에 맞춤, 전시 첫날 해상도별 위치 · 포커스 잘림 보정</td><td><code>screen-scale.css</code></td></tr>
+            <tr><td>해상도 대응</td><td class="w">1920 기준 비율(<code>--u</code> = 화면 폭 / 1920)로 커지고, 1920보다 큰 화면에서는 고정 px로 남은 SPACE · 푸터 글자도 같은 비율로 키움</td><td><code>screen-scale.css</code></td></tr>
           </tbody>
         </table>
       </section>
@@ -369,7 +369,7 @@
             <ul><li>날짜 필터(전체 · 11.21 · 11.22), 화면에 들어오는 카드부터 나타남</li><li>사진을 누르면 크게 보기 — ← / → 키 · 좌우 스와이프로 넘김, 다음 사진은 미리 불러옴</li><li>격자는 썸네일, 크게 보기는 원본을 따로 불러와 첫 로딩을 가볍게</li></ul>
             <p class="impl"><code>entries.json</code>(촬영 시각 · 이름) · <code>&lt;dialog&gt;</code> · 녹화본은 관람객 얼굴 · 이름을 흐리게 처리</p></div>
         </article>
-        <p class="lw-note">방명록은 처음에 QR로 들어오는 공개 웹으로 만들었다가(지금의 <a href="https://snooze.design/guestbook-v1/" target="_blank" rel="noopener">guestbook-v1</a>), 카메라 · 사진 보관이 들어가면서 전시장 로컬판으로 옮겼습니다. 로컬판은 Windows 실행 파일과 Mac 실행 스크립트로도 묶어 Python · Node 설치 없이 띄울 수 있게 했습니다.</p>
+        <p class="lw-note">방명록 첫 판은 QR로 여는 공개 웹 프로토타입(지금의 <a href="https://snooze.design/guestbook-v1/" target="_blank" rel="noopener">guestbook-v1</a>)이었고, 전시에서는 카메라 촬영과 사진 원본 저장을 넣은 로컬판을 부스 PC에서 실행했습니다. 로컬판은 Windows 실행 파일과 Mac 실행 스크립트로도 묶어 Python · Node 설치 없이 띄울 수 있게 했습니다.</p>
       </section>
 
       <!-- ── 06 STACK ── -->
@@ -440,7 +440,7 @@
               <tr><td>방명록</td><td>QR로 여는 공개 웹, 글만 저장</td><td class="w">부스 PC 로컬판, 카메라 · 사진 원본 저장 · 백업, 전시 후 아카이브</td></tr>
             </tbody>
           </table>
-          <p class="sp-cap">전시 기간에도 고쳤습니다. 첫날(11.21) 전시장 화면에서 해상도별 위치와 공간 포커스 잘림을 보정하고 헤더 숨김 · 화면 배율을 손봤고, 11.22에는 메인 글꼴을 Pretendard로 바꿨습니다.</p>
+          <p class="sp-cap">전시 기간에도 고쳤습니다. 11.20 큰 화면(2560 × 1440) 배율 보정에 이어 11.21 전시장 화면에서 해상도별 위치와 공간 포커스 잘림을 보정하고 헤더 숨김 · 화면 배율을 손봤고, 11.22에는 메인 글꼴을 Pretendard로 바꿨습니다.</p>
         </div>
       </section>
 
@@ -451,7 +451,7 @@
           <ol class="sp-role">
             <li><b>구현</b><span>INDEX · AWAKE 전 구간 개발, 피그마 시안 → 웹 좌표 변환과 대조 검증</span></li>
             <li><b>인터랙션</b><span>스크롤 엔진, 구간별 스크롤 연출, 3D 공간 도면, 포스터 아카이브 카메라, 질문 카드 회전</span></li>
-            <li><b>방명록</b><span>기획 · 캐릭터 시스템 · 카메라 촬영 · 저장 · 백업, 전시장 로컬 실행 패키지, 전시 후 아카이브</span></li>
+            <li><b>방명록</b><span>캐릭터 시스템 · 카메라 촬영 · 저장 · 백업, 전시장 로컬 실행 패키지, 전시 후 아카이브</span></li>
             <li><b>배포</b><span>GitHub · Vercel, snooze.design 도메인 경로 구성</span></li>
           </ol>
           <h4 class="sp-sub" style="margin-top: 40px">크레딧</h4>

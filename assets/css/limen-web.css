@@ -64,9 +64,9 @@
 .lw-map .col > b { display: block; font-size: 15px; color: #fff; }
 .lw-map .col > small { display: block; font-family: ui-monospace, monospace; font-size: 11.5px; color: var(--lav2); margin: 2px 0 10px; word-break: break-all; }
 .lw-map .col ol { display: grid; gap: 4px; counter-reset: m; }
-.lw-map .col li { counter-increment: m; font-size: 12.5px; color: #c9cad0; display: grid; grid-template-columns: 22px 1fr; padding: 4px 0; border-top: 1px dashed #1e1f26; }
-.lw-map .col li::before { content: counter(m, decimal-leading-zero); font-family: ui-monospace, monospace; font-size: 11px; color: var(--dim); padding-top: 1px; }
-.lw-map .col li span { color: var(--dim); }
+.lw-map .col li { counter-increment: m; font-size: 12.5px; color: #c9cad0; display: flex; align-items: baseline; gap: 6px; padding: 4px 0; border-top: 1px dashed #1e1f26; }
+.lw-map .col li::before { content: counter(m, decimal-leading-zero); flex: none; width: 18px; font-family: ui-monospace, monospace; font-size: 11px; color: var(--dim); }
+.lw-map .col li span { margin-left: auto; text-align: right; color: var(--dim); font-size: 11.5px; }
 .lw-map .share { margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .lw-map .share p { font-size: 12.5px; color: var(--mut); border-top: 1px solid #2c2d35; padding-top: 10px; }
 .lw-map .share p b { color: #e4e4e8; font-weight: 600; }
